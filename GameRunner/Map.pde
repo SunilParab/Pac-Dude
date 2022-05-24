@@ -42,7 +42,7 @@ public class Map{
       for(int j =0; j < nums[i].length; j++){ 
         System.out.print(nums[i][j]); 
       } 
-      System.out.print(""); 
+      System.out.print("");; 
     } 
   
     
