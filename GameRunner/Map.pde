@@ -37,13 +37,19 @@ public class Map{
     } 
   }
   
+  // will print out the map
   public String toString(){ 
-     for(int i =0; i < nums.length; i++){ 
-      for(int j =0; j < nums[i].length; j++){ 
-        System.out.print(nums[i][j]); 
+     String temp = ""; 
+     for(int i =0; i < map.length; i++){ 
+      for(int j =0; j < map[i].length; j++){ 
+        temp += map[i][j]; 
       } 
-      System.out.print("");; 
-    } 
+      temp += "\n"; 
+    }
+    return temp; 
+  } 
+  
+  
   
     
   
