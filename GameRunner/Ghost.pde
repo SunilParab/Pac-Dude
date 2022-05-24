@@ -28,5 +28,8 @@ public abstract class Ghost implements Entities{
   public void respawn() {
     //to be implemented later
   }
+  public void wander() {
+    //to be implemented soon
+  }
   
 }
