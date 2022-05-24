@@ -1,5 +1,5 @@
-public class Map{ 
-  
+public class Map { 
+
   int height; 
   int width; 
   int[][] map; 
@@ -9,58 +9,43 @@ public class Map{
   final int wall = 3; 
   final int ghostOnly = 4; 
   final int teleportWall = 5; 
-  
+
   int[][] preset = new int[][]
-                   { {1,1,1,1,1,1,1,1,1,1},
-                     {1,0,0,0,0,0,0,0,0,1}, 
-                     {1,0,0,0,0,0,0,0,0,1}, 
-                     {1,0,0,0,0,0,0,0,0,1}, 
-                     {1,0,0,0,0,0,0,0,0,1}, 
-                     {1,0,0,0,0,0,0,0,0,1}, 
-                     {1,1,1,1,1,1,1,1,1,1} }; 
-  
-   
-  public Map(){ 
+    { {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1} }; 
+
+
+  public Map() { 
     map = new int[31][29];
   } 
-  
-  public Map(int hi,int wi){ 
-    map = new int[hi][wi]; 
-  }
-  
-  // will attempt to fill the empty spaces within the map with pellets 
-  public void generatePellets(int[][] nums){ 
-    for(int i =0; i < nums.length; i++){ 
-      for(int j =0; j < nums[i].length; j++){ 
-        if(nums[i][j] == 0) nums[i][j] = 1; 
-      } 
-    } 
-  }
-  
-  // will print out the map
-  public String toString(){ 
-     String temp = ""; 
-     for(int i =0; i < map.length; i++){ 
-      for(int j =0; j < map[i].length; j++){ 
-        temp += map[i][j]; 
-      } 
-      temp += "\n"; 
-    }
-    return temp; 
-  } 
-  
-  
-  
-    
-  
-  
-  
-  
- 
-   
-  
-  
-  
 
+  public Map(int hi, int wi) { 
+    map = new int[hi][wi];
+  }
+
+  // will attempt to fill the empty spaces within the map with pellets 
+  public void generatePellets(int[][] nums) { 
+    for (int i =0; i < nums.length; i++) { 
+      for (int j =0; j < nums[i].length; j++) { 
+        if (nums[i][j] == 0) nums[i][j] = 1;
+      }
+    }
+  }
+
+  // will print out the map for debugging purposes 
+  public String toString() { 
+    String temp = ""; 
+    for (int i =0; i < map.length; i++) { 
+      for (int j =0; j < map[i].length; j++) { 
+        temp += map[i][j];
+      } 
+      temp += "\n";
+    }
+    return temp;
+  }
+  
+  
+  
+  
+  
   
 } 
