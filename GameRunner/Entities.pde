@@ -6,5 +6,4 @@ public interface Entities{
   public boolean nextToBlock();
   public void changeDirection(String newdir);
   public void move();
-  public void respawn();
 }

@@ -1,7 +1,16 @@
 public class PacDude implements Entities {
   public int xPos;
   public int yPos;
+  public int incX;
+  public int incY;
+  public int pelletCounter;
+  public boolean specialAbility;
   public String direction;
+  
+  public PacDude() {
+    //assign all variable
+    //to be implemented very soon
+  }
   
   public int getXPos() {
     return xPos;
@@ -17,6 +26,18 @@ public class PacDude implements Entities {
   
   public void setYPos(int newpos) {
     yPos = newpos;
+  }
+  
+  public void changeDirection(String newdir) {
+    direction = newdir;
+  }
+  
+  public boolean getSpecial() {
+    return specialAbility;
+  }
+  
+  public void setSpecial(boolean hasspec) {
+    specialAbility = hasspec;
   }
   
   public boolean nextToBlock() {
@@ -42,19 +63,7 @@ public class PacDude implements Entities {
     return false;
   }
   
-  public void changeDirection(String newdir) {
-    direction = newdir;
-  }
-  
   public void move() {
-    //to be implemented soon
-  }
-  
-  public void respawn() {
-    //to be implemented later
-  }
-  
-  public void wander() {
     //to be implemented soon
   }
   
