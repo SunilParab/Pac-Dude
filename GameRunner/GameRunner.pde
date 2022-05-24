@@ -1,5 +1,5 @@
 void setup() {
-  hello
+  hello.
 }
 
 void draw() {
