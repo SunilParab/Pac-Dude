@@ -17,6 +17,7 @@ public abstract class Ghost implements Entities{
   }
   public boolean nextToBlock() {
     //to be implemented soon
+    return false;
   }
   public void changeDirection(String newdir) {
     direction = newdir;
