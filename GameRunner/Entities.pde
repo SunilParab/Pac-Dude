@@ -1,5 +1,4 @@
 public interface Entities{
-  
   public int getXPos();
   public int getYPos();
   public void setXPos(int newpos);
@@ -8,5 +7,4 @@ public interface Entities{
   public void changeDirection(String newdir);
   public void move();
   public void respawn();
-  
 }
