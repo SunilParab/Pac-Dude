@@ -43,19 +43,19 @@ public class PacDude implements Entities {
   public boolean nextToBlock() {
     switch (direction) {
       case "Up": {
-        //return !(gameMap[xPos][yPos+1] != 3 && gameMap[xPos][yPos+1] != 4);
+        return !(gameMap[xPos][yPos+1] != 3 && gameMap[xPos][yPos+1] != 4);
         break;
       }
       case "Down": {
-        //return !(gameMap[xPos][yPos-1] != 3 && gameMap[xPos][yPos-1] != 4);
+        return !(gameMap[xPos][yPos-1] != 3 && gameMap[xPos][yPos-1] != 4);
         break;
       }
       case "Left": {
-        //return !(gameMap[xPos-1][yPos] != 3 && gameMap[xPos-1][yPos] != 4);
+        return !(gameMap[xPos-1][yPos] != 3 && gameMap[xPos-1][yPos] != 4);
         break;
       }
       case "Right": {
-        //return !(gameMap[xPos+1][yPos] != 3 && gameMap[xPos+1][yPos] != 4);
+        return !(gameMap[xPos+1][yPos] != 3 && gameMap[xPos+1][yPos] != 4);
         break;
       }
     }
