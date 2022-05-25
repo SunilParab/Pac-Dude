@@ -1,8 +1,9 @@
 public class Map {
 
-  int height;
-  int width;
+  private int height;
+  private int width;
   int[][] map;
+  int pelletCount; 
   final int empty = 0;
   final int pellet = 1;
   final int powerPellet = 2;
@@ -47,6 +48,8 @@ public class Map {
 
   public Map() {
     map = preset;
+    generatePellets(); 
+    
   }
 
   public Map(int hi, int wi) {
@@ -57,14 +60,23 @@ public class Map {
     map[xpos][ypos] = val;
   }
 
+  public int getVal(int xpos, int ypos) { 
+    return map[xpos][ypos];
+  } 
 
-  // will attempt to fill the empty spaces within the map with pellets
-  public void generatePellets() {
+
+  // will attempt to fill the empty spaces within the map with pellets and will return the number of pellets addded 
+  public int generatePellets() {
+    int counter =0; 
     for (int i =0; i < map.length; i++) {
       for (int j =0; j < map[i].length; j++) {
-        if (map[i][j] == 0) map[i][j] = 2;
+        if (map[i][j] == 0){ 
+          map[i][j] = 2;
+          counter ++; 
+        } 
       }
     }
+    return counter; 
   }
 
   // will print out the map for debugging purposes
