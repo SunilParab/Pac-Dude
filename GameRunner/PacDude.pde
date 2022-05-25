@@ -59,7 +59,22 @@ public class PacDude implements Entities {
   }
   
   public void move() {
-    //to be implemented soon
+    if (!nextToBlock()) {
+      switch (direction) {
+        case "Up": {
+          yPos++;
+        }
+        case "Down": {
+          yPos--;
+        }
+        case "Left": {
+          xPos--;
+        }
+        case "Right": {
+          xPos++;
+        }
+      }
+    }
   }
   
 }
