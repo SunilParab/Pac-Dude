@@ -62,6 +62,11 @@ public class Map {
   public int getVal(int xpos, int ypos) { 
     return map[xpos][ypos];
   } 
+  
+  public int getPellets(){ 
+    return pelletCount; 
+  } 
+  
 
 
   // will attempt to fill the empty spaces within the map with pellets and will return the number of pellets addded 
