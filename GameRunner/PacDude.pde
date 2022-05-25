@@ -7,9 +7,12 @@ public class PacDude implements Entities {
   public boolean specialAbility;
   public String direction;
   
-  public PacDude() {
-    //assign all variable
-    //to be implemented very soon
+  public PacDude(int x, int y) {
+    xPos = x;
+    yPos = y;
+    pelletCounter = 0;
+    specialAbility = false;
+    direction = "Left";
   }
   
   public int getXPos() {
