@@ -55,18 +55,22 @@ public class Map {
     map = new int[hi][wi];
   }
 
+  // allows user to set value of map to specified value 
   public void setVal(int xpos, int ypos, int val) {
     map[xpos][ypos] = val;
   }
-
+  
+  //allows user to get a value from the map 
   public int getVal(int xpos, int ypos) { 
     return map[xpos][ypos];
   } 
-
+  
+  //allows user to get the number of pellets inside of the map 
   public int getPellets() { 
     return pelletCount;
   } 
 
+  // allows user to decrement the number of pellets after pac-dude eats them. 
   public void decrementPellets() { 
     pelletCount -= 1;
   } 
