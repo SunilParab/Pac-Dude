@@ -2,8 +2,8 @@ public class Map {
 
   private int height;
   private int width;
-  int[][] map;
-  int pelletCount; 
+  private int[][] map;
+  private int pelletCount; 
   final int empty = 0;
   final int pellet = 1;
   final int powerPellet = 2;
@@ -48,8 +48,7 @@ public class Map {
 
   public Map() {
     map = preset;
-    generatePellets(); 
-    
+    pelletCount = generatePellets();
   }
 
   public Map(int hi, int wi) {
@@ -70,13 +69,13 @@ public class Map {
     int counter =0; 
     for (int i =0; i < map.length; i++) {
       for (int j =0; j < map[i].length; j++) {
-        if (map[i][j] == 0){ 
+        if (map[i][j] == 0) { 
           map[i][j] = 2;
-          counter ++; 
-        } 
+          counter ++;
+        }
       }
     }
-    return counter; 
+    return counter;
   }
 
   // will print out the map for debugging purposes
