@@ -1,5 +1,7 @@
+Map gameMap;
+
 void setup() {
-  hello.
+  Map gameMap = new Map();
 }
 
 void draw() {
