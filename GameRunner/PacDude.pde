@@ -40,8 +40,8 @@ public class PacDude implements Entities {
     specialAbility = hasspec;
   }
   
-  public boolean nextToBlock() {
-    switch (direction) {
+  public boolean nextToBlock(String checkdir) {
+    switch (checkdir) {
       case "Up": {
         return !(gameMap.map[xPos][yPos+1] != 3 && gameMap.map[xPos][yPos+1] != 4);
       }
@@ -59,7 +59,7 @@ public class PacDude implements Entities {
   }
   
   public void move() {
-    if (!nextToBlock()) {
+    if (!nextToBlock(direction)) {
       switch (direction) {
         case "Up": {
           yPos++;

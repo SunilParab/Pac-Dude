@@ -19,8 +19,12 @@ public abstract class Ghost implements Entities{
     yPos = newpos;
   }
   
-  public boolean nextToBlock() {
-    switch (direction) {
+  public void changeDirection(String newdir) {
+    direction = newdir;
+  }
+  
+  public boolean nextToBlock(String checkdir) {
+    switch (checkdir) {
       case "Up": {
         return !(gameMap.map[xPos][yPos+1] != 3 && gameMap.map[xPos][yPos+1] != 4);
       }
@@ -35,10 +39,6 @@ public abstract class Ghost implements Entities{
       }
     }
     return true;
-  }
-  
-  public void changeDirection(String newdir) {
-    direction = newdir;
   }
   
   public void move() {
