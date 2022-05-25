@@ -53,11 +53,16 @@ public class Map {
     map = new int[hi][wi];
   }
 
+  public void setVal(int xpos, int ypos, int val) {
+    map[xpos][ypos] = val;
+  }
+
+
   // will attempt to fill the empty spaces within the map with pellets
-  public void generatePellets(int[][] nums) {
-    for (int i =0; i < nums.length; i++) {
-      for (int j =0; j < nums[i].length; j++) {
-        if (nums[i][j] == 0) nums[i][j] = 1;
+  public void generatePellets() {
+    for (int i =0; i < map.length; i++) {
+      for (int j =0; j < map[i].length; j++) {
+        if (map[i][j] == 0) map[i][j] = 2;
       }
     }
   }
@@ -74,7 +79,7 @@ public class Map {
           temp += " ";
         }
         if (map[i][j] == 2) {
-          temp += "*";
+          temp += ".";
         }
         if (map[i][j] == 5) {
           temp += "t";
