@@ -5,12 +5,13 @@ public class Map {
   private int[][] map;
   private int pelletCount; 
   final int empty = 0;
-  final int pellet = 1;
-  final int powerPellet = 2;
-  final int wall = 3;
+  final int wall = 1;
+  final int pellet = 2;
+  final int powePellet = 3;
   final int ghostOnly = 4;
   final int teleportWall = 5;
-
+  
+  // this is the preset map 2d array 
   int[][] preset = new int[][]
     {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
@@ -88,6 +89,8 @@ public class Map {
     }
     return counter;
   }
+  
+  
 
   // will print out the map for debugging purposes
   public String toString() {
