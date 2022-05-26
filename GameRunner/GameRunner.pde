@@ -1,8 +1,8 @@
-Map gameMap = new Map();
+Map gameMap;
 PacDude Player;
 
 void setup() {
-  //Map gameMap = new Map();
+  gameMap = new Map();
   size(700,775);
   fill(255,255,0);
   Player = new PacDude(2,2);
