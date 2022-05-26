@@ -2,41 +2,19 @@ Map gameMap;
 PacDude Player;
 
 void setup() {
-<<<<<<< HEAD
   gameMap = new Map();
-  size(700,775);
-  fill(255,255,0);
-  Player = new PacDude(2,2);
-=======
+  Player = new PacDude(1,1);
   size(729, 702); 
-  background(0);
-
-  Map gameMap = new Map();
-  
-  
-  for(int i =0; i < 27; i ++){ 
-    for(int j= 0; j < 28; j++){ 
-        if(gameMap.getVal(i,j) == 1){ 
-         stroke(255);
-         fill(0,0,255);
-         rect(j * 26, i * 26, 26, 26);
-        } 
-    } 
-  } 
-  
-  
-  
-  
->>>>>>> a7da8a4cf45aac3365c342a876d5553ed7a72b9b
+  PrintMap();
 }
 
 void draw() {
-  background(0);
+  PrintMap();
   fill(255,255,0);
-  if(Player.getDirection() == "Up") {arc(Player.getXPos()*28, Player.getYPos()*31, 50, 50, radians(300), radians(600));}
-  else if(Player.getDirection() == "Down") {arc(Player.getXPos()*28, Player.getYPos()*31, 50, 50, radians(120), radians(420));}
-  else if(Player.getDirection() == "Left") {arc(Player.getXPos()*28, Player.getYPos()*31, 50, 50, radians(210), radians(510));}
-  else if(Player.getDirection() == "Right") {arc(Player.getXPos()*28, Player.getYPos()*31, 50, 50, radians(30), radians(330));}
+  if(Player.getDirection() == "Up") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 26, 26, radians(300), radians(600));}
+  else if(Player.getDirection() == "Down") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 26, 26, radians(120), radians(420));}
+  else if(Player.getDirection() == "Left") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 26, 26, radians(210), radians(510));}
+  else if(Player.getDirection() == "Right") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 26, 26, radians(30), radians(330));}
 }
 
 void keyPressed() {
@@ -55,4 +33,17 @@ void keyPressed() {
       Player.setXPos(Player.getXPos()+1);
     }
   }
+}
+
+void PrintMap() {
+  background(0);
+  for(int i =0; i < 27; i ++){ 
+    for(int j= 0; j < 28; j++){ 
+        if(gameMap.getVal(i,j) == 1){ 
+         stroke(255);
+         fill(0,0,255);
+         rect(j * 26, i * 26, 26, 26);
+        } 
+    } 
+  } 
 }
