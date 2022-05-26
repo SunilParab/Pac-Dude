@@ -5,12 +5,13 @@ public class Map {
   private int[][] map;
   private int pelletCount; 
   final int empty = 0;
-  final int pellet = 1;
-  final int powerPellet = 2;
-  final int wall = 3;
+  final int wall = 1;
+  final int pellet = 2;
+  final int powePellet = 3;
   final int ghostOnly = 4;
   final int teleportWall = 5;
-
+  
+  // this is the preset map 2d array 
   int[][] preset = new int[][]
     {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
@@ -55,18 +56,22 @@ public class Map {
     map = new int[hi][wi];
   }
 
+  // allows user to set value of map to specified value 
   public void setVal(int xpos, int ypos, int val) {
     map[xpos][ypos] = val;
   }
-
+  
+  //allows user to get a value from the map 
   public int getVal(int xpos, int ypos) { 
     return map[xpos][ypos];
   } 
-
+  
+  //allows user to get the number of pellets inside of the map 
   public int getPellets() { 
     return pelletCount;
   } 
 
+  // allows user to decrement the number of pellets after pac-dude eats them. 
   public void decrementPellets() { 
     pelletCount -= 1;
   } 
@@ -84,6 +89,8 @@ public class Map {
     }
     return counter;
   }
+  
+  
 
   // will print out the map for debugging purposes
   public String toString() {
