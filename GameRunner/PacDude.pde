@@ -50,10 +50,10 @@ public class PacDude implements Entities {
   public boolean nextToBlock(String checkdir) {
     switch (checkdir) {
       case "Up": {
-        return (gameMap.map[xPos][yPos+1] != 1 && gameMap.map[xPos][yPos+1] != 4);
+        return (gameMap.map[xPos][yPos+1] == 1 || gameMap.map[xPos][yPos+1] == 4);
       }
       case "Down": {
-        return (gameMap.map[xPos][yPos-1] != 1 && gameMap.map[xPos][yPos-1] != 4);
+        return (gameMap.map[xPos][yPos-1] == 1 || gameMap.map[xPos][yPos-1] == 4);
       }
       case "Left": {
         return (gameMap.map[xPos-1][yPos] == 1 || gameMap.map[xPos-1][yPos] == 4);

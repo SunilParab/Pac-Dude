@@ -18,6 +18,7 @@ void draw() {
 }
 
 void keyPressed() {
+  System.out.println(""+Player.nextToBlock("Right")+" "+Player.getXPos());
   if (key == CODED) {
     if(keyCode == UP && !Player.nextToBlock("Up")) {
       Player.setDirection("Up");
