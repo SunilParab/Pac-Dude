@@ -19,7 +19,11 @@ public abstract class Ghost implements Entities{
     yPos = newpos;
   }
   
-  public void changeDirection(String newdir) {
+  public String getDirection() {
+    return direction;
+  }
+  
+  public void setDirection(String newdir) {
     direction = newdir;
   }
   
