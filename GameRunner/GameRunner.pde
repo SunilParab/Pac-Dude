@@ -2,10 +2,32 @@ Map gameMap;
 PacDude Player;
 
 void setup() {
+<<<<<<< HEAD
   gameMap = new Map();
   size(700,775);
   fill(255,255,0);
   Player = new PacDude(2,2);
+=======
+  size(729, 702); 
+  background(0);
+
+  Map gameMap = new Map();
+  
+  
+  for(int i =0; i < 27; i ++){ 
+    for(int j= 0; j < 28; j++){ 
+        if(gameMap.getVal(i,j) == 1){ 
+         stroke(255);
+         fill(0,0,255);
+         rect(j * 26, i * 26, 26, 26);
+        } 
+    } 
+  } 
+  
+  
+  
+  
+>>>>>>> a7da8a4cf45aac3365c342a876d5553ed7a72b9b
 }
 
 void draw() {
