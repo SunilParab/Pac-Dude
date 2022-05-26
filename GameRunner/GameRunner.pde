@@ -1,11 +1,11 @@
-Map gameMap;
+Map gameMap = new Map();
 PacDude Player;
 
 void setup() {
-  Map gameMap = new Map();
+  //Map gameMap = new Map();
   size(700,775);
   fill(255,255,0);
-  Player = new PacDude(1,1);
+  Player = new PacDude(2,2);
 }
 
 void draw() {
@@ -19,16 +19,16 @@ void draw() {
 
 void keyPressed() {
   if (key == CODED) {
-    if(keyCode == UP) {
+    if(keyCode == UP && !Player.nextToBlock("Up")) {
       Player.setDirection("Up");
       Player.setYPos(Player.getYPos()-1);
-    } else if (keyCode == DOWN) {
+    } else if (keyCode == DOWN && !Player.nextToBlock("Down")) {
       Player.setDirection("Down");
       Player.setYPos(Player.getYPos()+1);
-    } else if (keyCode == LEFT) {
+    } else if (keyCode == LEFT && !Player.nextToBlock("Left")) {
       Player.setDirection("Left");
       Player.setXPos(Player.getXPos()-1);
-    } else if (keyCode == RIGHT) {
+    } else if (keyCode == RIGHT && !Player.nextToBlock("Right")) {
       Player.setDirection("Right");
       Player.setXPos(Player.getXPos()+1);
     }
