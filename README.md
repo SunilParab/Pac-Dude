@@ -10,28 +10,28 @@ Prototype: https://docs.google.com/document/d/1qzuJQvsFa4Hb9lO_jQYWX_D4uwLA5Xo50
 
 Monday - 5/23/2022
 
-Sunil Parab: Created the GameRunner, PacDude, and Ghosts Class which will be our main 4 classes for the project.
+Sunil Parab: Made the Entities interface, and the basic functions for the Ghost abstract class and PacDude class.
 
 Eric Sohel: Created the map class which contains the preset map design along with several methods that allow other classes to interact with it. Also created several methods such as pellet generator which place all the in-game objects on the map.
 
 
 Tuesday - 5/24/2022
 
-Sunil Parab: - write here
+Sunil Parab: - Finished all of the functions for PacDude
 
 Eric Sohel: Finished working on the map class and recreated every single method needed in the map class as described in our prototype.
 
 
 Wednesday - 5/25/2022
 
-Sunil Parab: - write here
+Sunil Parab: - Made PacDude appear on the screen and gave him the ability to move around by tapping the arrow keys. Also improved nextToBlock() for PacDude and Ghost so that it can be called to check any direction.
 
 Eric Sohel: Worked on animating the two dimensional array map using processing. I animated the walls, ghost blocks, and the teleportation block as they are represented in the real game.
 
 
 Thursday - 5/26/2022
 
-Sunil Parab: - write here
+Sunil Parab: - PacDude can now move around the map with proper collisions and has a sliding animation.
 
 Eric Sohel: Fixed errors with the map including scaling issues and x position and y position issues with pac-dude. Animated the pellets in the map, and made it so that Pac-Dude could eat these pellets. Also created two new methods which keep track of how many pellets Pac-Dude is eating and worked on creating an end screen for when the player beats the game.
 
