@@ -33,10 +33,10 @@ Thursday - 5/26/2022
 
 Sunil Parab: - write here
 
-Eric Sohel: Fixed errors with the map including scaling issues and x position and y position issues with pac-dude.
+Eric Sohel: Fixed errors with the map including scaling issues and x position and y position issues with pac-dude. Animated the pellets in the map, and made it so that Pac-Dude could eat these pellets. Also created two new methods which keep track of how many pellets Pac-Dude is eating and worked on creating an end screen for when the player beats the game.
 
 Friday - 5/27/2022
 
 Sunil Parab: - write here
 
-Eric Sohel: Animated the pellets in the map, and made it so that Pac-Dude could eat these pellets. Also created two new methods which keep track of how many pellets Pac-Dude is eating and worked on creating an end screen for when the player beats the game.
+Eric Sohel: - write here
