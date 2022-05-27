@@ -6,6 +6,7 @@ public class PacDude implements Entities {
   public int pelletCounter;
   public boolean specialAbility;
   public String direction;
+  public String queueddir;
   
   public PacDude(int x, int y) {
     xPos = x;
@@ -13,6 +14,7 @@ public class PacDude implements Entities {
     pelletCounter = 0;
     specialAbility = false;
     direction = "Left";
+    queueddir = "None";
   }
   
   public int getXPos() {
@@ -37,6 +39,14 @@ public class PacDude implements Entities {
   
   public void setDirection(String newdir) {
     direction = newdir;
+  }
+  
+  public String getQueuedDirection() {
+    return queueddir;
+  }
+  
+  public void setQueuedDirection(String newdir) {
+    queueddir = newdir;
   }
   
   public boolean getSpecial() {
@@ -67,12 +77,13 @@ public class PacDude implements Entities {
   
   public void move() {
     if (!nextToBlock(direction)) {
+      movecounter = 20;
       switch (direction) {
         case "Up": {
-          yPos++;
+          yPos--;
         }
         case "Down": {
-          yPos--;
+          yPos++;
         }
         case "Left": {
           xPos--;

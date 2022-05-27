@@ -14,6 +14,10 @@ void draw() {
   fill(255,255,0);
   float anglestart = 0;
   float angleend = 0;
+  if(movecounter == 0 && !Player.nextToBlock(Player.getQueuedDirection())) {
+    Player.setDirection(Player.getQueuedDirection());
+    Player.setQueuedDirection("None");
+  }
   if(Player.getDirection() == "Up") {anglestart = 300; angleend = 600;}
   else if(Player.getDirection() == "Down") {anglestart = 120; angleend = 420;}
   else if(Player.getDirection() == "Left") {anglestart = 210; angleend = 510;}
@@ -26,28 +30,20 @@ void draw() {
     movecounter--;
   } else {
     arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 26, 26, radians(anglestart), radians(angleend));
+    Player.move();
   }
 }
 
 void keyPressed() {
-  System.out.println(""+Player.nextToBlock("Right")+" "+Player.getXPos());
   if (key == CODED) {
-    if(keyCode == UP && !Player.nextToBlock("Up")) {
-      Player.setDirection("Up");
-      Player.setYPos(Player.getYPos()-1);
-      movecounter = 20;
-    } else if (keyCode == DOWN && !Player.nextToBlock("Down")) {
-      Player.setDirection("Down");
-      Player.setYPos(Player.getYPos()+1);
-      movecounter = 20;
-    } else if (keyCode == LEFT && !Player.nextToBlock("Left")) {
-      Player.setDirection("Left");
-      Player.setXPos(Player.getXPos()-1);
-      movecounter = 20;
-    } else if (keyCode == RIGHT && !Player.nextToBlock("Right")) {
-      Player.setDirection("Right");
-      Player.setXPos(Player.getXPos()+1);
-      movecounter = 20;
+    if(keyCode == UP) {
+      Player.setQueuedDirection("Up");
+    } else if (keyCode == DOWN) {
+      Player.setQueuedDirection("Down");
+    } else if (keyCode == LEFT) {
+      Player.setQueuedDirection("Left");
+    } else if (keyCode == RIGHT) {
+      Player.setQueuedDirection("Right");
     }
   }
 }
