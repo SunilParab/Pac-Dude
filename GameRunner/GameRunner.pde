@@ -42,6 +42,8 @@ void draw() {
   } else {
     arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 26, 26, radians(anglestart), radians(angleend));
   }
+  
+  
 }
 
 void keyPressed() {
@@ -50,7 +52,7 @@ void keyPressed() {
     if (keyCode == UP && !Player.nextToBlock("Up")) {
       Player.setDirection("Up");
       Player.setYPos(Player.getYPos()-1);
-      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
+      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2 || gameMap.getVal(Player.getYPos(), Player.getXPos()) == 3) {
         gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
         Player.eatPellet();
       } 
@@ -58,7 +60,7 @@ void keyPressed() {
     } else if (keyCode == DOWN && !Player.nextToBlock("Down")) {
       Player.setDirection("Down");
       Player.setYPos(Player.getYPos()+1);
-      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
+      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2 || gameMap.getVal(Player.getYPos(), Player.getXPos()) == 3) {
         gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
         Player.eatPellet();
       } 
@@ -66,7 +68,7 @@ void keyPressed() {
     } else if (keyCode == LEFT && !Player.nextToBlock("Left")) {
       Player.setDirection("Left");
       Player.setXPos(Player.getXPos()-1);
-      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
+      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2 || gameMap.getVal(Player.getYPos(), Player.getXPos()) == 3) {
         gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
         Player.eatPellet();
       }
@@ -74,7 +76,7 @@ void keyPressed() {
     } else if (keyCode == RIGHT && !Player.nextToBlock("Right")) {
       Player.setDirection("Right");
       Player.setXPos(Player.getXPos()+1);
-      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
+      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2 || gameMap.getVal(Player.getYPos(), Player.getXPos()) == 3) {
         gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
         Player.eatPellet();
       } 
@@ -88,13 +90,17 @@ void PrintMap() {
   for (int i =0; i < 27; i ++) { 
     for (int j= 0; j < 28; j++) { 
       if (gameMap.getVal(i, j) == 1) { 
-        stroke(255);
-        fill(0, 0, 255);
+        stroke(0);
+        fill(244,164,100);
         rect(j * 26, i * 26, 26, 26);
       }
       if (gameMap.getVal(i, j) == 2 || gameMap.getVal(i, j) == 5) { 
         fill(255); 
         circle(j * 26 + 13, i * 26 + 13, 5 );
+      }
+      if (gameMap.getVal(i, j) == 3) { 
+        fill(255); 
+        circle(j * 26 + 13, i * 26 + 13, 12 );
       }
     }
   }
