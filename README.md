@@ -11,28 +11,27 @@ Prototype: https://docs.google.com/document/d/1qzuJQvsFa4Hb9lO_jQYWX_D4uwLA5Xo50
 Monday - 5/23/2022
 
 Sunil Parab:
-
 Eric Sohel: Created the map class which contains the preset map design along with several methods that allow other classes to interact with it. Also created several methods such as pellet generator which place all the in-game objects on the map.
 
 
 Tuesday - 5/24/2022
 
-Sunil Parab:
+Sunil Parab: -
 Eric Sohel: Finished working on the map class and recreated every single method needed in the map class as described in our prototype.
 
 
 Wednesday - 5/26/2022
 
-Sunil Parab:
+Sunil Parab: -
 Eric Sohel: Worked on animating the two dimensional array map using processing. I animated the walls, ghost blocks, and the teleportation block as they are represented in the real game.
 
 
 Wednesday - 5/27/2022
 
-Sunil Parab:
+Sunil Parab: -
 Eric Sohel: Fixed errors with the map including scaling issues and x position and y position issues with pac-dude.
 
 Thursday - 5/28/2022
 
-Sunil Parab:
+Sunil Parab: -
 Eric Sohel: Animated the pellets in the map, and made it so that Pac-Dude could eat these pellets. Also created two new methods which keep track of how many pellets Pac-Dude is eating and worked on creating an end screen for when the player beats the game.
