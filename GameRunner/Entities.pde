@@ -1,4 +1,4 @@
-public interface Entities{
+public interface Entities {
   public int getXPos();
   public int getYPos();
   public void setXPos(int newpos);
