@@ -3,14 +3,14 @@ public class PacDude implements Entities {
   public int yPos;
   public int incX;
   public int incY;
-  public int pelletCounter;
+  public int pelletEaten;
   public boolean specialAbility;
   public String direction;
 
   public PacDude(int x, int y) {
     xPos = x;
     yPos = y;
-    pelletCounter = 0;
+    pelletEaten = 0;
     specialAbility = false;
     direction = "Left";
   }
@@ -68,7 +68,18 @@ public class PacDude implements Entities {
     }
     return true;
   }
-
+  
+  public int getPelletCounter(){ 
+    return pelletEaten; 
+  } 
+  
+  public void eatPellet(){ 
+    pelletEaten ++;
+  } 
+  
+    
+  
+  
   public void move() {
     if (!nextToBlock(direction)) {
       switch (direction) {
