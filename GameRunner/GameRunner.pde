@@ -5,7 +5,7 @@ int movecounter;
 void setup() {
   gameMap = new Map();
   Player = new PacDude(1,1);
-  size(729, 702); 
+  size(729, 703); 
   PrintMap();
 }
 
@@ -60,7 +60,12 @@ void PrintMap() {
          stroke(255);
          fill(0,0,255);
          rect(j * 26, i * 26, 26, 26);
-        } 
+        }
+        if(gameMap.getVal(i,j) == 2 || gameMap.getVal(i,j) == 5){ 
+           fill(255); 
+           circle(j * 26 + 13, i * 26 + 13, 5 );
+        }
+          
     } 
   } 
 }
