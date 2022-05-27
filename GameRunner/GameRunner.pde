@@ -35,18 +35,34 @@ void keyPressed() {
     if(keyCode == UP && !Player.nextToBlock("Up")) {
       Player.setDirection("Up");
       Player.setYPos(Player.getYPos()-1);
+      if(gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
+        gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
+        Player.eatPellet();
+      } 
       movecounter = 20;
     } else if (keyCode == DOWN && !Player.nextToBlock("Down")) {
       Player.setDirection("Down");
       Player.setYPos(Player.getYPos()+1);
+      if(gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
+        gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
+        Player.eatPellet();
+      } 
       movecounter = 20;
     } else if (keyCode == LEFT && !Player.nextToBlock("Left")) {
       Player.setDirection("Left");
       Player.setXPos(Player.getXPos()-1);
+      if(gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
+        gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
+        Player.eatPellet();
+      } 
       movecounter = 20;
     } else if (keyCode == RIGHT && !Player.nextToBlock("Right")) {
       Player.setDirection("Right");
       Player.setXPos(Player.getXPos()+1);
+      if(gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
+        gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
+        Player.eatPellet();
+      } 
       movecounter = 20;
     }
   }

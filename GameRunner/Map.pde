@@ -58,7 +58,7 @@ public class Map {
 
   // allows user to set value of map to specified value 
   public void setVal(int xpos, int ypos, int val) {
-    map[xpos][ypos] = val;
+    map[ypos][xpos] = val;
   }
 
   //allows user to get a value from the map 
