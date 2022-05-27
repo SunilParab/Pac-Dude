@@ -1,12 +1,12 @@
 public class PacDude implements Entities {
-  public int xPos;
-  public int yPos;
-  public int incX;
-  public int incY;
-  public int pelletCounter;
-  public boolean specialAbility;
-  public String direction;
-  public String queueddir;
+  private int xPos;
+  private int yPos;
+  public int incX; //will be used later
+  public int incY; //will be used later
+  public int pelletCounter; //will be used later
+  private boolean specialAbility;
+  private String direction;
+  private String queueddir;
   
   public PacDude(int x, int y) {
     xPos = x;
