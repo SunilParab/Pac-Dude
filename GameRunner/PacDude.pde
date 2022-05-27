@@ -81,15 +81,19 @@ public class PacDude implements Entities {
       switch (direction) {
         case "Up": {
           yPos--;
+          break;
         }
         case "Down": {
           yPos++;
+          break;
         }
         case "Left": {
           xPos--;
+          break;
         }
         case "Right": {
           xPos++;
+          break;
         }
       }
     }

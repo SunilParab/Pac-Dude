@@ -10,6 +10,7 @@ void setup() {
 }
 
 void draw() {
+  System.out.println(Player.getYPos());
   PrintMap();
   fill(255,255,0);
   float anglestart = 0;
