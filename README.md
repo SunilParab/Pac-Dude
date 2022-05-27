@@ -10,7 +10,7 @@ Prototype: https://docs.google.com/document/d/1qzuJQvsFa4Hb9lO_jQYWX_D4uwLA5Xo50
 
 Monday - 5/23/2022
 
-Sunil Parab: write here
+Sunil Parab: Created the GameRunner, PacDude, and Ghosts Class which will be our main 4 classes for the project.
 
 Eric Sohel: Created the map class which contains the preset map design along with several methods that allow other classes to interact with it. Also created several methods such as pellet generator which place all the in-game objects on the map.
 
@@ -22,20 +22,20 @@ Sunil Parab: - write here
 Eric Sohel: Finished working on the map class and recreated every single method needed in the map class as described in our prototype.
 
 
-Wednesday - 5/26/2022
+Wednesday - 5/25/2022
 
 Sunil Parab: - write here
 
 Eric Sohel: Worked on animating the two dimensional array map using processing. I animated the walls, ghost blocks, and the teleportation block as they are represented in the real game.
 
 
-Wednesday - 5/27/2022
+Thursday - 5/26/2022
 
 Sunil Parab: - write here
 
 Eric Sohel: Fixed errors with the map including scaling issues and x position and y position issues with pac-dude.
 
-Thursday - 5/28/2022
+Friday - 5/27/2022
 
 Sunil Parab: - write here
 
