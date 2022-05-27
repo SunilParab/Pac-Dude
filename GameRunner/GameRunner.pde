@@ -24,13 +24,13 @@ void draw() {
   else if(Player.getDirection() == "Left") {anglestart = 210; angleend = 510;}
   else if(Player.getDirection() == "Right") {anglestart = 30; angleend = 330;}
   if(movecounter > 0){
-    if(Player.getDirection() == "Up") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13+26*movecounter/20, 26, 26, radians(anglestart), radians(angleend));}
-    else if(Player.getDirection() == "Down") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13-26*movecounter/20, 26, 26, radians(anglestart), radians(angleend));}
-    else if(Player.getDirection() == "Left") {arc(Player.getXPos()*26+13+26*movecounter/20, Player.getYPos()*26+13, 26, 26, radians(anglestart), radians(angleend));}
-    else if(Player.getDirection() == "Right") {arc(Player.getXPos()*26+13-26*movecounter/20, Player.getYPos()*26+13, 26, 26, radians(anglestart), radians(angleend));}
+    if(Player.getDirection() == "Up") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13+26*movecounter/20, 22, 22, radians(anglestart), radians(angleend));}
+    else if(Player.getDirection() == "Down") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13-26*movecounter/20, 22, 22, radians(anglestart), radians(angleend));}
+    else if(Player.getDirection() == "Left") {arc(Player.getXPos()*26+13+26*movecounter/20, Player.getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));}
+    else if(Player.getDirection() == "Right") {arc(Player.getXPos()*26+13-26*movecounter/20, Player.getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));}
     movecounter--;
   } else {
-    arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 26, 26, radians(anglestart), radians(angleend));
+    arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));
     Player.move();
   }
 }
