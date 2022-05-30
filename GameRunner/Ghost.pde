@@ -31,39 +31,30 @@ public abstract class Ghost implements Entities {
     switch (checkdir) {
     case "Up": 
       {
-        return !(gameMap.map[xPos][yPos+1] != 1 && gameMap.map[xPos][yPos+1] != 4);
+        return (gameMap.map[yPos-1][xPos] == 1 || gameMap.map[yPos-1][xPos] == 4);
       }
     case "Down": 
       {
-        return !(gameMap.map[xPos][yPos-1] != 1 && gameMap.map[xPos][yPos-1] != 4);
+        return (gameMap.map[yPos+1][xPos] == 1 || gameMap.map[yPos+1][xPos] == 4);
       }
     case "Left": 
       {
-        return !(gameMap.map[xPos-1][yPos] != 1 && gameMap.map[xPos-1][yPos] != 4);
+        return (gameMap.map[yPos][xPos-1] == 1 || gameMap.map[yPos][xPos-1] == 4 );
       }
     case "Right": 
       {
-        return !(gameMap.map[xPos+1][yPos] != 1 && gameMap.map[xPos+1][yPos] != 4);
+        return (gameMap.map[yPos][xPos+1] == 1 || gameMap.map[yPos][xPos+1] == 4 );
       }
     }
     return true;
   }
 
+
   public void move() {
-      int rando = (int) (Math.random() * 4 + 1);
-      if (rando == 1) {
-        xPos ++;
-      }
-      if (rando == 2) {
-        yPos ++;
-      }
-      if (rando == 3) {
-        xPos --;
-      }
-      if (rando == 4) {
-        yPos --;
-      }
-    
+   if(!nextToBlock("right")){
+     xPos++;
+   }
+   
   }
 
   public void respawn() {
