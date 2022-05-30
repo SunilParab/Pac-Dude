@@ -10,10 +10,10 @@ int movecounter;
 void setup() {
   gameMap = new Map();
   Player = new PacDude(1, 1);
-  ghost1 = new Blinky(1, 1);
-  ghost2 = new Blinky(1, 1);
-  ghost3 = new Blinky(1, 1);
-  ghost4 = new Blinky(1, 1);
+  ghost1 = new Blinky(12, 13);
+  ghost2 = new Blinky(13 ,13);
+  ghost3 = new Blinky(14, 13);
+  ghost4 = new Blinky(15, 13);
 
   frameCount = 60;
   size(729, 703); 
@@ -65,15 +65,15 @@ void draw() {
     ghost3.move();
     ghost4.move();
   }
-  
+
+  fill(255, 0, 0);
+  circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 15);
   fill(0, 255, 0);
-  circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 10);
-  fill(244, 255, 0);
-  circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 10);
-  fill(5, 255, 0);
-  circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 10);
-  fill(0, 0, 244);
-  circle(ghost4.getXPos()*26+13, ghost4.getYPos()*26+13, 10);
+  circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 15);
+  fill(255, 0, 255);
+  circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
+  fill(0, 255, 255);
+  circle(ghost4.getXPos()*26+13, ghost4.getYPos()*26+13, 15);
 }
 
 void keyPressed() {
