@@ -31,19 +31,19 @@ public abstract class Ghost implements Entities {
     switch (checkdir) {
     case "Up": 
       {
-        return (gameMap.map[yPos-1][xPos] == 1 || gameMap.map[yPos-1][xPos] == 4);
+        return (gameMap.map[yPos-1][xPos] == 1);
       }
     case "Down": 
       {
-        return (gameMap.map[yPos+1][xPos] == 1 || gameMap.map[yPos+1][xPos] == 4);
+        return (gameMap.map[yPos+1][xPos] == 1);
       }
     case "Left": 
       {
-        return (gameMap.map[yPos][xPos-1] == 1 || gameMap.map[yPos][xPos-1] == 4 );
+        return (gameMap.map[yPos][xPos-1] == 1 );
       }
     case "Right": 
       {
-        return (gameMap.map[yPos][xPos+1] == 1 || gameMap.map[yPos][xPos+1] == 4 );
+        return (gameMap.map[yPos][xPos+1] == 1 );
       }
     }
     return true;
@@ -51,7 +51,7 @@ public abstract class Ghost implements Entities {
 
 
   public void move() {
-   if(!nextToBlock("right")){
+   if(nextToBlock("right")){
      xPos++;
    }
    
