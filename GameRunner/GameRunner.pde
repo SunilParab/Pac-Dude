@@ -42,13 +42,12 @@ void draw() {
   } else {
     arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 26, 26, radians(anglestart), radians(angleend));
   }
-  
-  
 }
 
 void keyPressed() {
   System.out.println(""+Player.nextToBlock("Right")+" "+Player.getXPos());
   if (key == CODED) {
+
     if (keyCode == UP && !Player.nextToBlock("Up")) {
       Player.setDirection("Up");
       Player.setYPos(Player.getYPos()-1);
@@ -72,6 +71,10 @@ void keyPressed() {
         gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
         Player.eatPellet();
       }
+      // teleports through portal
+      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 5) {
+        Player.setXPos(26);
+      }
       movecounter = 20;
     } else if (keyCode == RIGHT && !Player.nextToBlock("Right")) {
       Player.setDirection("Right");
@@ -80,6 +83,10 @@ void keyPressed() {
         gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
         Player.eatPellet();
       } 
+      //teleports through portal
+      if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 5) {
+        Player.setXPos(1);
+      }
       movecounter = 20;
     }
   }
@@ -91,7 +98,7 @@ void PrintMap() {
     for (int j= 0; j < 28; j++) { 
       if (gameMap.getVal(i, j) == 1) { 
         stroke(0);
-        fill(244,164,100);
+        fill(0, 0, 255);
         rect(j * 26, i * 26, 26, 26);
       }
       if (gameMap.getVal(i, j) == 2 || gameMap.getVal(i, j) == 5) { 
