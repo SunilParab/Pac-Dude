@@ -25,8 +25,20 @@ public class Inky extends Ghost {
     System.out.println(up); 
     System.out.println(down);
 
+    if (gameMap.getVal(yPos -1, xPos) == 1) { 
+      up *= 10;
+    } 
+    if (gameMap.getVal(yPos, xPos-1) == 1) { 
+      left *= 10;
+    } 
+    if (gameMap.getVal(yPos +1, xPos) == 1) { 
+      down *= 10;
+    } 
+    if (gameMap.getVal(yPos, xPos+1) == 1) { 
+      right *= 10;
+    } 
 
-    if (gameMap.getVal(yPos -1, xPos) != 1 && up <= right && up <= left && up <= down) { 
+    if (up <= right && up <= left && up <= down) { 
       yPos--;
     } 
     if (left <= right && left <= up && left <= down) {

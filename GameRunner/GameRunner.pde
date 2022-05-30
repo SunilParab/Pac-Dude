@@ -10,7 +10,7 @@ int movecounter;
 void setup() {
   gameMap = new Map();
   Player = new PacDude(1, 1);
-  ghost1 = new Inky(12, 13);
+  ghost1 = new Inky(12, 16);
   frameCount = 60;
   size(729, 703); 
   PrintMap();
@@ -55,7 +55,7 @@ void draw() {
     Player.move();
   }
 
-  if (frameCount % 10 == 0) {
+  if (frameCount % 25 == 0) {
     ghost1.move();
 
   }
