@@ -10,7 +10,7 @@ public class Map {
   final int powePellet = 3;
   final int ghostOnly = 4;
   final int teleportWall = 5;
-  
+
   // this is the preset map 2d array 
   int[][] preset = new int[][]
     {
@@ -58,14 +58,14 @@ public class Map {
 
   // allows user to set value of map to specified value 
   public void setVal(int xpos, int ypos, int val) {
-    map[xpos][ypos] = val;
+    map[ypos][xpos] = val;
   }
-  
+
   //allows user to get a value from the map 
   public int getVal(int xpos, int ypos) { 
     return map[xpos][ypos];
   } 
-  
+
   //allows user to get the number of pellets inside of the map 
   public int getPellets() { 
     return pelletCount;
@@ -89,8 +89,8 @@ public class Map {
     }
     return counter;
   }
-  
-  
+
+
 
   // will print out the map for debugging purposes
   public String toString() {
