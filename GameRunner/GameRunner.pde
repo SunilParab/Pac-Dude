@@ -80,7 +80,7 @@ void keyPressed() {
       Player.setDirection("Right");
       Player.setXPos(Player.getXPos()+1);
       if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2 || gameMap.getVal(Player.getYPos(), Player.getXPos()) == 3) {
-        gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
+        gameMap.setVal(Player.getXPos(), Player.getYPos(), 0);
         Player.eatPellet();
       } 
       //teleports through portal
@@ -101,7 +101,7 @@ void PrintMap() {
         fill(0, 0, 255);
         rect(j * 26, i * 26, 26, 26);
       }
-      if (gameMap.getVal(i, j) == 2 || gameMap.getVal(i, j) == 5) { 
+      if (gameMap.getVal(i, j) == 2) { 
         fill(255); 
         circle(j * 26 + 13, i * 26 + 13, 5 );
       }
