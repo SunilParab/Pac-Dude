@@ -50,12 +50,10 @@ public class Map {
   public Map() {
     map = preset;
     pelletCount = generatePellets();
-    generatePowerPellet(1,7); 
-    generatePowerPellet(26,7); 
-    generatePowerPellet(1,19); 
-    generatePowerPellet(26,19); 
-
-
+    generatePowerPellet(1, 7); 
+    generatePowerPellet(26, 7); 
+    generatePowerPellet(1, 19); 
+    generatePowerPellet(26, 19);
   }
 
   public Map(int hi, int wi) {
@@ -95,14 +93,14 @@ public class Map {
     }
     return counter;
   }
-  
-  
-  public void generatePowerPellet(int xpos, int ypos){ 
-    map[ypos][xpos] = 3; 
+
+
+  public void generatePowerPellet(int xpos, int ypos) { 
+    map[ypos][xpos] = 3;
   } 
-  
-  
-  
+
+
+
 
 
 

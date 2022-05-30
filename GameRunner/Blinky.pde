@@ -1,8 +1,5 @@
-public class Blinky extends Ghost{
-  
-  public Blinky(){
-    
+public class Blinky extends Ghost {
+
+  public Blinky() {
   }
-    
-  
 }

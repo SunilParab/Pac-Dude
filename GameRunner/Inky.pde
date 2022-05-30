@@ -1,8 +1,5 @@
-public class Inky extends Ghost{
-  
-  public Inky(){
-    
+public class Inky extends Ghost {
+
+  public Inky() {
   }
-    
-  
 }
