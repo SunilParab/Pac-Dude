@@ -75,5 +75,11 @@ void PrintStart() {
 }
 
 void PrintEnd() {
-    
+  background(0);
+  textSize(80);
+  fill(0,128,255);
+  text("You Win",195,200);
+  textSize(30);
+  fill(255);
+  text("Now Get Out",250,500);
 }
