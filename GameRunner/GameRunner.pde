@@ -10,10 +10,10 @@ int movecounter;
 void setup() {
   gameMap = new Map();
   Player = new PacDude(1, 1);
-  ghost1 = new Blinky(12, 13);
-  ghost2 = new Blinky(13 ,13);
-  ghost3 = new Blinky(14, 13);
-  ghost4 = new Blinky(15, 13);
+  ghost1 = new Inky(12, 13);
+  ghost2 = new Inky(13 ,13);
+  ghost3 = new Inky(14, 13);
+  ghost4 = new Inky(15, 13);
 
   frameCount = 60;
   size(729, 703); 
