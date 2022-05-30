@@ -7,6 +7,7 @@ void setup() {
   gameMap = new Map();
   Player = new PacDude(1, 1);
   ghost1 = new Blinky(1,1);
+  frameCount = 60;
   size(729, 703); 
   PrintMap();
 }
@@ -50,9 +51,12 @@ void draw() {
     Player.move();
   }
   
-  
-    ghost1.move();
-  circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 10);
+  if (frameCount % 20 == 0) {
+        ghost1.move();
+    }
+    circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 10);
+
+
   
 }
 
