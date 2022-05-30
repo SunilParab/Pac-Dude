@@ -16,13 +16,27 @@ public class Inky extends Ghost {
     // left dist 
     left = Math.sqrt( ( (Player.getXPos() - (xPos-1)) * (Player.getXPos() - (xPos-1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
     // up dist 
-    up = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos+1))  * (Player.getYPos() - (yPos+1)) ) ) ;
+    up = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos- 1))  * (Player.getYPos() - (yPos-1)) ) ) ;
     // down dist
-    down = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos-1))  * (Player.getYPos() - (yPos-1)) ) ) ;
+    down = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos+1))  * (Player.getYPos() - (yPos+1)) ) ) ;
 
     System.out.println(right); 
     System.out.println(left); 
     System.out.println(up); 
     System.out.println(down);
+
+
+    if (up <= right && up <= left && up <= down) { 
+      yPos--;
+    } 
+    if (left <= right && left <= up && left <= down) {
+      xPos --;
+    } 
+    if (down <= right && down <= up && down <= left) { 
+      yPos++;
+    } 
+    if (right <= left && right <=down && right <= up) { 
+      xPos++;
+    }
   }
 }

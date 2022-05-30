@@ -11,10 +11,6 @@ void setup() {
   gameMap = new Map();
   Player = new PacDude(1, 1);
   ghost1 = new Inky(12, 13);
-  ghost2 = new Inky(13 ,13);
-  ghost3 = new Inky(14, 13);
-  ghost4 = new Inky(15, 13);
-
   frameCount = 60;
   size(729, 703); 
   PrintMap();
@@ -61,19 +57,12 @@ void draw() {
 
   if (frameCount % 10 == 0) {
     ghost1.move();
-    ghost2.move();
-    ghost3.move();
-    ghost4.move();
+
   }
 
   fill(255, 0, 0);
   circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 15);
-  fill(0, 255, 0);
-  circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 15);
-  fill(255, 0, 255);
-  circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
-  fill(0, 255, 255);
-  circle(ghost4.getXPos()*26+13, ghost4.getYPos()*26+13, 15);
+
 }
 
 void keyPressed() {
