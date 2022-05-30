@@ -4,9 +4,10 @@ public class Inky extends Ghost {
     xPos = x; 
     yPos = y;
   }
-
-  public void move() {
-    double right; 
+  
+  
+  public void chase(){ 
+     double right; 
     double left; 
     double up; 
     double down; 
@@ -16,7 +17,7 @@ public class Inky extends Ghost {
     // left dist 
     left = Math.sqrt( ( (Player.getXPos() - (xPos-1)) * (Player.getXPos() - (xPos-1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
     // up dist 
-    up = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos- 1))  * (Player.getYPos() - (yPos-1)) ) ) ;
+    up = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos - 1))  * (Player.getYPos() - (yPos-1)) ) ) ;
     // down dist
     down = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos+1))  * (Player.getYPos() - (yPos+1)) ) ) ;
 
@@ -26,29 +27,31 @@ public class Inky extends Ghost {
     System.out.println(down);
 
     if (gameMap.getVal(yPos -1, xPos) == 1) { 
-      up *= 10;
+      up += 100;
     } 
     if (gameMap.getVal(yPos, xPos-1) == 1) { 
-      left *= 10;
+      left += 100;
     } 
     if (gameMap.getVal(yPos +1, xPos) == 1) { 
-      down *= 10;
+      down += 100;
     } 
     if (gameMap.getVal(yPos, xPos+1) == 1) { 
-      right *= 10;
+      right += 100;
     } 
 
-    if (up <= right && up <= left && up <= down) { 
+    if (up < right && up < left && up < down) { 
       yPos--;
     } 
-    if (left <= right && left <= up && left <= down) {
+    if (left < right && left < up && left < down) {
       xPos --;
     } 
-    if (down <= right && down <= up && down <= left) { 
+    if (down < right && down < up && down < left) { 
       yPos++;
     } 
-    if (right <= left && right <=down && right <= up) { 
+    if (right < left && right < down && right < up) { 
       xPos++;
     }
-  }
+    
+  } 
+  
 }
