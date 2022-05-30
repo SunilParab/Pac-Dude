@@ -1,5 +1,7 @@
 public class Blinky extends Ghost {
 
-  public Blinky() {
+  public Blinky(int x, int y) {
+    xPos = x;
+    yPos = y;
   }
 }

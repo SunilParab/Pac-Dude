@@ -50,7 +50,20 @@ public abstract class Ghost implements Entities {
   }
 
   public void move() {
-    //to be implemented soon
+      int rando = (int) (Math.random() * 4 + 1);
+      if (rando == 1) {
+        xPos ++;
+      }
+      if (rando == 2) {
+        yPos ++;
+      }
+      if (rando == 3) {
+        xPos --;
+      }
+      if (rando == 4) {
+        yPos --;
+      }
+    
   }
 
   public void respawn() {

@@ -6,6 +6,8 @@ int movecounter;
 void setup() {
   gameMap = new Map();
   Player = new PacDude(1, 1);
+  ghost1 = new Blinky(1,1);
+  ghost1.move();
   size(729, 703); 
   PrintMap();
 }
@@ -48,6 +50,11 @@ void draw() {
     arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));
     Player.move();
   }
+  
+  
+  
+  circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 10);
+  
 }
 
 void keyPressed() {
@@ -69,7 +76,6 @@ void PrintMap() {
   for (int i =0; i < 27; i ++) { 
     for (int j= 0; j < 28; j++) { 
       if (gameMap.getVal(i, j) == 1) { 
-        stroke(0);
         fill(0, 0, 255);
         rect(j * 26, i * 26, 26, 26);
       }
