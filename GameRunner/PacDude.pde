@@ -86,7 +86,7 @@ public class PacDude implements Entities {
   }
 
   public void move() {
-    if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2 || gameMap.getVal(Player.getYPos(), Player.getXPos()) ==  ) {
+    if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
       gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
       Player.eatPellet();
     } 

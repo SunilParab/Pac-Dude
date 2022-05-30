@@ -1,12 +1,20 @@
 Map gameMap;
 PacDude Player;
 Ghost ghost1; 
+Ghost ghost2; 
+Ghost ghost3; 
+Ghost ghost4; 
+
 int movecounter;
 
 void setup() {
   gameMap = new Map();
   Player = new PacDude(1, 1);
-  ghost1 = new Blinky(1,1);
+  ghost1 = new Blinky(1, 1);
+  ghost2 = new Blinky(1, 1);
+  ghost3 = new Blinky(1, 1);
+  ghost4 = new Blinky(1, 1);
+
   frameCount = 60;
   size(729, 703); 
   PrintMap();
@@ -50,14 +58,22 @@ void draw() {
     arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));
     Player.move();
   }
-  
-  if (frameCount % 20 == 0) {
-        ghost1.move();
-    }
-    circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 10);
 
-
+  if (frameCount % 10 == 0) {
+    ghost1.move();
+    ghost2.move();
+    ghost3.move();
+    ghost4.move();
+  }
   
+  fill(0, 255, 0);
+  circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 10);
+  fill(244, 255, 0);
+  circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 10);
+  fill(5, 255, 0);
+  circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 10);
+  fill(0, 0, 244);
+  circle(ghost4.getXPos()*26+13, ghost4.getYPos()*26+13, 10);
 }
 
 void keyPressed() {
