@@ -15,7 +15,7 @@ void setup() {
 void draw() {
   System.out.println(Player.getPelletsEaten() +" " + gameMap.getPellets());
   if(!started) {
-    PrintStart();
+    PrintEnd();
   } else if(Player.getPelletsEaten() != gameMap.getPellets()) {
     PrintMap();
     fill(255, 255, 0);
@@ -78,8 +78,8 @@ void PrintEnd() {
   background(0);
   textSize(80);
   fill(0,128,255);
-  text("You Win",195,200);
+  text("Game Over",150,200);
   textSize(30);
   fill(255);
-  text("Now Get Out",250,500);
+  text("Now Get Out",275,500);
 }
