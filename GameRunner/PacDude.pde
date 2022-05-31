@@ -91,7 +91,7 @@ public class PacDude implements Entities {
         Player.eatPellet();
     } 
     if (!nextToBlock(direction)) {
-      movecounter = 20;
+      movecounter = 10;
       switch (direction) {
         case "Up": {
           yPos--;
@@ -114,4 +114,28 @@ public class PacDude implements Entities {
       }
     }
   }
+  
+  public void drawPacDude() {
+    float anglestart = 0;
+    float angleend = 0;
+    if(movecounter == 0 && !Player.nextToBlock(Player.getQueuedDirection())) {
+      Player.setDirection(Player.getQueuedDirection());
+      Player.setQueuedDirection("None");
+    }
+    if(Player.getDirection() == "Up") {anglestart = 315; angleend = 585;}
+    else if(Player.getDirection() == "Down") {anglestart = 135; angleend = 405;}
+    else if(Player.getDirection() == "Left") {anglestart = 225; angleend = 495;}
+    else if(Player.getDirection() == "Right") {anglestart = 45; angleend = 315;}
+    if(movecounter > 0){
+      if(Player.getDirection() == "Up") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13+26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
+      else if(Player.getDirection() == "Down") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13-26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
+      else if(Player.getDirection() == "Left") {arc(Player.getXPos()*26+13+26*movecounter/10, Player.getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
+      else if(Player.getDirection() == "Right") {arc(Player.getXPos()*26+13-26*movecounter/10, Player.getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
+      movecounter--;
+    } else {
+      arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));
+      Player.move();
+    }
+  }
+  
 }
