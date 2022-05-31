@@ -15,7 +15,7 @@ void setup() {
 void draw() {
   System.out.println(Player.getPelletsEaten() +" " + gameMap.getPellets());
   if(!started) {
-    PrintEnd();
+    PrintStart();
   } else if(Player.getPelletsEaten() != gameMap.getPellets()) {
     PrintMap();
     fill(255, 255, 0);
