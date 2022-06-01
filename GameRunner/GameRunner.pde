@@ -81,6 +81,7 @@ void PrintMap() {
       if (gameMap.getVal(i, j) == 2) { 
         fill(255); 
         circle(j * 26 + 13, i * 26 + 13, 5 );
+        
       }
       if (gameMap.getVal(i, j) == 3) { 
         fill(255); 
@@ -89,9 +90,11 @@ void PrintMap() {
     }
   }
     textSize(20);
-    fill(0,255,255);
+    fill(255,0,255);
 
     text("Score: " + score,80,725);
+    text("lives: ",400,725);
+
 
 }
 
