@@ -3,7 +3,7 @@ PacDude Player;
 Inky ghost1; 
 Blinky ghost2; 
 Pinky ghost3; 
-int score; 
+int score = 0; 
 
 int movecounter;
 boolean started;
@@ -44,6 +44,11 @@ void draw() {
   circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 15);
   fill(0, 255, 255);
   circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
+  
+  
+  
+  
+  
 }
 
 void keyPressed() {
@@ -85,6 +90,10 @@ void PrintMap() {
       }
     }
   }
+    textSize(20);
+    fill(255); 
+    text("Score: " + score,80,725);
+
 }
 
 void PrintStart() {
