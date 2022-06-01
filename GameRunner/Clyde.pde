@@ -66,6 +66,9 @@ public class Clyde extends Ghost {
     } 
     if (left < right && left < up && left < down && !nextToBlock("Left")) {
       xPos --;
+      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+        setXPos(26);
+      }
       direction = "Left";
     } 
     if (down < right && down < up && down < left && !nextToBlock("Down")) { 
@@ -74,6 +77,9 @@ public class Clyde extends Ghost {
     } 
     if (right < left && right < down && right < up && !nextToBlock("Right")) { 
       xPos++;
+      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+        setXPos(0);
+      }
       direction = "Right";
     } 
   } 
