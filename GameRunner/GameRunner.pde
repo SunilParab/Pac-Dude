@@ -13,9 +13,9 @@ void setup() {
   size(729, 703);
   started = false;
   PrintStart();
-  ghost1 = new Inky(12, 16);
+  //ghost1 = new Inky(12, 16);
   ghost2 = new Blinky(4, 21);
-  ghost3 = new Pinky(21, 16);
+  //ghost3 = new Pinky(21, 16);
   frameCount = 60;
 }
 
@@ -27,22 +27,21 @@ void draw() {
     PrintMap();
     fill(255, 255, 0);
     Player.drawPacDude();
+    if (frameCount % 25 == 0) {
+      //ghost1.chase();
+      ghost2.chase();
+      //ghost3.chase();
+    }
+  
+    fill(255, 0, 0);
+    //circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 15);
+    fill(0, 255, 0);
+    circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 15);
+    fill(0, 255, 255);
+    //circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
   } else {
     PrintEnd();
   }
-
-  if (frameCount % 25 == 0) {
-    ghost1.chase();
-    ghost2.chase();
-    ghost3.chase();
-  }
-
-  fill(255, 0, 0);
-  circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 15);
-  fill(0, 255, 0);
-  circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 15);
-  fill(0, 255, 255);
-  circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
 }
 
 void keyPressed() {
