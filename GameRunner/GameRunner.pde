@@ -3,6 +3,7 @@ PacDude Player;
 Inky ghost1; 
 Blinky ghost2; 
 Pinky ghost3; 
+int score; 
 
 int movecounter;
 boolean started;
@@ -10,7 +11,7 @@ boolean started;
 void setup() {
   gameMap = new Map();
   Player = new PacDude(1, 1);
-  size(729, 703);
+  size(729, 729);
   started = false;
   PrintStart();
   ghost1 = new Inky(12, 16);
