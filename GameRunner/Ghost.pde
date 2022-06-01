@@ -77,7 +77,6 @@ public abstract class Ghost implements Entities {
     if (direction != "Left" && !nextToBlock("Right")) { 
       direcs.add("Right");
     } 
-    System.out.println(direcs.size());
     String chosenddir = direcs.get((int)(Math.random() * direcs.size()));
     direction = chosenddir;
     switch (direction) {

@@ -6,9 +6,24 @@ public class Pinky extends Ghost {
   }
 
   public void move() {
-    movecounter = 10;
-    chase();
-    //this will hold all the logic for determining the mode of the ghost
+    if (modetimer <= 0) {
+      modenum = modenum % modes.length + 1;
+      modetimer = 600;
+    }
+    switch (modenum) {
+    case 0: 
+      {
+        movecounter = 10;
+        chase();
+        break;
+      }
+    case 1: 
+      {
+        movecounter = 10;
+        wander();
+        break;
+      }
+    }   
   }
   
   public void chase(){ 
@@ -64,6 +79,7 @@ public class Pinky extends Ghost {
   } 
   
   public void drawSelf() {
+    modetimer--;
     fill(255, 169, 180);
     if(movecounter > 0){
       if(getDirection() == "Up") {circle(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 15);}
