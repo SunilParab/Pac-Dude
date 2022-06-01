@@ -7,7 +7,7 @@ public class Blinky extends Ghost {
   
   public void move() {
     movecounter = 10;
-    chase();
+    wander();
     //this will hold all the lgoic for determining the mode of the ghost
   }
   
@@ -44,11 +44,6 @@ public class Blinky extends Ghost {
     } else {
       down = 2000000;
     }
-
-    System.out.println(right);
-    System.out.println(left);
-    System.out.println(up);
-    System.out.println(down);
 
     if (up < right && up < left && up < down && !nextToBlock("Up")) { 
       yPos--;

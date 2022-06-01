@@ -45,11 +45,6 @@ public class Clyde extends Ghost {
       down = 2000000;
     }
 
-    System.out.println(right);
-    System.out.println(left);
-    System.out.println(up);
-    System.out.println(down);
-
     if (up < right && up < left && up < down && !nextToBlock("Up")) { 
       yPos--;
       direction = "Up";

@@ -1,3 +1,4 @@
+import java.util.*;
 Map gameMap;
 PacDude Player;
 Ghost[] Ghosts; 
@@ -10,16 +11,15 @@ void setup() {
   size(729, 703);
   started = false;
   PrintStart();
-  Ghosts = new Ghost[4];
-  Ghosts[0] = new Inky(12, 16);
-  Ghosts[1] = new Blinky(4, 21);
-  Ghosts[2] = new Pinky(21, 16);
-  Ghosts[3] = new Clyde(25, 20);
+  Ghosts = new Ghost[1];
+  Ghosts[0] = new Blinky(4, 21);
+  //Ghosts[1] = new Clyde(25, 20);
+  //Ghosts[2] = new Inky(12, 16);
+  //Ghosts[3] = new Pinky(21, 16);
   frameCount = 60;
 }
 
 void draw() {
-  System.out.println(Player.getPelletsEaten() +" " + gameMap.getPellets());
   if (!started) {
     PrintStart();
   } else if (Player.getPelletsEaten() != gameMap.getPellets()) {

@@ -52,15 +52,8 @@ public abstract class Ghost implements Entities {
 
 
   public void move() {
-    //to be implemented very soon
-  }
-  
-  public void drawSelf() {
     //Implemented Inside of each Ghost
-  }
-
-  public void chase() {
-    //Implemented Inside of each Ghost
+    //This might be implemented here instead later
   }
 
   public void respawn() {
@@ -68,6 +61,49 @@ public abstract class Ghost implements Entities {
   }
 
   public void wander() {
-    //to be implemented soon
+    ArrayList<String> direcs = new ArrayList<String>();
+    if (direction != "Down" && !nextToBlock("Up")) { 
+      direcs.add("Up");
+    } 
+    if (direction != "Right" && !nextToBlock("Left")) {
+      direcs.add("Left");
+    } 
+    if (direction != "Up" && !nextToBlock("Down")) { 
+      direcs.add("Down");
+    } 
+    if (direction != "Left" && !nextToBlock("Right")) { 
+      direcs.add("Right");
+    } 
+    System.out.println(direcs.size());
+    String chosenddir = direcs.get((int)(Math.random() * direcs.size()));
+    direction = chosenddir;
+    switch (direction) {
+      case "Up": 
+        {
+          yPos--;
+          break;
+        }
+      case "Down": 
+        {
+          yPos++;
+          break;
+        }
+      case "Left": 
+        {
+          xPos--;
+          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+            setXPos(26);
+          } 
+          break;
+        }
+      case "Right": 
+        {
+          xPos++;
+          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+            setXPos(0);
+          } 
+          break;
+        }
+    }
   }
 }
