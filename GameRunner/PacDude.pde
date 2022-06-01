@@ -108,7 +108,7 @@ public class PacDude implements Entities {
         {
           xPos--;
           if (gameMap.getVal(getYPos(), getXPos()) == 5) {
-            setXPos(26);
+            setXPos(25);
           } 
           break;
         }
@@ -116,7 +116,7 @@ public class PacDude implements Entities {
         {
           xPos++;
           if (gameMap.getVal(getYPos(), getXPos()) == 5) {
-            setXPos(0);
+            setXPos(1);
           } 
           break;
         }

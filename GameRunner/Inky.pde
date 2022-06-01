@@ -67,7 +67,7 @@ public class Inky extends Ghost {
     if (left < right && left < up && left < down && !nextToBlock("Left")) {
       xPos --;
       if (gameMap.getVal(getYPos(), getXPos()) == 5) {
-        setXPos(26);
+        setXPos(25);
       }
       direction = "Left";
     } 
@@ -78,7 +78,7 @@ public class Inky extends Ghost {
     if (right < left && right < down && right < up && !nextToBlock("Right")) { 
       xPos++;
       if (gameMap.getVal(getYPos(), getXPos()) == 5) {
-        setXPos(0);
+        setXPos(1);
       }
       direction = "Right";
     } 
