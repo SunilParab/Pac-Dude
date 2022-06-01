@@ -31,19 +31,19 @@ public abstract class Ghost implements Entities {
     switch (checkdir) {
     case "Up": 
       {
-        return (gameMap.map[yPos-1][xPos] == 1);
+        return (gameMap.map[yPos-1][xPos] == 1 || gameMap.map[yPos-1][xPos] == 4);
       }
     case "Down": 
       {
-        return (gameMap.map[yPos+1][xPos] == 1);
+        return (gameMap.map[yPos+1][xPos] == 1 || gameMap.map[yPos+1][xPos] == 4);
       }
     case "Left": 
       {
-        return (gameMap.map[yPos][xPos-1] == 1 );
+        return (gameMap.map[yPos][xPos-1] == 1 || gameMap.map[yPos][xPos-1] == 4 );
       }
     case "Right": 
       {
-        return (gameMap.map[yPos][xPos+1] == 1 );
+        return (gameMap.map[yPos][xPos+1] == 1 || gameMap.map[yPos][xPos+1] == 4 );
       }
     }
     return true;
