@@ -4,7 +4,7 @@ Inky ghost1;
 Blinky ghost2; 
 Pinky ghost3; 
 int score = 0; 
-int lives; 
+int livesCount;
 
 int movecounter;
 boolean started;
