@@ -2,7 +2,7 @@ public abstract class Ghost implements Entities {
   public int xPos;
   public int yPos;
   public String direction;
-    private int movecounter;
+  public int movecounter;
 
   public int getXPos() {
     return xPos;
