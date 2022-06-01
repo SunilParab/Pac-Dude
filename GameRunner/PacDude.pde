@@ -42,11 +42,11 @@ public class PacDude implements Entities {
   public String getQueuedDirection() {
     return queueddir;
   }
-  
+
   public void setQueuedDirection(String newdir) {
     queueddir = newdir;
   }
-  
+
   public boolean getSpecial() {
     return specialAbility;
   }
@@ -55,11 +55,11 @@ public class PacDude implements Entities {
     specialAbility = hasspec;
   }
 
-  public int getPelletsEaten(){ 
-    return pelletsEaten; 
+  public int getPelletsEaten() { 
+    return pelletsEaten;
   } 
-  
-  public void eatPellet(){ 
+
+  public void eatPellet() { 
     pelletsEaten++;
   } 
 
@@ -75,40 +75,48 @@ public class PacDude implements Entities {
       }
     case "Left": 
       {
-        return (gameMap.map[yPos][xPos-1] == 1 || gameMap.map[yPos][xPos-1] == 4);
+        return (gameMap.map[yPos][xPos-1] == 1 || gameMap.map[yPos][xPos-1] == 4 );
       }
     case "Right": 
       {
-        return (gameMap.map[yPos][xPos+1] == 1 || gameMap.map[yPos][xPos+1] == 4);
+        return (gameMap.map[yPos][xPos+1] == 1 || gameMap.map[yPos][xPos+1] == 4 );
       }
     }
     return true;
   }
-  
+
   public void move() {
     if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
-        gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
-        Player.eatPellet();
+      gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
+      Player.eatPellet();
     } 
     if (!nextToBlock(direction)) {
       movecounter = 10;
       switch (direction) {
-        case "Up": {
+      case "Up": 
+        {
           yPos--;
           break;
         }
-        case "Down": {
+      case "Down": 
+        {
           yPos++;
           break;
         }
       case "Left": 
         {
           xPos--;
+          if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 5) {
+            Player.setXPos(26);
+          } 
           break;
         }
       case "Right": 
         {
           xPos++;
+          if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 5) {
+            Player.setXPos(0);
+          } 
           break;
         }
       }
