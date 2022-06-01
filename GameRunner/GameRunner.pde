@@ -45,9 +45,7 @@ void draw() {
   fill(0, 255, 255);
   circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
   
-  
-  
-  
+  score = Player.getPelletsEaten() * 10;
   
 }
 
