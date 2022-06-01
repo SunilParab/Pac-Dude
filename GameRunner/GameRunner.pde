@@ -11,11 +11,11 @@ void setup() {
   size(729, 703);
   started = false;
   PrintStart();
-  Ghosts = new Ghost[3];
+  Ghosts = new Ghost[4];
   Ghosts[0] = new Inky(12, 16);
   Ghosts[1] = new Blinky(4, 21);
   Ghosts[2] = new Pinky(21, 16);
-  //Ghosts[3] = new Clyde(30, 20);
+  Ghosts[3] = new Clyde(25, 20);
   frameCount = 60;
 }
 
@@ -26,19 +26,15 @@ void draw() {
   } else if(Player.getPelletsEaten() != gameMap.getPellets()) {
     PrintMap();
     fill(255, 255, 0);
-    Player.drawPacDude();
+    Player.drawSelf();
     if (frameCount % 25 == 0) {
       for (int i = 0; i < Ghosts.length; i ++) {
         Ghosts[i].chase();
       }
     }
-  
-    fill(255, 0, 0);
-    circle(Ghosts[0].getXPos()*26+13, Ghosts[0].getYPos()*26+13, 15);
-    fill(0, 255, 0);
-    circle(Ghosts[1].getXPos()*26+13, Ghosts[1].getYPos()*26+13, 15);
-    fill(0, 255, 255);
-    circle(Ghosts[2].getXPos()*26+13, Ghosts[2].getYPos()*26+13, 15);
+   for (int i = 0; i < Ghosts.length; i ++) {
+     Ghosts[i].drawSelf();
+   }
   } else {
     PrintEnd();
   }

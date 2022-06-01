@@ -123,7 +123,7 @@ public class PacDude implements Entities {
     }
   }
   
-  public void drawPacDude() {
+  public void drawSelf() {
     float anglestart = 0;
     float angleend = 0;
     if(movecounter == 0 && !Player.nextToBlock(Player.getQueuedDirection())) {

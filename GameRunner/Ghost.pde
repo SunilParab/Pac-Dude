@@ -51,11 +51,15 @@ public abstract class Ghost implements Entities {
 
 
   public void move() {
-    
+    //to be implemented very soon
+  }
+  
+  public void drawSelf() {
+    //Implemented Inside of each Ghost
   }
 
   public void chase() {
-    //Left Empty on Purpose
+    //Implemented Inside of each Ghost
   }
 
   public void respawn() {

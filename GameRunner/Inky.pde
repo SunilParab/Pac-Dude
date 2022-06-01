@@ -63,4 +63,9 @@ public class Inky extends Ghost {
     } 
   } 
   
+  public void drawSelf() {
+    fill(0, 255, 255);
+    circle(getXPos()*26+13, getYPos()*26+13, 15);
+  }
+  
 }

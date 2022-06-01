@@ -62,4 +62,9 @@ public class Clyde extends Ghost {
     } 
   } 
   
+  public void drawSelf() {
+    fill(255, 150, 0);
+    circle(getXPos()*26+13, getYPos()*26+13, 15);
+  }
+  
 }

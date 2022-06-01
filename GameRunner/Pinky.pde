@@ -62,4 +62,9 @@ public class Pinky extends Ghost {
     } 
   } 
   
+  public void drawSelf() {
+    fill(255, 169, 180);
+    circle(getXPos()*26+13, getYPos()*26+13, 15);
+  }
+  
 }
