@@ -1,8 +1,6 @@
 Map gameMap;
 PacDude Player;
-Inky ghost1; 
-Blinky ghost2; 
-Pinky ghost3; 
+Ghost[] Ghosts; 
 
 int movecounter;
 boolean started;
@@ -13,9 +11,11 @@ void setup() {
   size(729, 703);
   started = false;
   PrintStart();
-  //ghost1 = new Inky(12, 16);
-  ghost2 = new Blinky(4, 21);
-  //ghost3 = new Pinky(21, 16);
+  Ghosts = new Ghost[3];
+  Ghosts[0] = new Inky(12, 16);
+  Ghosts[1] = new Blinky(4, 21);
+  Ghosts[2] = new Pinky(21, 16);
+  //Ghosts[3] = new Clyde(30, 20);
   frameCount = 60;
 }
 
@@ -28,17 +28,17 @@ void draw() {
     fill(255, 255, 0);
     Player.drawPacDude();
     if (frameCount % 25 == 0) {
-      //ghost1.chase();
-      ghost2.chase();
-      //ghost3.chase();
+      for (int i = 0; i < Ghosts.length; i ++) {
+        Ghosts[i].chase();
+      }
     }
   
     fill(255, 0, 0);
-    //circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 15);
+    circle(Ghosts[0].getXPos()*26+13, Ghosts[0].getYPos()*26+13, 15);
     fill(0, 255, 0);
-    circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 15);
+    circle(Ghosts[1].getXPos()*26+13, Ghosts[1].getYPos()*26+13, 15);
     fill(0, 255, 255);
-    //circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
+    circle(Ghosts[2].getXPos()*26+13, Ghosts[2].getYPos()*26+13, 15);
   } else {
     PrintEnd();
   }
