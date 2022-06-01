@@ -2,7 +2,6 @@ Map gameMap;
 PacDude Player;
 Ghost[] Ghosts; 
 
-int movecounter;
 boolean started;
 
 void setup() {
@@ -21,20 +20,15 @@ void setup() {
 
 void draw() {
   System.out.println(Player.getPelletsEaten() +" " + gameMap.getPellets());
-  if(!started) {
+  if (!started) {
     PrintStart();
-  } else if(Player.getPelletsEaten() != gameMap.getPellets()) {
+  } else if (Player.getPelletsEaten() != gameMap.getPellets()) {
     PrintMap();
     fill(255, 255, 0);
     Player.drawSelf();
-    if (frameCount % 25 == 0) {
-      for (int i = 0; i < Ghosts.length; i ++) {
-        Ghosts[i].chase();
-      }
+    for (int i = 0; i < Ghosts.length; i ++) {
+      Ghosts[i].drawSelf();
     }
-   for (int i = 0; i < Ghosts.length; i ++) {
-     Ghosts[i].drawSelf();
-   }
   } else {
     PrintEnd();
   }

@@ -5,6 +5,7 @@ public class PacDude implements Entities {
   private boolean specialAbility;
   private String direction;
   private String queueddir;
+  private int movecounter;
 
   public PacDude(int x, int y) {
     xPos = x;
