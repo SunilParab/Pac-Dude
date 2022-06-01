@@ -2,7 +2,10 @@ public abstract class Ghost implements Entities {
   public int xPos;
   public int yPos;
   public String direction;
+  public int modetimer = 600;
   public int movecounter;
+  public int modenum = 0;
+  final public String[] modes = new String[] {"Chase","Wander"};
 
   public int getXPos() {
     return xPos;

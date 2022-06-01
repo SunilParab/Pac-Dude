@@ -9,7 +9,7 @@ public class Inky extends Ghost {
   public void move() {
     movecounter = 10;
     chase();
-    //this will hold all the lgoic for determining the mode of the ghost
+    //this will hold all the logic for determining the mode of the ghost
   }
   
   public void chase(){ 
