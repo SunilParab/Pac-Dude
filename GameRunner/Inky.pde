@@ -6,6 +6,12 @@ public class Inky extends Ghost {
   }
   
   
+  public void move() {
+    movecounter = 10;
+    chase();
+    //this will hold all the lgoic for determining the mode of the ghost
+  }
+  
   public void chase(){ 
     double right; 
     double left; 
@@ -65,7 +71,16 @@ public class Inky extends Ghost {
   
   public void drawSelf() {
     fill(0, 255, 255);
-    circle(getXPos()*26+13, getYPos()*26+13, 15);
+    if(movecounter > 0){
+      if(getDirection() == "Up") {circle(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 15);}
+      else if(getDirection() == "Down") {circle(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 15);}
+      else if(getDirection() == "Left") {circle(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 15);}
+      else if(getDirection() == "Right") {circle(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 15);}
+      movecounter--;
+    } else {
+      circle(getXPos()*26+13, getYPos()*26+13, 15);
+      move();
+    }
   }
   
 }
