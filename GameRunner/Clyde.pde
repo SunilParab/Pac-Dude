@@ -7,7 +7,7 @@ public class Clyde extends Ghost {
   
   public void move() {
     if (modetimer <= 0) {
-      modenum = modenum % modes.length + 1;
+      modenum = (modenum + 1) % modes.length;
       modetimer = 600;
     }
     switch (modenum) {
