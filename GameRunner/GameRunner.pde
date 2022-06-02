@@ -91,7 +91,7 @@ void PrintMap() {
     }
   }
     textSize(20);
-    fill(255,0,255);
+    fill(255);
 
     text("Score: " + score,80,725);
     text("lives: " + livesCount,400,725);
