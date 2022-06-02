@@ -28,6 +28,9 @@ void draw() {
     Player.drawSelf();
     for (int i = 0; i < Ghosts.length; i ++) {
       Ghosts[i].drawSelf();
+      if(Ghosts[i].getXPos() == Player.getXPos() && Ghosts[i].getYPos() == Player.getYPos()) {
+        respawn();
+      }
     }
   } else {
     PrintEnd();
@@ -95,4 +98,12 @@ void PrintEnd() {
   textSize(30);
   fill(255);
   text("Now Get Out",275,500);
+}
+
+void respawn() {
+  Player = new PacDude(1, 1);
+  Ghosts[0] = new Blinky(4, 21);
+  Ghosts[1] = new Clyde(25, 20);
+  Ghosts[2] = new Inky(12, 16);
+  Ghosts[3] = new Pinky(21, 16);
 }
