@@ -1,8 +1,8 @@
 public abstract class Ghost implements Entities {
   public int xPos;
   public int yPos;
-  public int trueXPos;
-  public int trueYPos;
+  public float trueXPos;
+  public float trueYPos;
   public int radius = 15;
   public String direction;
   public int modetimer = 600;
@@ -26,19 +26,19 @@ public abstract class Ghost implements Entities {
     yPos = newpos;
   }
   
-  public int getTrueXPos() {
+  public float getTrueXPos() {
     return trueXPos;
   }
 
-  public int getTrueYPos() {
+  public float getTrueYPos() {
     return trueYPos;
   }
 
-  public void setTrueXPos(int newpos) {
+  public void setTrueXPos(float newpos) {
     trueXPos = newpos;
   }
 
-  public void setTrueYPos(int newpos) {
+  public void setTrueYPos(float newpos) {
     trueYPos = newpos;
   }
 

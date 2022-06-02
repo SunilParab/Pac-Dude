@@ -1,8 +1,8 @@
 public class PacDude implements Entities {
   private int xPos;
   private int yPos;
-  private int trueXPos;
-  private int trueYPos;
+  private float trueXPos;
+  private float trueYPos;
   public int radius = 22;
   public int pelletsEaten;
   private boolean specialAbility;
@@ -35,19 +35,19 @@ public class PacDude implements Entities {
     yPos = newpos;
   }
 
-  public int getTrueXPos() {
+  public float getTrueXPos() {
     return trueXPos;
   }
 
-  public int getTrueYPos() {
+  public float getTrueYPos() {
     return trueYPos;
   }
 
-  public void setTrueXPos(int newpos) {
+  public void setTrueXPos(float newpos) {
     trueXPos = newpos;
   }
 
-  public void setTrueYPos(int newpos) {
+  public void setTrueYPos(float newpos) {
     trueYPos = newpos;
   }
 
@@ -155,13 +155,15 @@ public class PacDude implements Entities {
     else if(getDirection() == "Left") {anglestart = 225; angleend = 495;}
     else if(getDirection() == "Right") {anglestart = 45; angleend = 315;}
     if(movecounter > 0){
-      if(getDirection() == "Up") {arc(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26*movecounter/10);}
-      else if(getDirection() == "Down") {arc(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26*movecounter/10);}
-      else if(getDirection() == "Left") {arc(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13+26*movecounter/10); setTrueYPos(getYPos()*26+13);}
-      else if(getDirection() == "Right") {arc(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13-26*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      if(getDirection() == "Up") {arc(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}
+      else if(getDirection() == "Down") {arc(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}
+      else if(getDirection() == "Left") {arc(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13+26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      else if(getDirection() == "Right") {arc(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13-26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
       movecounter--;
     } else {
       arc(getXPos()*26+13, getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));
+      setTrueXPos(getXPos()*26+13);
+      setTrueYPos(getYPos()*26+13);
       move();
     }
   }
