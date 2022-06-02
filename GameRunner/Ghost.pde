@@ -3,6 +3,7 @@ public abstract class Ghost implements Entities {
   public int yPos;
   public int trueXPos;
   public int trueYPos;
+  public int radius = 15;
   public String direction;
   public int modetimer = 600;
   public int movecounter;
