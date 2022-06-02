@@ -63,11 +63,11 @@ Sunil Parab: - Added Game Start and End screens, which appear upon starting the 
 Eric Sohel: - Worked on the score count and live counts for the pac dude game. I worked on accurately calculating the score based on pellets and killing ghost which create multipliers.
 
 Tuesday - 5/31/2022
-Sunil Parab: write here.
+Sunil Parab: Made the algorithm that the ghosts use to chase PacDude and wander around. Also made a system for them to switch between the two modes on a timer.
 
 Eric Sohel: Worked on the in-game mechanics of the power pellets which included giving pac-dude his special ability to eat ghosts and tried creating a timer which keeps this ability for a certain amount of time.
 
 Wednesday - 6/1/2022
-Sunil - write here.
+Sunil - The ghosts can now kill PacDude based on when their visible model touches PacDude's visible model. Also added a 3 life system before the player loses.
 
 Eric: could not get much work done because I am sick. 
