@@ -60,28 +60,22 @@ public class Blinky extends Ghost {
       down = 2000000;
     }
 
-    System.out.println();
-    System.out.println(up);
-    System.out.println(down);
-    System.out.println(left);
-    System.out.println(right);
-
     if (up <= right && up <= left && up <= down && !nextToBlock("Up")) { 
       yPos--;
       direction = "Up";
     } 
-    if (left <= right && left <= up && left <= down && !nextToBlock("Left")) {
+    else if (left <= right && left <= up && left <= down && !nextToBlock("Left")) {
       xPos --;
       if (gameMap.getVal(getYPos(), getXPos()) == 5) {
         setXPos(25);
       }
       direction = "Left";
     } 
-    if (down <= right && down <= up && down <= left && !nextToBlock("Down")) { 
+    else if (down <= right && down <= up && down <= left && !nextToBlock("Down")) { 
       yPos++;
       direction = "Down";
     } 
-    if (right <= left && right <= down && right <= up && !nextToBlock("Right")) { 
+    else if (right <= left && right <= down && right <= up && !nextToBlock("Right")) { 
       xPos++;
       if (gameMap.getVal(getYPos(), getXPos()) == 5) {
         setXPos(1);
