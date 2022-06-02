@@ -18,6 +18,15 @@ public class PacDude implements Entities {
     direction = "Left";
     queueddir = "None";
   }
+  
+  public PacDude(int x, int y, int oldpellets) {
+    xPos = x;
+    yPos = y;
+    pelletsEaten = oldpellets;
+    specialAbility = false;
+    direction = "Left";
+    queueddir = "None";
+  }
 
   public int getXPos() {
     return xPos;
