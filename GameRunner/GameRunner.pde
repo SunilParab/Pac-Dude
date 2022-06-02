@@ -3,6 +3,7 @@ PacDude Player;
 Inky ghost1; 
 Blinky ghost2; 
 Pinky ghost3; 
+Pinky ghost4; 
 int score = 0; 
 int livesCount = 3; 
 
@@ -18,6 +19,8 @@ void setup() {
   ghost1 = new Inky(12, 16);
   ghost2 = new Blinky(4, 21);
   ghost3 = new Pinky(21, 16);
+  ghost3 = new Pinky(19, 16);
+
   frameCount = 60;
 }
 
@@ -37,6 +40,8 @@ void draw() {
     ghost1.chase();
     ghost2.chase();
     ghost3.chase();
+    ghost4.chase();
+
   }
 
   fill(255, 0, 0);
@@ -45,6 +50,8 @@ void draw() {
   circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 15);
   fill(0, 255, 255);
   circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
+   fill(0, 255, 255);
+  circle(ghost4.getXPos()*26+13, ghost4.getYPos()*26+13, 15);
   
   score = Player.getPelletsEaten() * 10;
   
