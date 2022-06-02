@@ -18,7 +18,6 @@ void setup() {
   Ghosts[1] = new Clyde(25, 20);
   Ghosts[2] = new Inky(12, 16);
   Ghosts[3] = new Pinky(21, 16);
-  frameCount = 60;
 }
 
 void draw() {
@@ -39,6 +38,7 @@ void draw() {
   }
 }
 
+
 void keyPressed() {
   if (!started) {
     if (key == ENTER) {
@@ -46,7 +46,7 @@ void keyPressed() {
     }
   } else {
     if (key == CODED) {
-      if(keyCode == UP) {
+      if (keyCode == UP) {
         Player.setQueuedDirection("Up");
       } else if (keyCode == DOWN) {
         Player.setQueuedDirection("Down");
@@ -83,23 +83,23 @@ void PrintMap() {
 void PrintStart() {
   background(0);
   textSize(80);
-  fill(0,128,255);
-  text("PacDude",195,200);
+  fill(0, 128, 255);
+  text("PacDude", 195, 200);
   textSize(30);
   fill(255);
-  text("Press Enter to Play",230,500);
-  fill(255,255,0);
+  text("Press Enter to Play", 230, 500);
+  fill(255, 255, 0);
   arc(370, 350, 50, 50, radians(30), radians(330));
 }
 
 void PrintEnd() {
   background(0);
   textSize(80);
-  fill(0,128,255);
-  text("Game Over",150,200);
+  fill(0, 128, 255);
+  text("Game Over", 150, 200);
   textSize(30);
   fill(255);
-  text("Now Get Out",275,500);
+  text("Now Get Out", 275, 500);
 }
 
 void respawn() {

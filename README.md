@@ -40,25 +40,34 @@ Friday - 5/27/2022
 
 Sunil Parab: - Wasn't able to get work done due to my Sister's Graduation
 
-Eric Sohel: - write here
+Eric Sohel: - Worked on getting the pellets collected and updating pac-dude's pellet count.
 
 
 Saturday - 5/28/2022
 
 Sunil Parab: - Was still at my Sister's Graduation since it was a two-day event.
 
-Eric Sohel: - write here
+Eric Sohel: - started working on the ghost's methods. Worked on wander and chase however I could not get them to work properly.
 
 
 Sunday - 5/29/2022
 
 Sunil Parab: - PacDude will now continously move after a button is pressed, and you are able to queue his next movement by entering an input before he reaches a wall where he can  go in the inputed direction.
 
-Eric Sohel: - write here
-
+Eric Sohel: - Continued working on wander and chase and made them work a lot better. Then I updated the ghosts speeds and gave them the in-game colors they are supposed to have.
 
 Monday - 5/30/2022
 
 Sunil Parab: - Added Game Start and End screens, which appear upon starting the project and collecting all the pellets respectively. Also animated PacDude so that his mouth will open and close while moving.
 
-Eric Sohel: - write here
+Eric Sohel: - Worked on the score count and live counts for the pac dude game. I worked on accurately calculating the score based on pellets and killing ghost which create multipliers.
+
+Tuesday - 5/31/2022
+Sunil Parab: write here.
+
+Eric Sohel: Worked on the in-game mechanics of the power pellets which included giving pac-dude his special ability to eat ghosts and tried creating a timer which keeps this ability for a certain amount of time.
+
+Wednesday - 6/1/2022
+Sunil - write here.
+
+Eric: could not get much work done because I am sick. 
