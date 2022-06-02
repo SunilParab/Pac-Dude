@@ -2,10 +2,12 @@ import java.util.*;
 Map gameMap;
 PacDude Player;
 Ghost[] Ghosts; 
+int Lives;
 
 boolean started;
 
 void setup() {
+  Lives = 3;
   gameMap = new Map();
   Player = new PacDude(1, 1);
   size(729, 703);
@@ -22,25 +24,12 @@ void setup() {
 void draw() {
   if (!started) {
     PrintStart();
-  } else if (Player.getPelletsEaten() != gameMap.getPellets()) {
+  } else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
     PrintMap();
     fill(255, 255, 0);
     Player.drawSelf();
     for (int i = 0; i < Ghosts.length; i ++) {
       Ghosts[i].drawSelf();
-      //System.out.println(Ghosts[i].getTrueXPos());
-      //System.out.println(Ghosts[i].getTrueYPos());
-      ///System.out.println(Player.getTrueXPos());
-      //System.out.println(Player.getTrueYPos());
-      //System.out.println();
-      //System.out.println(abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()));
-      //System.out.println((Player.radius + Ghosts[i].radius));
-      //System.out.println();
-      //System.out.println(Ghosts[i].getTrueYPos());
-      //System.out.println(Player.getTrueYPos());
-      //System.out.println(abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()));
-      //System.out.println((Player.radius + Ghosts[i].radius));
-      //System.out.println();
       if(abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
         respawn();
       }
@@ -114,9 +103,12 @@ void PrintEnd() {
 }
 
 void respawn() {
+  Lives--;
+  if (Lives != 0) {
   Player = new PacDude(1, 1);
   Ghosts[0] = new Blinky(4, 21);
   Ghosts[1] = new Clyde(25, 20);
   Ghosts[2] = new Inky(12, 16);
   Ghosts[3] = new Pinky(21, 16);
+  }
 }
