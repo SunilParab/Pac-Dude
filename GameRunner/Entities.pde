@@ -7,4 +7,5 @@ public interface Entities {
   public void setDirection(String newdir);
   public boolean nextToBlock(String checkdir);
   public void move();
+  public void drawSelf();
 }

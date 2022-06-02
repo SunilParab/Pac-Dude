@@ -1,10 +1,14 @@
 public class PacDude implements Entities {
   private int xPos;
   private int yPos;
+  private float trueXPos;
+  private float trueYPos;
+  public int radius = 11;
   public int pelletsEaten;
   private boolean specialAbility;
   private String direction;
   private String queueddir;
+  private int movecounter;
 
   public PacDude(int x, int y) {
     xPos = x;
@@ -29,6 +33,22 @@ public class PacDude implements Entities {
 
   public void setYPos(int newpos) {
     yPos = newpos;
+  }
+
+  public float getTrueXPos() {
+    return trueXPos;
+  }
+
+  public float getTrueYPos() {
+    return trueYPos;
+  }
+
+  public void setTrueXPos(float newpos) {
+    trueXPos = newpos;
+  }
+
+  public void setTrueYPos(float newpos) {
+    trueYPos = newpos;
   }
 
   public String getDirection() {
@@ -86,9 +106,9 @@ public class PacDude implements Entities {
   }
 
   public void move() {
-    if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 2) {
-      gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
-      Player.eatPellet();
+    if (gameMap.getVal(getYPos(), getXPos()) == 2) {
+      gameMap.setVal(getXPos(), getYPos(), 0); 
+      eatPellet();
     } 
     if (!nextToBlock(direction)) {
       movecounter = 10;
@@ -106,16 +126,16 @@ public class PacDude implements Entities {
       case "Left": 
         {
           xPos--;
-          if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 5) {
-            Player.setXPos(26);
+          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+            setXPos(25);
           } 
           break;
         }
       case "Right": 
         {
           xPos++;
-          if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 5) {
-            Player.setXPos(0);
+          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+            setXPos(1);
           } 
           break;
         }
@@ -123,26 +143,28 @@ public class PacDude implements Entities {
     }
   }
   
-  public void drawPacDude() {
+  public void drawSelf() {
     float anglestart = 0;
     float angleend = 0;
-    if(movecounter == 0 && !Player.nextToBlock(Player.getQueuedDirection())) {
-      Player.setDirection(Player.getQueuedDirection());
-      Player.setQueuedDirection("None");
+    if(movecounter == 0 && !nextToBlock(getQueuedDirection())) {
+      setDirection(getQueuedDirection());
+      setQueuedDirection("None");
     }
-    if(Player.getDirection() == "Up") {anglestart = 315; angleend = 585;}
-    else if(Player.getDirection() == "Down") {anglestart = 135; angleend = 405;}
-    else if(Player.getDirection() == "Left") {anglestart = 225; angleend = 495;}
-    else if(Player.getDirection() == "Right") {anglestart = 45; angleend = 315;}
+    if(getDirection() == "Up") {anglestart = 315; angleend = 585;}
+    else if(getDirection() == "Down") {anglestart = 135; angleend = 405;}
+    else if(getDirection() == "Left") {anglestart = 225; angleend = 495;}
+    else if(getDirection() == "Right") {anglestart = 45; angleend = 315;}
     if(movecounter > 0){
-      if(Player.getDirection() == "Up") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13+26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
-      else if(Player.getDirection() == "Down") {arc(Player.getXPos()*26+13, Player.getYPos()*26+13-26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
-      else if(Player.getDirection() == "Left") {arc(Player.getXPos()*26+13+26*movecounter/10, Player.getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
-      else if(Player.getDirection() == "Right") {arc(Player.getXPos()*26+13-26*movecounter/10, Player.getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
+      if(getDirection() == "Up") {arc(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}
+      else if(getDirection() == "Down") {arc(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}
+      else if(getDirection() == "Left") {arc(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13+26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      else if(getDirection() == "Right") {arc(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13-26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
       movecounter--;
     } else {
-      arc(Player.getXPos()*26+13, Player.getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));
-      Player.move();
+      arc(getXPos()*26+13, getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));
+      setTrueXPos(getXPos()*26+13);
+      setTrueYPos(getYPos()*26+13);
+      move();
     }
   }
   

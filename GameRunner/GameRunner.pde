@@ -1,67 +1,46 @@
+import java.util.*;
 Map gameMap;
 PacDude Player;
-Inky ghost1; 
-Blinky ghost2; 
-Pinky ghost3; 
+Ghost[] Ghosts; 
+int Lives;
 
-int movecounter;
 boolean started;
 
 void setup() {
+  Lives = 3;
   gameMap = new Map();
   Player = new PacDude(1, 1);
   size(729, 703);
   started = false;
   PrintStart();
-<<<<<<< HEAD
-    ghost1 = new Inky(12, 16);
-    ghost2 = new Blinky(4, 21);
-    ghost3 = new Pinky(21, 16);
-    frameCount = 60; 
-=======
-  ghost1 = new Inky(12, 16);
-  ghost2 = new Blinky(4, 21);
-  ghost3 = new Pinky(21, 16);
-  frameCount = 60;
->>>>>>> 4067b48e89225d421783fd9aabcef9ff86c1319d
+  Ghosts = new Ghost[4];
+  Ghosts[0] = new Blinky(4, 21);
+  Ghosts[1] = new Clyde(25, 20);
+  Ghosts[2] = new Inky(12, 16);
+  Ghosts[3] = new Pinky(21, 16);
 }
 
 void draw() {
-  System.out.println(Player.getPelletsEaten() +" " + gameMap.getPellets());
   if (!started) {
     PrintStart();
-  } else if (Player.getPelletsEaten() != gameMap.getPellets()) {
+  } else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
     PrintMap();
     fill(255, 255, 0);
-    Player.drawPacDude();
-<<<<<<< HEAD
-
-      if(frameCount % 25 == 0){ 
-      ghost1.chase();
-      ghost2.chase();
-      ghost3.chase();
-      } 
-
-    fill(255, 0, 0);
-    circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 15);
-    fill(0, 255, 0);
-    circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 15);
-    fill(0, 255, 255);
-    circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
-=======
+    Player.drawSelf();
+    for (int i = 0; i < Ghosts.length; i ++) {
+      Ghosts[i].drawSelf();
+      if(abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+        respawn();
+      }
+    }
   } else {
     PrintEnd();
->>>>>>> 4067b48e89225d421783fd9aabcef9ff86c1319d
   }
 }
 
 
 void keyPressed() {
-<<<<<<< HEAD
-    if (!started) {
-=======
   if (!started) {
->>>>>>> 4067b48e89225d421783fd9aabcef9ff86c1319d
     if (key == ENTER) {
       started = true;
     }
@@ -121,4 +100,15 @@ void PrintEnd() {
   textSize(30);
   fill(255);
   text("Now Get Out", 275, 500);
+}
+
+void respawn() {
+  Lives--;
+  if (Lives != 0) {
+  Player = new PacDude(1, 1);
+  Ghosts[0] = new Blinky(4, 21);
+  Ghosts[1] = new Clyde(25, 20);
+  Ghosts[2] = new Inky(12, 16);
+  Ghosts[3] = new Pinky(21, 16);
+  }
 }
