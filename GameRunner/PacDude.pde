@@ -3,7 +3,7 @@ public class PacDude implements Entities {
   private int yPos;
   private float trueXPos;
   private float trueYPos;
-  public int radius = 22;
+  public int radius = 11;
   public int pelletsEaten;
   private boolean specialAbility;
   private String direction;
