@@ -155,10 +155,10 @@ public class PacDude implements Entities {
     else if(getDirection() == "Left") {anglestart = 225; angleend = 495;}
     else if(getDirection() == "Right") {anglestart = 45; angleend = 315;}
     if(movecounter > 0){
-      if(getDirection() == "Up") {arc(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
-      else if(getDirection() == "Down") {arc(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
-      else if(getDirection() == "Left") {arc(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
-      else if(getDirection() == "Right") {arc(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1))));}
+      if(getDirection() == "Up") {arc(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26*movecounter/10);}
+      else if(getDirection() == "Down") {arc(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26*movecounter/10);}
+      else if(getDirection() == "Left") {arc(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13+26*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      else if(getDirection() == "Right") {arc(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/5.0 * (getXPos() % 5 + 1))), radians(angleend + 45 / (movecounter/5.0 * (getXPos() % 5 + 1)))); setTrueXPos(getXPos()*26+13-26*movecounter/10); setTrueYPos(getYPos()*26+13);}
       movecounter--;
     } else {
       arc(getXPos()*26+13, getYPos()*26+13, 22, 22, radians(anglestart), radians(angleend));

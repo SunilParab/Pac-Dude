@@ -28,7 +28,7 @@ void draw() {
     Player.drawSelf();
     for (int i = 0; i < Ghosts.length; i ++) {
       Ghosts[i].drawSelf();
-      if(Ghosts[i].getXPos() == Player.getXPos() && Ghosts[i].getYPos() == Player.getYPos()) {
+      if(Ghosts[i].getTrueXPos() == Player.getTrueXPos() && Ghosts[i].getTrueYPos() == Player.getTrueYPos()) {
         respawn();
       }
     }
