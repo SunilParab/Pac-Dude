@@ -1,6 +1,8 @@
 public class PacDude implements Entities {
   private int xPos;
   private int yPos;
+  private int trueXPos;
+  private int trueYPos;
   public int pelletsEaten;
   private boolean specialAbility;
   private String direction;
@@ -30,6 +32,22 @@ public class PacDude implements Entities {
 
   public void setYPos(int newpos) {
     yPos = newpos;
+  }
+
+  public int getTrueXPos() {
+    return trueXPos;
+  }
+
+  public int getTrueYPos() {
+    return trueYPos;
+  }
+
+  public void setTrueXPos(int newpos) {
+    trueXPos = newpos;
+  }
+
+  public void setTrueYPos(int newpos) {
+    trueYPos = newpos;
   }
 
   public String getDirection() {
