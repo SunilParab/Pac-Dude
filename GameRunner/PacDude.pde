@@ -92,7 +92,7 @@ public class PacDude implements Entities {
     } 
     if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 3) {
       gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
-      
+      Player.setSpecial(true); 
       Player.eatPellet();
     } 
     if (!nextToBlock(direction)) {
