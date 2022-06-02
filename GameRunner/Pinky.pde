@@ -3,8 +3,8 @@ public class Pinky extends Ghost {
   public Pinky(int x, int y) {
     xPos = x; 
     yPos = y;
-    trueXPos = x;
-    trueYPos = y;
+    trueXPos = x*26+13;
+    trueYPos = y*26+13;
   }
 
   public void move() {

@@ -3,8 +3,8 @@ public class Inky extends Ghost {
   public Inky(int x, int y) {
     xPos = x; 
     yPos = y;
-    trueXPos = x;
-    trueYPos = y;
+    trueXPos = x*26+13;
+    trueYPos = y*26+13;
   }
   
   public void move() {

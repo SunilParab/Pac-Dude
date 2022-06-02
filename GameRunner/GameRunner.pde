@@ -11,11 +11,11 @@ void setup() {
   size(729, 703);
   started = false;
   PrintStart();
-  Ghosts = new Ghost[1];
+  Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(4, 21);
-  //Ghosts[1] = new Clyde(25, 20);
-  //Ghosts[2] = new Inky(12, 16);
-  //Ghosts[3] = new Pinky(21, 16);
+  Ghosts[1] = new Clyde(25, 20);
+  Ghosts[2] = new Inky(12, 16);
+  Ghosts[3] = new Pinky(21, 16);
   frameCount = 60;
 }
 
@@ -36,11 +36,11 @@ void draw() {
       //System.out.println(abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()));
       //System.out.println((Player.radius + Ghosts[i].radius));
       //System.out.println();
-      System.out.println(Ghosts[i].getTrueYPos());
+      //System.out.println(Ghosts[i].getTrueYPos());
       //System.out.println(Player.getTrueYPos());
-      System.out.println(abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()));
-      System.out.println((Player.radius + Ghosts[i].radius));
-      System.out.println();
+      //System.out.println(abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()));
+      //System.out.println((Player.radius + Ghosts[i].radius));
+      //System.out.println();
       if(abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
         respawn();
       }
@@ -116,7 +116,7 @@ void PrintEnd() {
 void respawn() {
   Player = new PacDude(1, 1);
   Ghosts[0] = new Blinky(4, 21);
-  //Ghosts[1] = new Clyde(25, 20);
-  //Ghosts[2] = new Inky(12, 16);
-  //Ghosts[3] = new Pinky(21, 16);
+  Ghosts[1] = new Clyde(25, 20);
+  Ghosts[2] = new Inky(12, 16);
+  Ghosts[3] = new Pinky(21, 16);
 }
