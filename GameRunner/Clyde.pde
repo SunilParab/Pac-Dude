@@ -39,6 +39,7 @@ public class Clyde extends Ghost {
 
     if (distance <= 8) {
       wander();
+      System.out.println("Close");
     } else {
       // right dist
       if (direction != "Left" && !nextToBlock("Right")) {
