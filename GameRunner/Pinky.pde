@@ -106,7 +106,6 @@ public class Pinky extends Ghost {
   } 
   
   public void drawSelf() {
-    System.out.println(modenum);
     modetimer--;
     fill(255, 169, 180);
     if(movecounter > 0){
