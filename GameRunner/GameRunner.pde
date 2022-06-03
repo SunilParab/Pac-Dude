@@ -13,11 +13,11 @@ void setup() {
   size(729, 703);
   started = false;
   PrintStart();
-  Ghosts = new Ghost[4];
+  Ghosts = new Ghost[1];
   Ghosts[0] = new Blinky(4, 21);
-  Ghosts[1] = new Clyde(25, 20);
-  Ghosts[2] = new Inky(12, 16);
-  Ghosts[3] = new Pinky(21, 16);
+  //Ghosts[1] = new Clyde(25, 20);
+  //Ghosts[2] = new Inky(12, 16);
+  //Ghosts[3] = new Pinky(21, 16);
 }
 
 void draw() {
@@ -107,8 +107,8 @@ void respawn() {
   if (Lives != 0) {
   Player = new PacDude(1, 1);
   Ghosts[0] = new Blinky(4, 21);
-  Ghosts[1] = new Clyde(25, 20);
-  Ghosts[2] = new Inky(12, 16);
-  Ghosts[3] = new Pinky(21, 16);
+  //Ghosts[1] = new Clyde(25, 20);
+  //Ghosts[2] = new Inky(12, 16);
+  //Ghosts[3] = new Pinky(21, 16);
   }
 }
