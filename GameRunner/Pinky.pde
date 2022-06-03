@@ -33,31 +33,51 @@ public class Pinky extends Ghost {
     double left; 
     double up; 
     double down; 
-
+    int targetx = Player.getXPos();
+    int targety = Player.getYPos();
+    switch (Player.getDirection()) {
+    case "Up": 
+      {
+        targety -= 4;
+      }
+    case "Down": 
+      {
+        targety += 4;
+      }
+    case "Left": 
+      {
+        targetx -= 4;
+      }
+    case "Right": 
+      {
+        targetx += 4;
+      }
+    }
+    
     // right dist
     if (direction != "Left" && !nextToBlock("Right")) {
-      right = Math.sqrt( ( (Player.getXPos() - (xPos+1)) * (Player.getXPos() - (xPos+1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
+      right = Math.sqrt( ( (targetx - (xPos+1)) * (targetx - (xPos+1)) ) + ( (targety - yPos)  * (targety - yPos) ) ) ;
     } else {
       right = 2000000;
     }
     
     // left dist
     if (direction != "Right" && !nextToBlock("Left")) {
-      left = Math.sqrt( ( (Player.getXPos() - (xPos-1)) * (Player.getXPos() - (xPos-1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
+      left = Math.sqrt( ( (targetx - (xPos-1)) * (targetx - (xPos-1)) ) + ( (targety - yPos)  * (targety - yPos) ) ) ;
     } else {
       left = 2000000;
     }
     
     // up dist 
     if (direction != "Down" && !nextToBlock("Up")) {
-      up = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos - 1))  * (Player.getYPos() - (yPos-1)) ) ) ;
+      up = Math.sqrt( ( (targetx - (xPos)) * (targetx - (xPos)) ) + ( (targety - (yPos - 1))  * (targety - (yPos-1)) ) ) ;
     } else {
       up = 2000000;
     }
     
     // down dist
     if (direction != "Up" && !nextToBlock("Down")) {
-      down = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos+1))  * (Player.getYPos() - (yPos+1)) ) ) ;
+      down = Math.sqrt( ( (targetx - (xPos)) * (targetx - (xPos)) ) + ( (targety - (yPos+1))  * (targety - (yPos+1)) ) ) ;
     } else {
       down = 2000000;
     }
@@ -76,8 +96,7 @@ public class Pinky extends Ghost {
     else if (down <= right && down <= up && down <= left && !nextToBlock("Down")) { 
       yPos++;
       direction = "Down";
-    } 
-    else if (right <= left && right <= down && right <= up && !nextToBlock("Right")) { 
+    }     else if (right <= left && right <= down && right <= up && !nextToBlock("Right")) { 
       xPos++;
       if (gameMap.getVal(getYPos(), getXPos()) == 5) {
         setXPos(1);
@@ -87,6 +106,7 @@ public class Pinky extends Ghost {
   } 
   
   public void drawSelf() {
+    System.out.println(modenum);
     modetimer--;
     fill(255, 169, 180);
     if(movecounter > 0){
