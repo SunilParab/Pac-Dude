@@ -196,5 +196,13 @@ public class Map {
     }
   }
 
-  
+  public  boolean replacable(int[][] map, int y, int x) {
+    int counter = 0;
+
+    if (map[y][x + 1] == 0) { 
+      counter += 1;
+    } 
+    if (map[y + 1][x] == 0) {
+      counter += 1;
+    
 }
