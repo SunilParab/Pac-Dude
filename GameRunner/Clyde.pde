@@ -35,11 +35,10 @@ public class Clyde extends Ghost {
     double down; 
     double distance;
 
-    distance = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
+    distance = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
 
     if (distance <= 8) {
       wander();
-      System.out.println("Close");
     } else {
       // right dist
       if (direction != "Left" && !nextToBlock("Right")) {
@@ -95,7 +94,6 @@ public class Clyde extends Ghost {
   } 
   
   public void drawSelf() {
-    System.out.println(modenum);
     modetimer--;
     fill(255, 150, 0);
     if(movecounter > 0){

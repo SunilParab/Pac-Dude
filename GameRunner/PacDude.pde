@@ -166,7 +166,6 @@ public class PacDude implements Entities {
     else if(getDirection() == "Right") {anglestart = 45; angleend = 315;}
     if(movecounter > 0){
       mouthstate = mouthstate % 20 + 1;
-      System.out.println(mouthstate);
       if(getDirection() == "Up") {arc(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/mouthstate*5)), radians(angleend + 45 / (movecounter/mouthstate*5))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}
       else if(getDirection() == "Down") {arc(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 22, 22, radians(anglestart - 45 / (movecounter/mouthstate*5)), radians(angleend + 45 / (movecounter/mouthstate*5))); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}
       else if(getDirection() == "Left") {arc(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 22, 22, radians(anglestart - 45 / (movecounter/mouthstate*5)), radians(angleend + 45 / (movecounter/mouthstate*5))); setTrueXPos(getXPos()*26+13+26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
