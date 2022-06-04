@@ -49,11 +49,11 @@ public class Map {
 
   public Map() {
     map = preset;
-    pelletCount = generatePellets();
     generatePowerPellet(1, 7); 
     generatePowerPellet(26, 7); 
     generatePowerPellet(1, 19); 
     generatePowerPellet(26, 19);
+    pelletCount = generatePellets();
   }
 
   public Map(int hi, int wi) {
