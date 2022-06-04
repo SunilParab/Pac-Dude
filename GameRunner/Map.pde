@@ -211,3 +211,8 @@ public class Map {
     if (map[y][x - 1] == 0) { 
       counter += 1;
     } 
+
+    return (counter < 2 );
+  }
+
+}
