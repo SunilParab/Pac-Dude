@@ -19,25 +19,29 @@ public class Pinky extends Ghost {
     switch (mode) {
     case "Chase": 
       {
-        movecounter = 10;
         switch (Player.getDirection()) {
         case "Up": 
           {
             moveTo(Player.getXPos(),Player.getYPos() - 4);
+            break;
           }
         case "Down": 
           {
             moveTo(Player.getXPos(),Player.getYPos() + 4);
+            break;
           }
         case "Left": 
           {
             moveTo(Player.getXPos(),Player.getYPos() - 4);
+            break;
           }
         case "Right": 
           {
             moveTo(Player.getXPos(),Player.getYPos() + 4);
+            break;
           }
         }
+        movecounter = 10;
         break;
       }
     case "Scatter": 
