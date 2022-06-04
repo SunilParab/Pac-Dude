@@ -8,6 +8,7 @@ public class Clyde extends Ghost {
   }
   
   public void move() {
+    System.out.println(mode);
     if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
       if (mode.equals("Scatter")) {
         mode = "Chase";
@@ -18,84 +19,25 @@ public class Clyde extends Ghost {
     }
     switch (mode) {
     case "Chase": 
-      {
-        movecounter = 10;
-        moveTo(Player.getXPos(),Player.getYPos());
+      { 
+        double distance = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
+        if (distance <= 8) {
+          movecounter = 10;
+          moveTo(0,24);
+        } else {
+          movecounter = 10;
+          moveTo(Player.getXPos(),Player.getYPos());
+        }
         break;
       }
     case "Scatter": 
       {
         movecounter = 10;
-        moveTo(0,24);
+        moveTo(26,0);
         break;
       }
     }   
   }
-  
-  public void moveTo(int x, int y) { 
-    double right; 
-    double left; 
-    double up; 
-    double down; 
-
-    double distance = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
-
-    if (distance <= 8) {
-      x = 0;
-      y = 26;
-    } else {
-      // right dist
-      if (direction != "Left" && !nextToBlock("Right")) {
-        right = Math.sqrt(((x - xPos + 1) * (x - xPos + 1)) + ((y - yPos) * (y - yPos)));
-      } else {
-        right = 2000000;
-      }
-      
-      // left dist
-      if (direction != "Right" && !nextToBlock("Left")) {
-        left = Math.sqrt(((x - xPos - 1) * (y - xPos - 1) ) + ((y - yPos) * (y - yPos)));
-      } else {
-        left = 2000000;
-      }
-      
-      // up dist 
-      if (direction != "Down" && !nextToBlock("Up")) {
-        up = Math.sqrt(((y - xPos) * (x - xPos)) + ((y - yPos - 1) * (y - yPos-1)));
-      } else {
-        up = 2000000;
-      }
-      
-      // down dist
-      if (direction != "Up" && !nextToBlock("Down")) {
-        down = Math.sqrt(((x - xPos) * (x - xPos)) + ((y - yPos + 1) * (y - yPos+1)));
-      } else {
-        down = 2000000;
-      }
-  
-      if (up <= right && up <= left && up <= down && !nextToBlock("Up")) { 
-        yPos--;
-        direction = "Up";
-      } 
-      else if (left <= right && left <= up && left <= down && !nextToBlock("Left")) {
-        xPos --;
-        if (gameMap.getVal(getYPos(), getXPos()) == 5) {
-          setXPos(25);
-        }
-        direction = "Left";
-      } 
-      else if (down <= right && down <= up && down <= left && !nextToBlock("Down")) { 
-        yPos++;
-        direction = "Down";
-      } 
-      else if (right <= left && right <= down && right <= up && !nextToBlock("Right")) { 
-        xPos++;
-        if (gameMap.getVal(getYPos(), getXPos()) == 5) {
-          setXPos(1);
-        }
-        direction = "Right";
-      } 
-    }
-  } 
   
   public void drawSelf() {
     modetimer--;

@@ -73,10 +73,63 @@ public abstract class Ghost implements Entities {
   }
 
 
-  public void move() {
-    //Implemented Inside of each Ghost
-    //This might be implemented here instead later
-  }
+  public void moveTo(int targetX, int targetY) { 
+    double right; 
+    double left; 
+    double up; 
+    double down; 
+
+    // right dist
+    if (direction != "Left" && !nextToBlock("Right")) {
+      right = Math.sqrt(((targetX - xPos + 1) * (targetX - xPos + 1)) + ((targetY - yPos) * (targetY - yPos)));
+    } else {
+      right = 2000000;
+    }
+    
+    // left dist
+    if (direction != "Right" && !nextToBlock("Left")) {
+      left = Math.sqrt(((targetX - xPos - 1) * (targetX - xPos - 1) ) + ((targetY - yPos) * (targetY - yPos)));
+    } else {
+      left = 2000000;
+    }
+    
+    // up dist 
+    if (direction != "Down" && !nextToBlock("Up")) {
+      up = Math.sqrt(((targetX - xPos) * (targetX - xPos)) + ((targetY - yPos - 1) * (targetY - yPos-1)));
+    } else {
+      up = 2000000;
+    }
+    
+    // down dist
+    if (direction != "Up" && !nextToBlock("Down")) {
+      down = Math.sqrt(((targetX - xPos) * (targetX - xPos)) + ((targetY - yPos + 1) * (targetY - yPos+1)));
+    } else {
+      down = 2000000;
+    }
+
+    if (up <= right && up <= left && up <= down && !nextToBlock("Up")) { 
+      yPos--;
+      direction = "Up";
+    } 
+    else if (left <= right && left <= up && left <= down && !nextToBlock("Left")) {
+      xPos --;
+      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+        setXPos(25);
+      }
+      direction = "Left";
+    } 
+    else if (down <= right && down <= up && down <= left && !nextToBlock("Down")) { 
+      yPos++;
+      direction = "Down";
+    } 
+    else if (right <= left && right <= down && right <= up && !nextToBlock("Right")) { 
+      xPos++;
+      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+        setXPos(1);
+      }
+      direction = "Right";
+    } 
+  } 
 
   public void respawn() {
     //to be implemented later
