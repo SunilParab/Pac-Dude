@@ -167,5 +167,15 @@ public class Map {
     return temp;
   }
   
+  
+  public void EmptyFiller(int[][] tester) {
+        for (int i = 0; i < tester.length; i++) {
+            for (int j = 0; j < tester[0].length; j++) {
+                tester[i][j] = 0;
+            }
+        }
+    }
+
+
 
 }
