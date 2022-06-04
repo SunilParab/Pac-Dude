@@ -222,4 +222,10 @@ public class Map {
     return replacable(map, y, x);
   }
 
+  public  void replacer(int[][] map, int y, int x) {
+    if (boundschecking(map, y, x)) {
+      String[] randomized = {"n", "e", "s", "w"};
+      Random rand = new Random();
+
+     
 }
