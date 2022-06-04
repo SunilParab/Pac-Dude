@@ -204,5 +204,10 @@ public class Map {
     } 
     if (map[y + 1][x] == 0) {
       counter += 1;
-    
-}
+    } 
+    if (map[y - 1][x] == 0) {
+      counter += 1;
+    } 
+    if (map[y][x - 1] == 0) { 
+      counter += 1;
+    } 
