@@ -218,4 +218,8 @@ public class Map {
   public  boolean boundschecking(int[][] map, int y, int x) {
     if (map[y][x] == 0) return false;
     if (y == 0 || x == 0) return false; 
-   
+    if (x == map[0].length - 1 || y == map.length - 1) return false; 
+    return replacable(map, y, x);
+  }
+
+}
