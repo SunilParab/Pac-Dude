@@ -240,4 +240,22 @@ public class Map {
     }
   }
 
+  public void generateGhostHouse(int[][] map) { 
+    
+    for(int i =0; i < 10; i ++){
+    map[10][10 + i] = 0; 
+    } 
+    for(int i =0; i < 10; i ++){
+    map[10][10 + i] = 0; 
+    } 
+    for(int i =0; i < 10; i ++){
+    map[10][10 + i] = 0; 
+    } 
+    for(int i =0; i < 10; i ++){
+    map[10][10 + i] = 0; 
+    } 
+   
+  } 
+
+ 
 }
