@@ -21,13 +21,13 @@ public class Blinky extends Ghost {
     case "Chase": 
       {
         movecounter = 10;
-        moveTo();
+        moveTo(Player.getXPos(), Player.getYPos());
         break;
       }
     case "Scatter": 
       {
         movecounter = 10;
-        moveTo();
+        moveTo(24,0);
         break;
       }
     }   
