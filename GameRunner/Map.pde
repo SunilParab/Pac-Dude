@@ -175,6 +175,10 @@ public class Map {
             }
         }
     }
+    
+  public void ghostHouseGenerator(int[][] tester){ 
+    tester[0][0] =1; 
+  } 
 
 
 
