@@ -8,62 +8,65 @@ public class Clyde extends Ghost {
   }
   
   public void move() {
-    if (modetimer <= 0) {
-      modenum = (modenum + 1) % modes.length;
+    if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
+      if (mode.equals("Scatter")) {
+        mode = "Chase";
+      } else {
+        mode = "Scatter";
+      }
       modetimer = 600;
     }
-    switch (modenum) {
-    case 0: 
+    switch (mode) {
+    case "Chase": 
       {
         movecounter = 10;
-        chase();
+        moveTo(Player.getXPos(),Player.getYPos());
         break;
       }
-    case 1: 
+    case "Scatter": 
       {
         movecounter = 10;
-        wander();
+        moveTo(0,24);
         break;
       }
     }   
   }
   
-  public void chase(){ 
+  public void moveTo(int x, int y) { 
     double right; 
     double left; 
     double up; 
     double down; 
-    double distance;
 
-    distance = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
+    double distance = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
 
     if (distance <= 8) {
       wander();
     } else {
       // right dist
       if (direction != "Left" && !nextToBlock("Right")) {
-        right = Math.sqrt( ( (Player.getXPos() - (xPos+1)) * (Player.getXPos() - (xPos+1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
+        right = Math.sqrt(((x - xPos + 1) * (x - xPos + 1)) + ((y - yPos) * (y - yPos)));
       } else {
         right = 2000000;
       }
       
       // left dist
       if (direction != "Right" && !nextToBlock("Left")) {
-        left = Math.sqrt( ( (Player.getXPos() - (xPos-1)) * (Player.getXPos() - (xPos-1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
+        left = Math.sqrt(((x - xPos - 1) * (y - xPos - 1) ) + ((y - yPos) * (y - yPos)));
       } else {
         left = 2000000;
       }
       
       // up dist 
       if (direction != "Down" && !nextToBlock("Up")) {
-        up = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos - 1))  * (Player.getYPos() - (yPos-1)) ) ) ;
+        up = Math.sqrt(((y - xPos) * (x - xPos)) + ((y - yPos - 1) * (y - yPos-1)));
       } else {
         up = 2000000;
       }
       
       // down dist
       if (direction != "Up" && !nextToBlock("Down")) {
-        down = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos+1))  * (Player.getYPos() - (yPos+1)) ) ) ;
+        down = Math.sqrt(((x - xPos) * (x - xPos)) + ((y - yPos + 1) * (y - yPos+1)));
       } else {
         down = 2000000;
       }
