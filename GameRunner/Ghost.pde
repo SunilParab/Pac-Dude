@@ -114,7 +114,7 @@ public abstract class Ghost implements Entities {
     else if (left <= right && left <= up && left <= down && !nextToBlock("Left")) {
       xPos --;
       if (gameMap.getVal(getYPos(), getXPos()) == 5) {
-        setXPos(25);
+        setXPos(26);
       }
       direction = "Left";
     } 
