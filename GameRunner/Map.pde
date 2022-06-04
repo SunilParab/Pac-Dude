@@ -215,4 +215,7 @@ public class Map {
     return (counter < 2 );
   }
 
-}
+  public  boolean boundschecking(int[][] map, int y, int x) {
+    if (map[y][x] == 0) return false;
+    if (y == 0 || x == 0) return false; 
+   
