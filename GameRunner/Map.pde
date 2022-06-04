@@ -235,5 +235,9 @@ public class Map {
         randomized[i] = temp;
       }
 
-  
+      map[y][x] = 0;
+      randomizer(randomized, map, y, x);
+    }
+  }
+
 }
