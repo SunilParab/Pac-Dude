@@ -257,5 +257,9 @@ public class Map {
    
   } 
 
- 
+  public void generate(int[][] map, int Y, int X) {
+    filler(map);
+    replacer(map, Y, X);
+    generateGhostHouse(map); 
+  }
 }
