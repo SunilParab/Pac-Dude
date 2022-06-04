@@ -73,7 +73,7 @@ public abstract class Ghost implements Entities {
   }
 
 
-  public void moveTo(int targetX, int targetY) { 
+  public void moveTo() { 
     double right; 
     double left; 
     double up; 
@@ -81,28 +81,28 @@ public abstract class Ghost implements Entities {
 
     // right dist
     if (direction != "Left" && !nextToBlock("Right")) {
-      right = Math.sqrt(((targetX - xPos + 1) * (targetX - xPos + 1)) + ((targetY - yPos) * (targetY - yPos)));
+      right = Math.sqrt(((Player.getXPos() - xPos + 1) * (Player.getXPos() - xPos + 1)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
     } else {
       right = 2000000;
     }
     
     // left dist
     if (direction != "Right" && !nextToBlock("Left")) {
-      left = Math.sqrt(((targetX - xPos - 1) * (targetX - xPos - 1) ) + ((targetY - yPos) * (targetY - yPos)));
+      left = Math.sqrt(((Player.getXPos() - xPos - 1) * (Player.getXPos() - xPos - 1) ) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
     } else {
       left = 2000000;
     }
     
     // up dist 
     if (direction != "Down" && !nextToBlock("Up")) {
-      up = Math.sqrt(((targetX - xPos) * (targetX - xPos)) + ((targetY - yPos - 1) * (targetY - yPos-1)));
+      up = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos - 1) * (Player.getYPos() - yPos - 1)));
     } else {
       up = 2000000;
     }
     
     // down dist
     if (direction != "Up" && !nextToBlock("Down")) {
-      down = Math.sqrt(((targetX - xPos) * (targetX - xPos)) + ((targetY - yPos + 1) * (targetY - yPos+1)));
+      down = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos + 1) * (Player.getYPos() - yPos + 1)));
     } else {
       down = 2000000;
     }

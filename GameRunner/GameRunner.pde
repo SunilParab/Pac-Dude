@@ -14,8 +14,8 @@ void setup() {
   started = false;
   PrintStart();
   Ghosts = new Ghost[1];
-  //Ghosts[0] = new Blinky(4, 21);
-  Ghosts[0] = new Clyde(25, 20);
+  Ghosts[0] = new Blinky(4, 21);
+  //Ghosts[1] = new Clyde(25, 20);
   //Ghosts[2] = new Inky(12, 16);
   //Ghosts[3] = new Pinky(21, 16);
 }
@@ -78,6 +78,8 @@ void PrintMap() {
       }
     }
   }
+  fill(255, 0, 0);
+  rect(24 * 26, 0 * 26, 26, 26);
 }
 
 void PrintStart() {
@@ -106,8 +108,8 @@ void respawn() {
   Lives--;
   if (Lives != 0) {
   Player = new PacDude(1, 1, Player.getPelletsEaten());
-  //Ghosts[0] = new Blinky(4, 21);
-  Ghosts[0] = new Clyde(25, 20);
+  Ghosts[0] = new Blinky(4, 21);
+  //Ghosts[1] = new Clyde(25, 20);
   //Ghosts[2] = new Inky(12, 16);
   //Ghosts[3] = new Pinky(21, 16);
   }

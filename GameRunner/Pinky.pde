@@ -23,19 +23,19 @@ public class Pinky extends Ghost {
         switch (Player.getDirection()) {
         case "Up": 
           {
-            moveTo(Player.getXPos(),Player.getYPos() - 4);
+            //moveTo(Player.getXPos(),Player.getYPos() - 4);
           }
         case "Down": 
           {
-            moveTo(Player.getXPos(),Player.getYPos() + 4);
+            //moveTo(Player.getXPos(),Player.getYPos() + 4);
           }
         case "Left": 
           {
-            moveTo(Player.getXPos(),Player.getYPos() - 4);
+            //moveTo(Player.getXPos(),Player.getYPos() - 4);
           }
         case "Right": 
           {
-            moveTo(Player.getXPos(),Player.getYPos() + 4);
+            //moveTo(Player.getXPos(),Player.getYPos() + 4);
           }
         }
         break;
@@ -43,7 +43,7 @@ public class Pinky extends Ghost {
     case "Scatter": 
       {
         movecounter = 10;
-        moveTo(24,2);
+        //moveTo(24,2);
         break;
       }
     }   

@@ -8,6 +8,7 @@ public class Blinky extends Ghost {
   }
   
   public void move() {
+    System.out.println(mode);
     if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
       if (mode.equals("Scatter")) {
         mode = "Chase";
@@ -20,13 +21,13 @@ public class Blinky extends Ghost {
     case "Chase": 
       {
         movecounter = 10;
-        moveTo(Player.getXPos(),Player.getYPos());
+        moveTo();
         break;
       }
     case "Scatter": 
       {
         movecounter = 10;
-        moveTo(24,0);
+        moveTo();
         break;
       }
     }   

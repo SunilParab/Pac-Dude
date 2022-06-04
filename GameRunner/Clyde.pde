@@ -8,7 +8,6 @@ public class Clyde extends Ghost {
   }
   
   public void move() {
-    System.out.println(mode);
     if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
       if (mode.equals("Scatter")) {
         mode = "Chase";
@@ -23,17 +22,17 @@ public class Clyde extends Ghost {
         double distance = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
         if (distance <= 8) {
           movecounter = 10;
-          moveTo(0,24);
+          //moveTo(0,24);
         } else {
           movecounter = 10;
-          moveTo(Player.getXPos(),Player.getYPos());
+          //moveTo(Player.getXPos(),Player.getYPos());
         }
         break;
       }
     case "Scatter": 
       {
         movecounter = 10;
-        moveTo(26,0);
+        //moveTo(26,0);
         break;
       }
     }   

@@ -20,13 +20,13 @@ public class Inky extends Ghost {
     case "Chase": 
       {
         movecounter = 10;
-        moveTo(Player.getXPos(),Player.getYPos());
+        //moveTo(Player.getXPos(),Player.getYPos());
         break;
       }
     case "Scatter": 
       {
         movecounter = 10;
-        moveTo(27,26);
+        //moveTo(27,26);
         break;
       }
     }   
