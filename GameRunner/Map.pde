@@ -187,5 +187,14 @@ public class Map {
       if (possibilities[i] == "w") {
         replacer(map, y, x + 1);
       } 
-     
+      if (possibilities[i] == "n") { 
+        replacer(map, y + 1, x);
+      } 
+      if (possibilities[i] == "e") { 
+        replacer(map, y, x - 1);
+      }
+    }
+  }
+
+  
 }
