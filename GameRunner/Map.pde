@@ -167,7 +167,7 @@ public class Map {
     return temp;
   }
   
-  
+   // random map making code starts here 
   public void EmptyFiller(int[][] tester) {
         for (int i = 0; i < tester.length; i++) {
             for (int j = 0; j < tester[0].length; j++) {
