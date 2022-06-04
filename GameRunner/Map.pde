@@ -227,5 +227,13 @@ public class Map {
       String[] randomized = {"n", "e", "s", "w"};
       Random rand = new Random();
 
-     
+      // redundant code that randomizes the order of the array randomized
+      for (int i = 0; i < randomized.length; i++) {
+        int rover = rand.nextInt(randomized.length);
+        String temp = randomized[rover];
+        randomized[rover] = randomized[i];
+        randomized[i] = temp;
+      }
+
+  
 }
