@@ -184,5 +184,8 @@ public class Map {
       if (possibilities[i] == "s") { 
         replacer(map, y - 1, x);
       } 
-    
+      if (possibilities[i] == "w") {
+        replacer(map, y, x + 1);
+      } 
+     
 }
