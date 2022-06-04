@@ -22,17 +22,17 @@ public class Clyde extends Ghost {
         double distance = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
         if (distance <= 8) {
           movecounter = 10;
-          //moveTo(0,24);
+          moveTo(0,26);
         } else {
           movecounter = 10;
-          //moveTo(Player.getXPos(),Player.getYPos());
+          moveTo(Player.getXPos(),Player.getYPos());
         }
         break;
       }
     case "Scatter": 
       {
         movecounter = 10;
-        //moveTo(26,0);
+        moveTo(0,26);
         break;
       }
     }   
