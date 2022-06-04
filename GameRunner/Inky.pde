@@ -26,7 +26,7 @@ public class Inky extends Ghost {
     case "Scatter": 
       {
         movecounter = 10;
-        moveTo(0,24);
+        moveTo(27,26);
         break;
       }
     }   

@@ -41,7 +41,8 @@ public class Clyde extends Ghost {
     double distance = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
 
     if (distance <= 8) {
-      wander();
+      x = 0;
+      y = 26;
     } else {
       // right dist
       if (direction != "Left" && !nextToBlock("Right")) {

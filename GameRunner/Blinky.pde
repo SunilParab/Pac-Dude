@@ -26,7 +26,7 @@ public class Blinky extends Ghost {
     case "Scatter": 
       {
         movecounter = 10;
-        moveTo(0,24);
+        moveTo(24,0);
         break;
       }
     }   
