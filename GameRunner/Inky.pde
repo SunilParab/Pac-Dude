@@ -8,82 +8,55 @@ public class Inky extends Ghost {
   }
   
   public void move() {
-    if (modetimer <= 0) {
-      modenum = (modenum + 1) % modes.length;
+    if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
+      if (mode.equals("Scatter")) {
+        mode = "Chase";
+      } else {
+        mode = "Scatter";
+      }
       modetimer = 600;
     }
-    switch (modenum) {
-    case 0: 
+    switch (mode) {
+    case "Chase": 
       {
+        int targetX = Player.getXPos();
+        int targetY = Player.getYPos();
+        switch (Player.getDirection()) {
+        case "Up": 
+          {
+            targetY -= 2;
+            break;
+          }
+        case "Down": 
+          {
+            targetY +=2 ;
+            break;
+          }
+        case "Left": 
+          {
+            targetX -= 2;
+            break;
+          }
+        case "Right": 
+          {
+            targetX += 2;
+            break;
+          }
+        }
+        targetX -= Ghosts[0].getXPos() - Player.getXPos();
+        targetY -= Ghosts[0].getYPos() - Player.getYPos();
         movecounter = 10;
-        chase();
+        moveTo(targetX,targetY);
         break;
       }
-    case 1: 
+    case "Scatter": 
       {
         movecounter = 10;
-        wander();
+        moveTo(27,26);
         break;
       }
     }   
   }
-  
-  public void chase(){ 
-    double right; 
-    double left; 
-    double up; 
-    double down; 
-
-    // right dist
-    if (direction != "Left" && !nextToBlock("Right")) {
-      right = Math.sqrt( ( (Player.getXPos() - (xPos+1)) * (Player.getXPos() - (xPos+1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
-    } else {
-      right = 2000000;
-    }
-    
-    // left dist
-    if (direction != "Right" && !nextToBlock("Left")) {
-      left = Math.sqrt( ( (Player.getXPos() - (xPos-1)) * (Player.getXPos() - (xPos-1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
-    } else {
-      left = 2000000;
-    }
-    
-    // up dist 
-    if (direction != "Down" && !nextToBlock("Up")) {
-      up = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos - 1))  * (Player.getYPos() - (yPos-1)) ) ) ;
-    } else {
-      up = 2000000;
-    }
-    
-    // down dist
-    if (direction != "Up" && !nextToBlock("Down")) {
-      down = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos+1))  * (Player.getYPos() - (yPos+1)) ) ) ;
-    } else {
-      down = 2000000;
-    }
-
-    if (up <= right && up <= left && up <= down && !nextToBlock("Up")) { 
-      yPos--;
-      direction = "Up";
-    } 
-    else if (left <= right && left <= up && left <= down && !nextToBlock("Left")) {
-      xPos --;
-      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
-        setXPos(25);
-      }
-      direction = "Left";
-    } 
-    else if (down <= right && down <= up && down <= left && !nextToBlock("Down")) { 
-      yPos++;
-      direction = "Down";
-    }     else if (right <= left && right <= down && right <= up && !nextToBlock("Right")) { 
-      xPos++;
-      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
-        setXPos(1);
-      }
-      direction = "Right";
-    } 
-  } 
   
   public void drawSelf() {
     modetimer--;
