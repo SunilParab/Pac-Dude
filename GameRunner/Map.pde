@@ -50,10 +50,10 @@ public class Map {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
 
   };
-  
+
   int[][] preset2 =
-  
-  {
+
+    {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
@@ -88,6 +88,7 @@ public class Map {
 
 
   public Map() {
+    generate(preset2, 15, 15);
     map = preset2;
     pelletCount = generatePellets();
     generatePowerPellet(1, 7); 
@@ -166,20 +167,22 @@ public class Map {
     }
     return temp;
   }
-  
-   // random map making code starts here 
-  public void EmptyFiller(int[][] tester) {
-        for (int i = 0; i < tester.length; i++) {
-            for (int j = 0; j < tester[0].length; j++) {
-                tester[i][j] = 0;
-            }
-        }
+
+  // random map making code starts here 
+
+  // fills the map with walls 
+  public void filler(int[][] tester) {
+    for (int i = 0; i < tester.length; i++) {
+      for (int j = 0; j < tester[0].length; j++) {
+        tester[i][j] = 1;
+      }
     }
+  }
+
+  public  void randomizer(String[] possibilities, int[][] map, int y, int x) {
+    for (int i = 0; i < 4; i++) {
+      if (possibilities[i] == "s") { 
+        replacer(map, y - 1, x);
+      } 
     
-  public void ghostHouseGenerator(int[][] tester){ 
-    tester[0][0] =1; 
-  } 
-
-
-
 }
