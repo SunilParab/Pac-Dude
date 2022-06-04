@@ -87,7 +87,7 @@ Eric Sohel:
 
 Friday - 6/3/2022
 
-Sunil Parab: Started working on the advanced chasing methods for the ghosts.
+Sunil Parab: Started working on the advanced chasing methods for the ghosts and improved PacDude's animations.
 
 Eric Sohel:
 
