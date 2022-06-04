@@ -19,6 +19,7 @@ public class Pinky extends Ghost {
     switch (mode) {
     case "Chase": 
       {
+        movecounter = 10;
         switch (Player.getDirection()) {
         case "Up": 
           {
@@ -41,7 +42,6 @@ public class Pinky extends Ghost {
             break;
           }
         }
-        movecounter = 10;
         break;
       }
     case "Scatter": 

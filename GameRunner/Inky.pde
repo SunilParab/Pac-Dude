@@ -19,8 +19,34 @@ public class Inky extends Ghost {
     switch (mode) {
     case "Chase": 
       {
+        int targetX = Player.getXPos();
+        int targetY = Player.getYPos();
+        switch (Player.getDirection()) {
+        case "Up": 
+          {
+            targetY -= 2;
+            break;
+          }
+        case "Down": 
+          {
+            targetY +=2 ;
+            break;
+          }
+        case "Left": 
+          {
+            targetX -= 2;
+            break;
+          }
+        case "Right": 
+          {
+            targetX += 2;
+            break;
+          }
+        }
+        targetX -= Ghosts[0].getXPos() - Player.getXPos();
+        targetY -= Ghosts[0].getYPos() - Player.getYPos();
         movecounter = 10;
-        moveTo(Player.getXPos(),Player.getYPos());
+        moveTo(targetX,targetY);
         break;
       }
     case "Scatter": 
@@ -30,7 +56,7 @@ public class Inky extends Ghost {
         break;
       }
     }   
-  } 
+  }
   
   public void drawSelf() {
     modetimer--;

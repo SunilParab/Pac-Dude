@@ -78,8 +78,6 @@ void PrintMap() {
       }
     }
   }
-  fill(255, 0, 0);
-  rect(24 * 26, 0 * 26, 26, 26);
 }
 
 void PrintStart() {
