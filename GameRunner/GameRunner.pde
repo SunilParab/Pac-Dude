@@ -36,11 +36,7 @@ void draw() {
           Ghosts[i].respawn();
         }
       }
-      //else the player will die 
-      if (!Player.getSpecial()) {
-        if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
-            respawn();
-        }
+     
       }
     }
   } else {
