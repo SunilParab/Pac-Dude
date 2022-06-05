@@ -10,7 +10,7 @@ public class PacDude implements Entities {
   private String queueddir;
   private int movecounter;
   private float mouthstate = 1.0;
-  private int modetimer = 400; 
+  private int modetimer = 0; 
 
   public PacDude(int x, int y) {
     xPos = x;
@@ -117,17 +117,15 @@ public class PacDude implements Entities {
     return true;
   }
 
-  public void move() {
-    //added a mode timer for power pellet behavior. 
-    modetimer --; 
-    
+  public void move() {    
     if (gameMap.getVal(getYPos(), getXPos()) == 2) {
       gameMap.setVal(getXPos(), getYPos(), 0); 
       eatPellet();
     } 
     if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 3) {
       gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
-      Player.setSpecial(true); 
+      Player.setSpecial(true);
+      modetimer = 510;
       Player.eatPellet();
     } 
     if (!nextToBlock(direction)) {
@@ -165,9 +163,10 @@ public class PacDude implements Entities {
   
   public void drawSelf() {
     // this allows pacdude to have immunity for a certain amount of time after eating a power pellet. 
-    modetimer --; 
+    if(modetimer > 0){
+      modetimer --; 
+    }
     if(modetimer == 0){ 
-      modetimer = 600; 
       setSpecial(false); 
     } 
     

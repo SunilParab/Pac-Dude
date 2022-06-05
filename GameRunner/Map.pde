@@ -88,7 +88,7 @@ public class Map {
 
 
   public Map() {
-
+    //generate(preset2,1,1);
     map = preset;
     generatePowerPellet(1, 7); 
     generatePowerPellet(26, 7); 

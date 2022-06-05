@@ -31,18 +31,14 @@ void draw() {
     for (int i = 0; i < Ghosts.length; i ++) {
       Ghosts[i].drawSelf();
       // if the player has special then the ghost will die 
-      // however this ability only last for a mode timer of 400 
-      
+      // however this ability only last for a mode timer of 510, or 8.5 seconds 
       if (Player.getSpecial()) {
         if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
           Ghosts[i].respawn();
         }
-      }
-      //else the player will die if they do not have the ability which is eventually lost. 
-      
-      if (!Player.getSpecial()) {
+      } else {
         if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
-            respawn();
+          respawn();
         }
       }
     }
