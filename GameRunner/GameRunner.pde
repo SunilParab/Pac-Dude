@@ -1,57 +1,45 @@
+import java.util.*;
 Map gameMap;
 PacDude Player;
-Inky ghost1; 
-Blinky ghost2; 
-Pinky ghost3; 
-Pinky ghost4; 
 int score = 0; 
-int livesCount = 3; 
-
-int movecounter;
+Ghost[] Ghosts; 
+int Lives;
 boolean started;
 
 void setup() {
+  Lives = 3;
   gameMap = new Map();
   Player = new PacDude(1, 1);
   size(729, 729);
   started = false;
   PrintStart();
-  ghost1 = new Inky(12, 16);
-  ghost2 = new Blinky(4, 21);
-  ghost3 = new Pinky(21, 16);
 
-  frameCount = 60;
+  Ghosts = new Ghost[4];
+  Ghosts[0] = new Blinky(4, 21);
+  Ghosts[1] = new Clyde(25, 20);
+  Ghosts[2] = new Inky(12, 16);
+  Ghosts[3] = new Pinky(21, 16);
 }
 
 void draw() {
-  System.out.println(Player.getPelletsEaten() +" " + gameMap.getPellets());
-  if(!started) {
+  if (!started) {
     PrintStart();
-  } else if(Player.getPelletsEaten() != gameMap.getPellets()) {
+  } else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
     PrintMap();
     fill(255, 255, 0);
-    Player.drawPacDude();
+    Player.drawSelf();
+    for (int i = 0; i < Ghosts.length; i ++) {
+      Ghosts[i].drawSelf();
+      if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+        respawn();
+      }
+    }
   } else {
     PrintEnd();
   }
-
-  if (frameCount % 25 == 0) {
-    ghost1.chase();
-    ghost2.chase();
-    ghost3.chase();
-
-  }
-
-  fill(255, 0, 0);
-  circle(ghost1.getXPos()*26+13, ghost1.getYPos()*26+13, 15);
-  fill(0, 255, 0);
-  circle(ghost2.getXPos()*26+13, ghost2.getYPos()*26+13, 15);
-  fill(0, 255, 255);
-  circle(ghost3.getXPos()*26+13, ghost3.getYPos()*26+13, 15);
-  
   score = Player.getPelletsEaten() * 10;
-  
 }
+
 
 void keyPressed() {
   if (!started) {
@@ -60,7 +48,7 @@ void keyPressed() {
     }
   } else {
     if (key == CODED) {
-      if(keyCode == UP) {
+      if (keyCode == UP) {
         Player.setQueuedDirection("Up");
       } else if (keyCode == DOWN) {
         Player.setQueuedDirection("Down");
@@ -85,7 +73,6 @@ void PrintMap() {
       if (gameMap.getVal(i, j) == 2) { 
         fill(255); 
         circle(j * 26 + 13, i * 26 + 13, 5 );
-        
       }
       if (gameMap.getVal(i, j) == 3) { 
         fill(255); 
@@ -93,33 +80,42 @@ void PrintMap() {
       }
     }
   }
-    textSize(20);
-    fill(255);
+  textSize(20);
+  fill(255);
 
-    text("Score: " + score,80,725);
-    text("lives: " + livesCount,400,725);
-
-
+  text("Score: " + score, 80, 725);
+  text("lives: " + Lives, 400, 725);
 }
 
 void PrintStart() {
   background(0);
   textSize(80);
-  fill(0,128,255);
-  text("PacDude",195,200);
+  fill(0, 128, 255);
+  text("PacDude", 195, 200);
   textSize(30);
   fill(255);
-  text("Press Enter to Play",230,500);
-  fill(255,255,0);
+  text("Press Enter to Play", 230, 500);
+  fill(255, 255, 0);
   arc(370, 350, 50, 50, radians(30), radians(330));
 }
 
 void PrintEnd() {
   background(0);
   textSize(80);
-  fill(0,128,255);
-  text("Game Over",150,200);
+  fill(0, 128, 255);
+  text("Game Over", 150, 200);
   textSize(30);
   fill(255);
-  text("Now Get Out",275,500);
+  text("Now Get Out", 275, 500);
+}
+
+void respawn() {
+  Lives--;
+  if (Lives != 0) {
+    Player = new PacDude(1, 1, Player.getPelletsEaten());
+    Ghosts[0] = new Blinky(4, 21);
+    Ghosts[1] = new Clyde(25, 20);
+    Ghosts[2] = new Inky(12, 16);
+    Ghosts[3] = new Pinky(21, 16);
+  }
 }

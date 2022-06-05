@@ -88,13 +88,13 @@ public class Map {
 
 
   public Map() {
-    generate(preset2, 15, 15);
-    map = preset2;
-    pelletCount = generatePellets();
+
+    map = preset;
     generatePowerPellet(1, 7); 
     generatePowerPellet(26, 7); 
     generatePowerPellet(1, 19); 
     generatePowerPellet(26, 19);
+    pelletCount = generatePellets();
   }
 
   public Map(int hi, int wi) {
@@ -241,25 +241,24 @@ public class Map {
   }
 
   public void generateGhostHouse(int[][] map) { 
-    
-    for(int i =0; i < 10; i ++){
-    map[10][10 + i] = 0; 
+
+    for (int i =0; i < 10; i ++) {
+      map[10][10 + i] = 0;
     } 
-    for(int i =0; i < 10; i ++){
-    map[10][10 + i] = 0; 
+    for (int i =0; i < 10; i ++) {
+      map[10][10 + i] = 0;
     } 
-    for(int i =0; i < 10; i ++){
-    map[10][10 + i] = 0; 
+    for (int i =0; i < 10; i ++) {
+      map[10][10 + i] = 0;
     } 
-    for(int i =0; i < 10; i ++){
-    map[10][10 + i] = 0; 
-    } 
-   
+    for (int i =0; i < 10; i ++) {
+      map[10][10 + i] = 0;
+    }
   } 
 
   public void generate(int[][] map, int Y, int X) {
     filler(map);
     replacer(map, Y, X);
-    generateGhostHouse(map); 
+    generateGhostHouse(map);
   }
 }

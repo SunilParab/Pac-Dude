@@ -3,55 +3,74 @@ public class Inky extends Ghost {
   public Inky(int x, int y) {
     xPos = x; 
     yPos = y;
+    trueXPos = x*26+13;
+    trueYPos = y*26+13;
   }
   
-  
-  public void chase(){ 
-     double right; 
-    double left; 
-    double up; 
-    double down; 
-
-    // right dist 
-    right = Math.sqrt( ( (Player.getXPos() - (xPos+1)) * (Player.getXPos() - (xPos+1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
-    // left dist 
-    left = Math.sqrt( ( (Player.getXPos() - (xPos-1)) * (Player.getXPos() - (xPos-1)) ) + ( (Player.getYPos() - yPos)  * (Player.getYPos() - yPos) ) ) ;
-    // up dist 
-    up = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos - 1))  * (Player.getYPos() - (yPos-1)) ) ) ;
-    // down dist
-    down = Math.sqrt( ( (Player.getXPos() - (xPos)) * (Player.getXPos() - (xPos)) ) + ( (Player.getYPos() - (yPos+1))  * (Player.getYPos() - (yPos+1)) ) ) ;
-
-    System.out.println(right); 
-    System.out.println(left); 
-    System.out.println(up); 
-    System.out.println(down);
-
-    if (gameMap.getVal(yPos -1, xPos) == 1) { 
-      up += 100;
-    } 
-    if (gameMap.getVal(yPos, xPos-1) == 1) { 
-      left += 100;
-    } 
-    if (gameMap.getVal(yPos +1, xPos) == 1) { 
-      down += 100;
-    } 
-    if (gameMap.getVal(yPos, xPos+1) == 1) { 
-      right += 100;
-    } 
-
-    if (up < right && up < left && up < down) { 
-      yPos--;
-    } 
-    if (left < right && left < up && left < down) {
-      xPos --;
-    } 
-    if (down < right && down < up && down < left) { 
-      yPos++;
-    } 
-    if (right < left && right < down && right < up) { 
-      xPos++;
+  public void move() {
+    if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
+      if (mode.equals("Scatter")) {
+        mode = "Chase";
+      } else {
+        mode = "Scatter";
+      }
+      modetimer = 600;
     }
-    
-  } 
+    switch (mode) {
+    case "Chase": 
+      {
+        int targetX = Player.getXPos();
+        int targetY = Player.getYPos();
+        switch (Player.getDirection()) {
+        case "Up": 
+          {
+            targetY -= 2;
+            break;
+          }
+        case "Down": 
+          {
+            targetY +=2 ;
+            break;
+          }
+        case "Left": 
+          {
+            targetX -= 2;
+            break;
+          }
+        case "Right": 
+          {
+            targetX += 2;
+            break;
+          }
+        }
+        targetX -= Ghosts[0].getXPos() - Player.getXPos();
+        targetY -= Ghosts[0].getYPos() - Player.getYPos();
+        movecounter = 10;
+        moveTo(targetX,targetY);
+        break;
+      }
+    case "Scatter": 
+      {
+        movecounter = 10;
+        moveTo(27,26);
+        break;
+      }
+    }   
+  }
+  
+  public void drawSelf() {
+    modetimer--;
+    fill(0, 255, 255);
+    if(movecounter > 0){
+      if(getDirection() == "Up") {circle(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}
+      else if(getDirection() == "Down") {circle(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}
+      else if(getDirection() == "Left") {circle(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 15); setTrueXPos(getXPos()*26+13+26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      else if(getDirection() == "Right") {circle(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 15); setTrueXPos(getXPos()*26+13-26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      movecounter--;
+    } else {
+      circle(getXPos()*26+13, getYPos()*26+13, 15);
+      move();
+    }
+  }
   
 }

@@ -17,48 +17,83 @@ Eric Sohel: Created the map class which contains the preset map design along wit
 
 Tuesday - 5/24/2022
 
-Sunil Parab: - Finished all of the functions for PacDude
+Sunil Parab: Finished all of the functions for PacDude
 
 Eric Sohel: Finished working on the map class and recreated every single method needed in the map class as described in our prototype.
 
 
 Wednesday - 5/25/2022
 
-Sunil Parab: - Made PacDude appear on the screen and gave him the ability to move around by tapping the arrow keys. Also improved nextToBlock() for PacDude and Ghost so that it can be called to check any direction.
+Sunil Parab: Made PacDude appear on the screen and gave him the ability to move around by tapping the arrow keys. Also improved nextToBlock() for PacDude and Ghost so that it can be called to check any direction.
 
 Eric Sohel: Worked on animating the two dimensional array map using processing. I animated the walls, ghost blocks, and the teleportation block as they are represented in the real game.
 
 
 Thursday - 5/26/2022
 
-Sunil Parab: - PacDude can now move around the map with proper collisions and has a sliding animation.
+Sunil Parab: PacDude can now move around the map with proper collisions and has a sliding animation.
 
 Eric Sohel: Fixed errors with the map including scaling issues and x position and y position issues with pac-dude. Animated the pellets in the map, and made it so that Pac-Dude could eat these pellets. Also created two new methods which keep track of how many pellets Pac-Dude is eating and worked on creating an end screen for when the player beats the game.
 
 
 Friday - 5/27/2022
 
-Sunil Parab: - Wasn't able to get work done due to my Sister's Graduation
+Sunil Parab: Wasn't able to get work done due to my Sister's Graduation
 
-Eric Sohel: - write here
+Eric Sohel: Worked on getting the pellets collected and updating pac-dude's pellet count.
 
 
 Saturday - 5/28/2022
 
-Sunil Parab: - Was still at my Sister's Graduation since it was a two-day event.
+Sunil Parab: Was still at my Sister's Graduation since it was a two-day event.
 
-Eric Sohel: - write here
+Eric Sohel: Started working on the ghost's methods. Worked on wander and chase however I could not get them to work properly.
 
 
 Sunday - 5/29/2022
 
-Sunil Parab: - PacDude will now continously move after a button is pressed, and you are able to queue his next movement by entering an input before he reaches a wall where he can  go in the inputed direction.
+Sunil Parab: PacDude will now continously move after a button is pressed, and you are able to queue his next movement by entering an input before he reaches a wall where he can  go in the inputed direction.
 
-Eric Sohel: - write here
+Eric Sohel: Continued working on wander and chase and made them work a lot better. Then I updated the ghosts speeds and gave them the in-game colors they are supposed to have.
 
 
 Monday - 5/30/2022
 
-Sunil Parab: - Added Game Start and End screens, which appear upon starting the project and collecting all the pellets respectively. Also animated PacDude so that his mouth will open and close while moving.
+Sunil Parab: Added Game Start and End screens, which appear upon starting the project and collecting all the pellets respectively. Also animated PacDude so that his mouth will open and close while moving.
 
-Eric Sohel: - write here
+Eric Sohel: Worked on the score count and live counts for the pac dude game. I worked on accurately calculating the score based on pellets and killing ghost which create multipliers.
+
+
+Tuesday - 5/31/2022
+
+Sunil Parab: Made the algorithm that the ghosts use to chase PacDude and wander around. Also made a system for them to switch between the two modes on a timer.
+
+Eric Sohel: Worked on the in-game mechanics of the power pellets which included giving pac-dude his special ability to eat ghosts and tried creating a timer which keeps this ability for a certain amount of time.
+
+
+Wednesday - 6/1/2022
+
+Sunil Parab: The ghosts can now kill PacDude based on when their visible model touches PacDude's visible model. Also added a 3 life system before the player loses.
+
+Eric Sohel: could not get much work done because I am sick. 
+
+
+Thursday - 6/2/2022
+
+Sunil Parab: Fixed erros cause by respawn, such as the pellet count being reset and added a 3 life system.
+
+Eric Sohel:
+
+
+Friday - 6/3/2022
+
+Sunil Parab: Started working on the advanced chasing methods for the ghosts.
+
+Eric Sohel:
+
+
+Saturday - 6/4/2022
+
+Sunil Parab: Finished the behavior for the ghosts, other than them respawning, and rewrote how their move method works.
+
+Eric Sohel:
