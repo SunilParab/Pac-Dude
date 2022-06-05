@@ -1,18 +1,19 @@
 import java.util.*;
 Map gameMap;
 PacDude Player;
+int score = 0; 
 Ghost[] Ghosts; 
 int Lives;
-
 boolean started;
 
 void setup() {
   Lives = 3;
   gameMap = new Map();
   Player = new PacDude(1, 1);
-  size(729, 703);
+  size(729, 729);
   started = false;
   PrintStart();
+
   Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(4, 21);
   Ghosts[1] = new Clyde(25, 20);
@@ -29,13 +30,14 @@ void draw() {
     Player.drawSelf();
     for (int i = 0; i < Ghosts.length; i ++) {
       Ghosts[i].drawSelf();
-      if(abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+      if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
         respawn();
       }
     }
   } else {
     PrintEnd();
   }
+  score = Player.getPelletsEaten() * 10;
 }
 
 
@@ -78,6 +80,11 @@ void PrintMap() {
       }
     }
   }
+  textSize(20);
+  fill(255);
+
+  text("Score: " + score, 80, 725);
+  text("lives: " + Lives, 400, 725);
 }
 
 void PrintStart() {
@@ -105,10 +112,10 @@ void PrintEnd() {
 void respawn() {
   Lives--;
   if (Lives != 0) {
-  Player = new PacDude(1, 1, Player.getPelletsEaten());
-  Ghosts[0] = new Blinky(4, 21);
-  Ghosts[1] = new Clyde(25, 20);
-  Ghosts[2] = new Inky(12, 16);
-  Ghosts[3] = new Pinky(21, 16);
+    Player = new PacDude(1, 1, Player.getPelletsEaten());
+    Ghosts[0] = new Blinky(4, 21);
+    Ghosts[1] = new Clyde(25, 20);
+    Ghosts[2] = new Inky(12, 16);
+    Ghosts[3] = new Pinky(21, 16);
   }
 }
