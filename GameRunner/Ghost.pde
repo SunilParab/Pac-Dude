@@ -4,10 +4,11 @@ public abstract class Ghost implements Entities {
   public float trueXPos;
   public float trueYPos;
   public float radius = 7.5;
-  public String direction;
+  public String direction = "Up";
   public int modetimer = 600;
   public int movecounter;
   public String mode = "Scatter";
+  public int timeToSpawn;
   final public String[] modes = new String[] {"Chase","Wander"};
 
   public int getXPos() {
@@ -130,6 +131,16 @@ public abstract class Ghost implements Entities {
       direction = "Right";
     } 
   } 
+
+  public void houseMove() {
+    if ((direction.equals("Up") && yPos == 12) || ((direction.equals("Down") && yPos == 13))) {
+      yPos++;
+      direction = "Down";
+    } else {
+      yPos--;
+      direction = "Up";
+    }
+  }
 
   public void respawn() {
     // to be implemeted later

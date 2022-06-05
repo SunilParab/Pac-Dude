@@ -16,7 +16,7 @@ void setup() {
 
   Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(4, 21);
-  Ghosts[1] = new Clyde(25, 20);
+  Ghosts[1] = new Clyde(15, 13);
   Ghosts[2] = new Inky(12, 16);
   Ghosts[3] = new Pinky(21, 16);
 }
@@ -92,7 +92,7 @@ void PrintMap() {
   fill(255);
 
   text("Score: " + score, 80, 725);
-  text("lives: " + Lives, 400, 725);
+  text("Lives: " + Lives, 400, 725);
 }
 
 void PrintStart() {
@@ -122,7 +122,7 @@ void respawn() {
   if (Lives != 0) {
     Player = new PacDude(1, 1, Player.getPelletsEaten());
     Ghosts[0] = new Blinky(4, 21);
-    Ghosts[1] = new Clyde(25, 20);
+    Ghosts[1] = new Clyde(15, 13);
     Ghosts[2] = new Inky(12, 16);
     Ghosts[3] = new Pinky(21, 16);
   }

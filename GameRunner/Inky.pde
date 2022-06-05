@@ -5,6 +5,7 @@ public class Inky extends Ghost {
     yPos = y;
     trueXPos = x*26+13;
     trueYPos = y*26+13;
+    timeToSpawn = 960;
   }
   
   public void move() {
@@ -59,6 +60,9 @@ public class Inky extends Ghost {
   }
   
   public void drawSelf() {
+    if(timeToSpawn > 0){
+      timeToSpawn--; 
+    }
     modetimer--;
     fill(0, 255, 255);
     if(movecounter > 0){

@@ -5,6 +5,7 @@ public class Pinky extends Ghost {
     yPos = y;
     trueXPos = x*26+13;
     trueYPos = y*26+13;
+    timeToSpawn = 480;
   }
 
   public void move() {
@@ -54,6 +55,9 @@ public class Pinky extends Ghost {
   }
   
   public void drawSelf() {
+    if(timeToSpawn > 0){
+      timeToSpawn--; 
+    }
     modetimer--;
     fill(255, 169, 180);
     if(movecounter > 0){

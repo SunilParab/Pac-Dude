@@ -5,10 +5,10 @@ public class Blinky extends Ghost {
     yPos = y;
     trueXPos = x*26+13;
     trueYPos = y*26+13;
+    timeToSpawn = 0;
   }
 
   public void move() {
-    System.out.println(mode);
     if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
       if (mode.equals("Scatter")) {
         mode = "Chase";
@@ -35,6 +35,9 @@ public class Blinky extends Ghost {
 
 
   public void drawSelf() {
+    if(timeToSpawn > 0){
+      timeToSpawn--; 
+    }
     modetimer--;
     fill(255, 0, 0);
     if (movecounter > 0) {
