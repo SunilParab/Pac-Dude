@@ -1,3 +1,8 @@
+import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
+
+
 public class Map {
 
   private int height;
@@ -46,8 +51,44 @@ public class Map {
 
   };
 
+  int[][] preset2 =
+
+    {
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 4, 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
+
+  };
+
 
   public Map() {
+
     map = preset;
     generatePowerPellet(1, 7); 
     generatePowerPellet(26, 7); 
@@ -125,5 +166,99 @@ public class Map {
       temp += "\n";
     }
     return temp;
+  }
+
+  // random map making code starts here 
+
+  // fills the map with walls 
+  public void filler(int[][] tester) {
+    for (int i = 0; i < tester.length; i++) {
+      for (int j = 0; j < tester[0].length; j++) {
+        tester[i][j] = 1;
+      }
+    }
+  }
+
+  public  void randomizer(String[] possibilities, int[][] map, int y, int x) {
+    for (int i = 0; i < 4; i++) {
+      if (possibilities[i] == "s") { 
+        replacer(map, y - 1, x);
+      } 
+      if (possibilities[i] == "w") {
+        replacer(map, y, x + 1);
+      } 
+      if (possibilities[i] == "n") { 
+        replacer(map, y + 1, x);
+      } 
+      if (possibilities[i] == "e") { 
+        replacer(map, y, x - 1);
+      }
+    }
+  }
+
+  public  boolean replacable(int[][] map, int y, int x) {
+    int counter = 0;
+
+    if (map[y][x + 1] == 0) { 
+      counter += 1;
+    } 
+    if (map[y + 1][x] == 0) {
+      counter += 1;
+    } 
+    if (map[y - 1][x] == 0) {
+      counter += 1;
+    } 
+    if (map[y][x - 1] == 0) { 
+      counter += 1;
+    } 
+
+    return (counter < 2 );
+  }
+
+  public  boolean boundschecking(int[][] map, int y, int x) {
+    if (map[y][x] == 0) return false;
+    if (y == 0 || x == 0) return false; 
+    if (x == map[0].length - 1 || y == map.length - 1) return false; 
+    return replacable(map, y, x);
+  }
+
+  public  void replacer(int[][] map, int y, int x) {
+    if (boundschecking(map, y, x)) {
+      String[] randomized = {"n", "e", "s", "w"};
+      Random rand = new Random();
+
+      // redundant code that randomizes the order of the array randomized
+      for (int i = 0; i < randomized.length; i++) {
+        int rover = rand.nextInt(randomized.length);
+        String temp = randomized[rover];
+        randomized[rover] = randomized[i];
+        randomized[i] = temp;
+      }
+
+      map[y][x] = 0;
+      randomizer(randomized, map, y, x);
+    }
+  }
+
+  public void generateGhostHouse(int[][] map) { 
+
+    for (int i =0; i < 10; i ++) {
+      map[10][10 + i] = 0;
+    } 
+    for (int i =0; i < 10; i ++) {
+      map[10][10 + i] = 0;
+    } 
+    for (int i =0; i < 10; i ++) {
+      map[10][10 + i] = 0;
+    } 
+    for (int i =0; i < 10; i ++) {
+      map[10][10 + i] = 0;
+    }
+  } 
+
+  public void generate(int[][] map, int Y, int X) {
+    filler(map);
+    replacer(map, Y, X);
+    generateGhostHouse(map);
   }
 }
