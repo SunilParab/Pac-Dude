@@ -170,6 +170,7 @@ public class PacDude implements Entities {
       modetimer = 600; 
       setSpecial(false); 
     } 
+    
     float anglestart = 0;
     float angleend = 0;
     if(movecounter == 0 && !nextToBlock(getQueuedDirection())) {
