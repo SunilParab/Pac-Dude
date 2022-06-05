@@ -30,8 +30,17 @@ void draw() {
     Player.drawSelf();
     for (int i = 0; i < Ghosts.length; i ++) {
       Ghosts[i].drawSelf();
-      if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
-        respawn();
+      // if the player has special then the ghost will die 
+      if (Player.getSpecial()) {
+        if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+          Ghosts[i].respawn();
+        }
+      }
+      //else the player will die 
+      if (!Player.getSpecial()) {
+        if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+            respawn();
+        }
       }
     }
   } else {
