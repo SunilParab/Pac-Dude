@@ -8,6 +8,7 @@ public abstract class Ghost implements Entities {
   public int modetimer = 600;
   public int movecounter;
   public String mode = "Scatter";
+  public boolean spawned = false;
   public int timeToSpawn;
   final public String[] modes = new String[] {"Chase","Wander"};
 
@@ -140,6 +141,64 @@ public abstract class Ghost implements Entities {
       yPos--;
       direction = "Up";
     }
+  }
+
+  public void houseLeave(int targetX, int targetY) {
+    double right; 
+    double left; 
+    double up; 
+    double down; 
+
+    // right dist
+    if (direction != "Left" && !(gameMap.map[yPos][xPos+1] == 1)) {
+      right = Math.sqrt(((targetX - (xPos + 1)) * (targetX - (xPos + 1))) + ((targetY - yPos) * (targetY - yPos)));
+    } else {
+      right = 2000000;
+    }
+    
+    // left dist
+    if (direction != "Right" && !(gameMap.map[yPos][xPos-1] == 1)) {
+      left = Math.sqrt(((targetX - (xPos - 1)) * (targetX - (xPos - 1)) ) + ((targetY - yPos) * (targetY - yPos)));
+    } else {
+      left = 2000000;
+    }
+    
+    // up dist 
+    if (direction != "Down" && !(gameMap.map[yPos-1][xPos] == 1)) {
+      up = Math.sqrt(((targetX - xPos) * (targetX - xPos)) + ((targetY - (yPos - 1)) * (targetY - (yPos - 1))));
+    } else {
+      up = 2000000;
+    }
+    
+    // down dist
+    if (direction != "Up" && !(gameMap.map[yPos+1][xPos] == 1)) {
+      down = Math.sqrt(((targetX - xPos) * (targetX - xPos)) + ((targetY - (yPos + 1)) * (targetY - (yPos + 1))));
+    } else {
+      down = 2000000;
+    }
+
+    if (up <= right && up <= left && up <= down && !(gameMap.map[yPos-1][xPos] == 1)) { 
+      yPos--;
+      direction = "Up";
+    } 
+    else if (left <= right && left <= up && left <= down && !(gameMap.map[yPos][xPos-1] == 1)) {
+      xPos --;
+      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+        setXPos(26);
+      }
+      direction = "Left";
+    } 
+    else if (down <= right && down <= up && down <= left && !(gameMap.map[yPos+1][xPos] == 1)) { 
+      yPos++;
+      direction = "Down";
+    } 
+    else if (right <= left && right <= down && right <= up && !(gameMap.map[yPos][xPos+1] == 1)) { 
+      xPos++;
+      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+        setXPos(1);
+      }
+      direction = "Right";
+    } 
   }
 
   public void respawn() {

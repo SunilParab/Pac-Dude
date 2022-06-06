@@ -12,6 +12,12 @@ public class Clyde extends Ghost {
     if(timeToSpawn > 0) {
       movecounter = 10;
       houseMove();
+    } else if (spawned == false) {
+      movecounter = 10;
+      houseLeave(14,11);
+      if (yPos <= 11) {
+        spawned = true;
+      }
     } else {
       if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
         if (mode.equals("Scatter")) {
@@ -45,6 +51,7 @@ public class Clyde extends Ghost {
   }
   
   public void drawSelf() {
+    System.out.println(xPos + " " + yPos);
     if(timeToSpawn > 0){
       timeToSpawn--; 
     }

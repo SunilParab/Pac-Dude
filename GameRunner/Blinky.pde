@@ -6,6 +6,7 @@ public class Blinky extends Ghost {
     trueXPos = x*26+13;
     trueYPos = y*26+13;
     timeToSpawn = 0;
+    spawned = true;
   }
 
   public void move() {
