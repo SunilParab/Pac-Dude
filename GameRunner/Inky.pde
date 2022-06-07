@@ -59,6 +59,8 @@ public class Inky extends Ghost {
   }
   
   public void drawSelf() {
+    PImage img = loadImage("Pinky5.png");
+    
     modetimer--;
     fill(0, 255, 255);
     if(movecounter > 0){
@@ -68,7 +70,7 @@ public class Inky extends Ghost {
       else if(getDirection() == "Right") {circle(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 15); setTrueXPos(getXPos()*26+13-26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
       movecounter--;
     } else {
-      circle(getXPos()*26+13, getYPos()*26+13, 15);
+      image(img,getXPos()*26+13, getYPos()*26+13);
       move();
     }
   }
