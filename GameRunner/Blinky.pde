@@ -10,18 +10,30 @@ public class Blinky extends Ghost {
   }
 
   public void move() {
-    switch (mode) {
-    case "Chase": 
-      {
-        movecounter = 10;
-        moveTo(Player.getXPos(), Player.getYPos());
-        break;
+    if(!alive) {
+      movecounter = 5;
+      if (xPos < 14) {
+        houseLeave(13,11);
+      } else {
+        houseLeave(14,11);
       }
-    case "Scatter": 
-      {
-        movecounter = 10;
-        moveTo(24, 0);
-        break;
+      if (gameMap.getVal(xPos,yPos) == 4) {
+        alive = true;
+      }
+    } else {
+      switch (mode) {
+      case "Chase": 
+        {
+          movecounter = 10;
+          moveTo(Player.getXPos(), Player.getYPos());
+          break;
+        }
+      case "Scatter": 
+        {
+          movecounter = 10;
+          moveTo(24, 0);
+          break;
+        }
       }
     }
   }

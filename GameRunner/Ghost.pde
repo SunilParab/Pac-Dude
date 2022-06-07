@@ -10,6 +10,7 @@ public abstract class Ghost implements Entities {
   public boolean spawned = false;
   public int timeToSpawn;
   final public String[] modes = new String[] {"Chase","Wander"};
+  public boolean alive = true;
 
   public int getXPos() {
     return xPos;
@@ -201,7 +202,8 @@ public abstract class Ghost implements Entities {
   }
 
   public void respawn() {
-    // to be implemeted later
+    alive = false;
+    System.out.println("Dieded");
   }
 
   public void wander() {
