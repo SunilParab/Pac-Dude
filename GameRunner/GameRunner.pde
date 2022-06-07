@@ -50,8 +50,6 @@ void draw() {
     PrintEnd();
   }
   
-    PImage img = loadImage("pinky.png"); 
-      image(img, 10, 10);
   score = Player.getPelletsEaten() * 10;
 }
 

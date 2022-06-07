@@ -1,5 +1,7 @@
 public class Pinky extends Ghost {
-
+  
+  PImage img = loadImage("Pinky5.png");
+  
   public Pinky(int x, int y) {
     xPos = x; 
     yPos = y;
@@ -57,10 +59,10 @@ public class Pinky extends Ghost {
     modetimer--;
     fill(255, 169, 180);
     if(movecounter > 0){
-      if(getDirection() == "Up") {circle(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}
-      else if(getDirection() == "Down") {circle(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}
-      else if(getDirection() == "Left") {circle(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 15); setTrueXPos(getXPos()*26+13+26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
-      else if(getDirection() == "Right") {circle(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 15); setTrueXPos(getXPos()*26+13-26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      if(getDirection() == "Up") {image(img,getXPos(), getYPos()); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}
+      else if(getDirection() == "Down") {image(img,getXPos(), getYPos()); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}
+      else if(getDirection() == "Left") {image(img,getXPos(), getYPos()); setTrueXPos(getXPos()*26+13+26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      else if(getDirection() == "Right") {image(img,getXPos(), getYPos()); setTrueXPos(getXPos()*26+13-26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
       movecounter--;
     } else {
       circle(getXPos()*26+13, getYPos()*26+13, 15);
