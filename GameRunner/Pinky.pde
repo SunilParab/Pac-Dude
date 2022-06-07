@@ -60,9 +60,9 @@ public class Pinky extends Ghost {
 
     if(movecounter > 0){
       if(getDirection() == "Up") {image(img,getXPos()*26+13, getYPos()*26+13+26*movecounter/10); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}
-      else if(getDirection() == "Down") {image(img,getXPos(), getYPos()); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}
-      else if(getDirection() == "Left") {image(img,getXPos(), getYPos()); setTrueXPos(getXPos()*26+13+26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
-      else if(getDirection() == "Right") {image(img,getXPos(), getYPos()); setTrueXPos(getXPos()*26+13-26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      else if(getDirection() == "Down") {image(img,getXPos()*26+13, getYPos()*26+13+26*movecounter/10); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}
+      else if(getDirection() == "Left") {image(img,getXPos()*26+13, getYPos()*26+13+26*movecounter/10); setTrueXPos(getXPos()*26+13+26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      else if(getDirection() == "Right"){image(img,getXPos()*26+13, getYPos()*26+13+26*movecounter/10); setTrueXPos(getXPos()*26+13-26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
       movecounter--;
     } else {
         image(img,getXPos(), getYPos()); 
