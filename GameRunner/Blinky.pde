@@ -36,6 +36,8 @@ public class Blinky extends Ghost {
 
   public void drawSelf() {
     modetimer--;
+          image(img, 10, 10);
+
     fill(255, 0, 0);
     if (movecounter > 0) {
       if (getDirection() == "Up") {
