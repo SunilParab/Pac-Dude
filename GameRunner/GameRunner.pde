@@ -19,7 +19,6 @@ void setup() {
   Ghosts[1] = new Clyde(25, 20);
   Ghosts[2] = new Inky(12, 16);
   Ghosts[3] = new Pinky(21, 16);
-  PImage img = loadImage("pinky.png"); 
 }
 
 void draw() {
@@ -50,6 +49,11 @@ void draw() {
   } else {
     PrintEnd();
   }
+  
+    PImage img = loadImage("pinky.png"); 
+        PImage img = loadImage("pinky.png"); 
+
+      image(img, 10, 10);
   score = Player.getPelletsEaten() * 10;
 }
 
