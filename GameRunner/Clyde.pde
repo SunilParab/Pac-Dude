@@ -19,14 +19,6 @@ public class Clyde extends Ghost {
         spawned = true;
       }
     } else {
-      if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
-        if (mode.equals("Scatter")) {
-          mode = "Chase";
-        } else {
-          mode = "Scatter";
-        }
-        modetimer = 600;
-      }
       switch (mode) {
       case "Chase": 
         { 
@@ -51,11 +43,9 @@ public class Clyde extends Ghost {
   }
   
   public void drawSelf() {
-    System.out.println(xPos + " " + yPos);
     if(timeToSpawn > 0){
       timeToSpawn--; 
     }
-    modetimer--;
     fill(255, 150, 0);
     if(movecounter > 0){
       if(getDirection() == "Up") {circle(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}

@@ -5,6 +5,8 @@ int score = 0;
 Ghost[] Ghosts; 
 int Lives;
 boolean started;
+int modetimer;
+String mode;
 
 void setup() {
   Lives = 3;
@@ -19,12 +21,23 @@ void setup() {
   Ghosts[1] = new Clyde(15, 13);
   Ghosts[2] = new Inky(12, 16);
   Ghosts[3] = new Pinky(21, 16);
+  modetimer = 600;
+  mode = "Scatter";
 }
 
 void draw() {
   if (!started) {
     PrintStart();
-  } else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
+  }   else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
+    modetimer--;
+    if (modetimer <= 0) {
+      if (mode.equals("Scatter")) {
+        mode = "Chase";
+      } else {
+        mode = "Scatter";
+      }
+      modetimer = 600;
+    }
     PrintMap();
     fill(255, 255, 0);
     Player.drawSelf();
@@ -125,5 +138,7 @@ void respawn() {
     Ghosts[1] = new Clyde(15, 13);
     Ghosts[2] = new Inky(12, 16);
     Ghosts[3] = new Pinky(21, 16);
+    modetimer = 600;
+    mode = "Scatter";
   }
 }

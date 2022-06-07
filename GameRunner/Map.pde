@@ -129,6 +129,8 @@ public class Map {
         if (map[i][j] == 0) { 
           map[i][j] = 2;
           counter ++;
+        } else if (map[i][j] == 3) { 
+          counter ++;
         }
       }
     }

@@ -10,14 +10,6 @@ public class Blinky extends Ghost {
   }
 
   public void move() {
-    if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
-      if (mode.equals("Scatter")) {
-        mode = "Chase";
-      } else {
-        mode = "Scatter";
-      }
-      modetimer = 600;
-    }
     switch (mode) {
     case "Chase": 
       {
@@ -39,7 +31,6 @@ public class Blinky extends Ghost {
     if(timeToSpawn > 0){
       timeToSpawn--; 
     }
-    modetimer--;
     fill(255, 0, 0);
     if (movecounter > 0) {
       if (getDirection() == "Up") {

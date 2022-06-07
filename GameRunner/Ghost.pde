@@ -7,7 +7,6 @@ public abstract class Ghost implements Entities {
   public String direction = "Up";
   public int modetimer = 600;
   public int movecounter;
-  public String mode = "Scatter";
   public boolean spawned = false;
   public int timeToSpawn;
   final public String[] modes = new String[] {"Chase","Wander"};

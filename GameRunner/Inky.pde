@@ -9,14 +9,6 @@ public class Inky extends Ghost {
   }
   
   public void move() {
-    if (modetimer <= 0 && (mode.equals("Scatter") || mode.equals("Chase"))) {
-      if (mode.equals("Scatter")) {
-        mode = "Chase";
-      } else {
-        mode = "Scatter";
-      }
-      modetimer = 600;
-    }
     switch (mode) {
     case "Chase": 
       {
