@@ -129,7 +129,7 @@ public class PacDude implements Entities {
       Player.eatPellet();
     } 
     if (!nextToBlock(direction)) {
-      movecounter = 10;
+      movecounter = 7;
       switch (direction) {
       case "Up": 
         {

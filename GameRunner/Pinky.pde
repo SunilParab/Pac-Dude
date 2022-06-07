@@ -9,7 +9,17 @@ public class Pinky extends Ghost {
   }
 
   public void move() {
-    if(timeToSpawn > 0) {
+    if(!alive) {
+      movecounter = 5;
+      if (xPos < 14) {
+        houseLeave(13,11);
+      } else {
+        houseLeave(14,11);
+      }
+      if (gameMap.getVal(xPos,yPos) == 4) {
+        alive = true;
+      }
+    } else if(timeToSpawn > 0) {
       movecounter = 10;
       houseMove();
     } else if (spawned == false) {

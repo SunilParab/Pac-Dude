@@ -11,7 +11,7 @@ public class Blinky extends Ghost {
 
   public void move() {
     if(!alive) {
-      movecounter = 5;
+      movecounter = 2;
       if (xPos < 14) {
         houseLeave(13,11);
       } else {
