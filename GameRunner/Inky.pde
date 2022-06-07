@@ -66,8 +66,11 @@ public class Inky extends Ghost {
     if(timeToSpawn > 0){
       timeToSpawn--; 
     }
-    modetimer--;
-    fill(0, 255, 255);
+    if (Player.getSpecial()) {
+      fill(0, 0, 255);
+    } else {
+      fill(0, 255, 255);
+    }
     if(movecounter > 0){
       if(getDirection() == "Up") {circle(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}
       else if(getDirection() == "Down") {circle(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}

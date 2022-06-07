@@ -17,7 +17,7 @@ void setup() {
   PrintStart();
 
   Ghosts = new Ghost[4];
-  Ghosts[0] = new Blinky(4, 21);
+  Ghosts[0] = new Blinky(13, 11);
   Ghosts[1] = new Clyde(15, 13);
   Ghosts[2] = new Inky(13, 13);
   Ghosts[3] = new Pinky(11, 13);
@@ -134,7 +134,7 @@ void respawn() {
   Lives--;
   if (Lives != 0) {
     Player = new PacDude(1, 1, Player.getPelletsEaten());
-    Ghosts[0] = new Blinky(4, 21);
+    Ghosts[0] = new Blinky(13, 11);
     Ghosts[1] = new Clyde(15, 13);
     Ghosts[2] = new Inky(13, 13);
     Ghosts[3] = new Pinky(11, 13);
