@@ -20,7 +20,11 @@ public class Blinky extends Ghost {
       if (gameMap.getVal(xPos,yPos) == 4) {
         alive = true;
       }
+    } else if (Player.getSpecial()) {
+      movecounter = 15;
+      wander();
     } else {
+      System.out.println("hi");
       switch (mode) {
       case "Chase": 
         {
