@@ -19,8 +19,8 @@ void setup() {
   Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(4, 21);
   Ghosts[1] = new Clyde(15, 13);
-  Ghosts[2] = new Inky(12, 16);
-  Ghosts[3] = new Pinky(21, 16);
+  Ghosts[2] = new Inky(13, 13);
+  Ghosts[3] = new Pinky(11, 13);
   modetimer = 600;
   mode = "Scatter";
 }
@@ -28,7 +28,7 @@ void setup() {
 void draw() {
   if (!started) {
     PrintStart();
-  }   else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
+  } else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
     modetimer--;
     if (modetimer <= 0) {
       if (mode.equals("Scatter")) {
@@ -136,8 +136,8 @@ void respawn() {
     Player = new PacDude(1, 1, Player.getPelletsEaten());
     Ghosts[0] = new Blinky(4, 21);
     Ghosts[1] = new Clyde(15, 13);
-    Ghosts[2] = new Inky(12, 16);
-    Ghosts[3] = new Pinky(21, 16);
+    Ghosts[2] = new Inky(13, 13);
+    Ghosts[3] = new Pinky(11, 13);
     modetimer = 600;
     mode = "Scatter";
   }

@@ -9,41 +9,52 @@ public class Pinky extends Ghost {
   }
 
   public void move() {
-    switch (mode) {
-    case "Chase": 
-      {
-        movecounter = 10;
-        switch (Player.getDirection()) {
-        case "Up": 
-          {
-            moveTo(Player.getXPos(),Player.getYPos() - 4);
-            break;
+    if(timeToSpawn > 0) {
+      movecounter = 10;
+      houseMove();
+    } else if (spawned == false) {
+      movecounter = 10;
+      houseLeave(13,11);
+      if (yPos <= 11) {
+        spawned = true;
+      }
+    } else {
+      switch (mode) {
+      case "Chase": 
+        {
+          movecounter = 10;
+          switch (Player.getDirection()) {
+          case "Up": 
+            {
+              moveTo(Player.getXPos(),Player.getYPos() - 4);
+              break;
+            }
+          case "Down": 
+            {
+              moveTo(Player.getXPos(),Player.getYPos() + 4);
+              break;
+            }
+          case "Left": 
+            {
+              moveTo(Player.getXPos(),Player.getYPos() - 4);
+              break;
+            }
+          case "Right": 
+            {
+              moveTo(Player.getXPos(),Player.getYPos() + 4);
+              break;
+            }
           }
-        case "Down": 
-          {
-            moveTo(Player.getXPos(),Player.getYPos() + 4);
-            break;
-          }
-        case "Left": 
-          {
-            moveTo(Player.getXPos(),Player.getYPos() - 4);
-            break;
-          }
-        case "Right": 
-          {
-            moveTo(Player.getXPos(),Player.getYPos() + 4);
-            break;
-          }
+          break;
         }
-        break;
-      }
-    case "Scatter": 
-      {
-        movecounter = 10;
-        moveTo(0,2);
-        break;
-      }
-    }   
+      case "Scatter": 
+        {
+          movecounter = 10;
+          moveTo(0,2);
+          break;
+        }
+      }   
+    }
   }
   
   public void drawSelf() {

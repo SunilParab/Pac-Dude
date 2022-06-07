@@ -9,46 +9,57 @@ public class Inky extends Ghost {
   }
   
   public void move() {
-    switch (mode) {
-    case "Chase": 
-      {
-        int targetX = Player.getXPos();
-        int targetY = Player.getYPos();
-        switch (Player.getDirection()) {
-        case "Up": 
-          {
-            targetY -= 2;
-            break;
+    if(timeToSpawn > 0) {
+      movecounter = 10;
+      houseMove();
+    } else if (spawned == false) {
+      movecounter = 10;
+      houseLeave(13,11);
+      if (yPos <= 11) {
+        spawned = true;
+      }
+    } else {
+      switch (mode) {
+      case "Chase": 
+        {
+          int targetX = Player.getXPos();
+          int targetY = Player.getYPos();
+          switch (Player.getDirection()) {
+          case "Up": 
+            {
+              targetY -= 2;
+              break;
+            }
+          case "Down": 
+            {
+              targetY +=2 ;
+              break;
+            }
+          case "Left": 
+            {
+              targetX -= 2;
+              break;
+            }
+          case "Right": 
+            {
+              targetX += 2;
+              break;
+            }
           }
-        case "Down": 
-          {
-            targetY +=2 ;
-            break;
-          }
-        case "Left": 
-          {
-            targetX -= 2;
-            break;
-          }
-        case "Right": 
-          {
-            targetX += 2;
-            break;
-          }
+          targetX -= Ghosts[0].getXPos() - Player.getXPos();
+          targetY -= Ghosts[0].getYPos() - Player.getYPos();
+          movecounter = 10;
+          moveTo(targetX,targetY);
+          break;
         }
-        targetX -= Ghosts[0].getXPos() - Player.getXPos();
-        targetY -= Ghosts[0].getYPos() - Player.getYPos();
-        movecounter = 10;
-        moveTo(targetX,targetY);
-        break;
-      }
-    case "Scatter": 
-      {
-        movecounter = 10;
-        moveTo(27,26);
-        break;
-      }
-    }   
+      case "Scatter": 
+        {
+          movecounter = 10;
+          moveTo(27,26);
+          break;
+        }
+      }   
+    }
   }
   
   public void drawSelf() {
