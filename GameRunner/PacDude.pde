@@ -11,6 +11,7 @@ public class PacDude implements Entities {
   private int movecounter;
   private float mouthstate = 1.0;
   private int modetimer = 0; 
+  private int maxmovecounter = 10;
 
   public PacDude(int x, int y) {
     xPos = x;
@@ -84,7 +85,11 @@ public class PacDude implements Entities {
 
   public void setSpecial(boolean hasspec) {
     specialAbility = hasspec;
-    
+    if (specialAbility == true) {
+      for (int i = 0; i < Ghosts.length; i++) {
+        Ghosts[i].eaten = false;
+      }
+    }
   }
 
   public int getPelletsEaten() { 
@@ -129,7 +134,7 @@ public class PacDude implements Entities {
       Player.eatPellet();
     } 
     if (!nextToBlock(direction)) {
-      movecounter = 7;
+      movecounter = maxmovecounter;
       switch (direction) {
       case "Up": 
         {
