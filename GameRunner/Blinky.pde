@@ -35,7 +35,7 @@ public class Blinky extends Ghost {
 
 
    public void drawSelf() {
-    PImage img = loadImage("Pinky5.png");
+    PImage img = loadImage("blinkright.png");
     
     modetimer--;
     fill(0, 255, 255);
