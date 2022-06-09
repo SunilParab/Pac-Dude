@@ -5,6 +5,8 @@ int score = 0;
 Ghost[] Ghosts; 
 int Lives;
 boolean started;
+int modetimer;
+String mode;
 
 void setup() {
   Lives = 3;
@@ -15,41 +17,55 @@ void setup() {
   PrintStart();
 
   Ghosts = new Ghost[4];
-  Ghosts[0] = new Blinky(4, 21);
-  Ghosts[1] = new Clyde(25, 20);
-  Ghosts[2] = new Inky(12, 16);
-  Ghosts[3] = new Pinky(21, 16);
+  Ghosts[0] = new Blinky(13, 11);
+  Ghosts[1] = new Clyde(15, 13);
+  Ghosts[2] = new Inky(13, 13);
+  Ghosts[3] = new Pinky(11, 13);
+  modetimer = 600;
+  mode = "Scatter";
 }
 
 void draw() {
   if (!started) {
     PrintStart();
   } else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
+    modetimer--;
+    if (modetimer <= 0) {
+      if (mode.equals("Scatter")) {
+        mode = "Chase";
+      } else {
+        mode = "Scatter";
+      }
+      modetimer = 600;
+    }
     PrintMap();
     fill(255, 255, 0);
     Player.drawSelf();
     for (int i = 0; i < Ghosts.length; i ++) {
       Ghosts[i].drawSelf();
       // if the player has special then the ghost will die 
-      // however this ability only last for a mode timer of 400 
-      
+      // however this ability only last for a mode timer of 510, or 8.5 seconds 
       if (Player.getSpecial()) {
-        if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+        if (Ghosts[i].alive && !Ghosts[i].eaten && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
           Ghosts[i].respawn();
+          int ghostseaten = 0;
+          for (int j = 0; j < Ghosts.length; j++) {
+            if (Ghosts[j].eaten || !Ghosts[j].alive) {
+              ghostseaten++;
+            }
+          }
+        } else if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+          respawn();
         }
-      }
-      //else the player will die if they do not have the ability which is eventually lost. 
-      
-      if (!Player.getSpecial()) {
-        if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
-            respawn();
+      } else {
+        if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+          respawn();
         }
       }
     }
   } else {
     PrintEnd();
   }
-  score = Player.getPelletsEaten() * 10;
 }
 
 
@@ -76,19 +92,19 @@ void keyPressed() {
 
 void PrintMap() {
   background(0);
-  for (int i =0; i < 27; i ++) { 
-    for (int j= 0; j < 28; j++) { 
+  for (int i =0; i < 28; i ++) { 
+    for (int j= 0; j < 27; j++) { 
       if (gameMap.getVal(i, j) == 1) { 
         fill(0, 0, 255);
-        rect(j * 26, i * 26, 26, 26);
+        rect(i * 26, j * 26, 26, 26);
       }
       if (gameMap.getVal(i, j) == 2) { 
         fill(255); 
-        circle(j * 26 + 13, i * 26 + 13, 5 );
+        circle(i * 26 + 13, j * 26 + 13, 5 );
       }
       if (gameMap.getVal(i, j) == 3) { 
         fill(255); 
-        circle(j * 26 + 13, i * 26 + 13, 12 );
+        circle(i * 26 + 13, j * 26 + 13, 12 );
       }
     }
   }
@@ -96,7 +112,7 @@ void PrintMap() {
   fill(255);
 
   text("Score: " + score, 80, 725);
-  text("lives: " + Lives, 400, 725);
+  text("Lives: " + Lives, 400, 725);
 }
 
 void PrintStart() {
@@ -125,9 +141,11 @@ void respawn() {
   Lives--;
   if (Lives != 0) {
     Player = new PacDude(1, 1, Player.getPelletsEaten());
-    Ghosts[0] = new Blinky(4, 21);
-    Ghosts[1] = new Clyde(25, 20);
-    Ghosts[2] = new Inky(12, 16);
-    Ghosts[3] = new Pinky(21, 16);
+    Ghosts[0] = new Blinky(13, 11);
+    Ghosts[1] = new Clyde(15, 13);
+    Ghosts[2] = new Inky(13, 13);
+    Ghosts[3] = new Pinky(11, 13);
+    modetimer = 600;
+    mode = "Scatter";
   }
 }

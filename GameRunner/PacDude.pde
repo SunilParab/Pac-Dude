@@ -10,7 +10,8 @@ public class PacDude implements Entities {
   private String queueddir;
   private int movecounter;
   private float mouthstate = 1.0;
-  private int modetimer = 400; 
+  private int modetimer = 0; 
+  private int maxmovecounter = 10;
 
   public PacDude(int x, int y) {
     xPos = x;
@@ -84,7 +85,11 @@ public class PacDude implements Entities {
 
   public void setSpecial(boolean hasspec) {
     specialAbility = hasspec;
-    
+    if (specialAbility == true) {
+      for (int i = 0; i < Ghosts.length; i++) {
+        Ghosts[i].eaten = false;
+      }
+    }
   }
 
   public int getPelletsEaten() { 
@@ -92,6 +97,7 @@ public class PacDude implements Entities {
   } 
 
   public void eatPellet() { 
+    score += 10;
     pelletsEaten++;
   } 
 
@@ -117,21 +123,19 @@ public class PacDude implements Entities {
     return true;
   }
 
-  public void move() {
-    //added a mode timer for power pellet behavior. 
-    modetimer --; 
-    
-    if (gameMap.getVal(getYPos(), getXPos()) == 2) {
+  public void move() {    
+    if (gameMap.getVal(getXPos(), getYPos()) == 2) {
       gameMap.setVal(getXPos(), getYPos(), 0); 
       eatPellet();
     } 
-    if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 3) {
-      gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
-      Player.setSpecial(true); 
+    if (gameMap.getVal(getXPos(), getYPos()) == 3) {
+      gameMap.setVal(getXPos(), getYPos(), 0); 
+      Player.setSpecial(true);
+      modetimer = 510;
       Player.eatPellet();
     } 
     if (!nextToBlock(direction)) {
-      movecounter = 10;
+      movecounter = maxmovecounter;
       switch (direction) {
       case "Up": 
         {
@@ -146,7 +150,7 @@ public class PacDude implements Entities {
       case "Left": 
         {
           xPos--;
-          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+          if (gameMap.getVal(getXPos(), getYPos()) == 5) {
             setXPos(26);
           } 
           break;
@@ -154,7 +158,7 @@ public class PacDude implements Entities {
       case "Right": 
         {
           xPos++;
-          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+          if (gameMap.getVal(getXPos(), getYPos()) == 5) {
             setXPos(1);
           } 
           break;
@@ -165,9 +169,10 @@ public class PacDude implements Entities {
   
   public void drawSelf() {
     // this allows pacdude to have immunity for a certain amount of time after eating a power pellet. 
-    modetimer --; 
+    if(modetimer > 0){
+      modetimer --; 
+    }
     if(modetimer == 0){ 
-      modetimer = 600; 
       setSpecial(false); 
     } 
     
