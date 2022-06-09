@@ -10,7 +10,8 @@ public class Inky extends Ghost {
   
   public void move() {
     if(!alive) {
-      movecounter = 5;
+      maxmovecounter = deadmove;
+      movecounter = deadmove;
       if (xPos < 14) {
         houseLeave(13,11);
       } else {
@@ -18,16 +19,23 @@ public class Inky extends Ghost {
       }
       if (gameMap.getVal(xPos,yPos) == 4) {
         alive = true;
+        eaten = true;
       }
     } else if(timeToSpawn > 0) {
-      movecounter = 10;
+      maxmovecounter = normmove;
+      movecounter = normmove;
       houseMove();
     } else if (spawned == false) {
-      movecounter = 10;
+      maxmovecounter = normmove;
+      movecounter = normmove;
       houseLeave(13,11);
       if (yPos <= 11) {
         spawned = true;
       }
+    } else if (Player.getSpecial() && !eaten) {
+      maxmovecounter = slowmove;
+      movecounter = slowmove;
+      wander();
     } else {
       switch (mode) {
       case "Chase": 
@@ -58,13 +66,15 @@ public class Inky extends Ghost {
           }
           targetX -= Ghosts[0].getXPos() - Player.getXPos();
           targetY -= Ghosts[0].getYPos() - Player.getYPos();
-          movecounter = 10;
+          maxmovecounter = normmove;
+          movecounter = normmove;
           moveTo(targetX,targetY);
           break;
         }
       case "Scatter": 
         {
-          movecounter = 10;
+          maxmovecounter = normmove;
+          movecounter = normmove;
           moveTo(27,26);
           break;
         }
@@ -76,16 +86,16 @@ public class Inky extends Ghost {
     if(timeToSpawn > 0){
       timeToSpawn--; 
     }
-    if (Player.getSpecial()) {
+    if (Player.getSpecial() && !eaten) {
       fill(0, 0, 255);
     } else {
       fill(0, 255, 255);
     }
     if(movecounter > 0){
-      if(getDirection() == "Up") {circle(getXPos()*26+13, getYPos()*26+13+26*movecounter/10, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/10);}
-      else if(getDirection() == "Down") {circle(getXPos()*26+13, getYPos()*26+13-26*movecounter/10, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/10);}
-      else if(getDirection() == "Left") {circle(getXPos()*26+13+26*movecounter/10, getYPos()*26+13, 15); setTrueXPos(getXPos()*26+13+26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
-      else if(getDirection() == "Right") {circle(getXPos()*26+13-26*movecounter/10, getYPos()*26+13, 15); setTrueXPos(getXPos()*26+13-26.0*movecounter/10); setTrueYPos(getYPos()*26+13);}
+      if(getDirection() == "Up") {circle(getXPos()*26+13, getYPos()*26+13+26*movecounter/maxmovecounter, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13+26.0*movecounter/maxmovecounter);}
+      else if(getDirection() == "Down") {circle(getXPos()*26+13, getYPos()*26+13-26*movecounter/maxmovecounter, 15); setTrueXPos(getXPos()*26+13); setTrueYPos(getYPos()*26+13-26.0*movecounter/maxmovecounter);}
+      else if(getDirection() == "Left") {circle(getXPos()*26+13+26*movecounter/maxmovecounter, getYPos()*26+13, 15); setTrueXPos(getXPos()*26+13+26.0*movecounter/maxmovecounter); setTrueYPos(getYPos()*26+13);}
+      else if(getDirection() == "Right") {circle(getXPos()*26+13-26*movecounter/maxmovecounter, getYPos()*26+13, 15); setTrueXPos(getXPos()*26+13-26.0*movecounter/maxmovecounter); setTrueYPos(getYPos()*26+13);}
       movecounter--;
     } else {
       circle(getXPos()*26+13, getYPos()*26+13, 15);

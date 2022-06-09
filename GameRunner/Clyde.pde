@@ -10,8 +10,8 @@ public class Clyde extends Ghost {
   
   public void move() {
     if(!alive) {
-      maxmovecounter = 2;
-      movecounter = 2;
+      maxmovecounter = deadmove;
+      movecounter = deadmove;
       if (xPos < 14) {
         houseLeave(13,11);
       } else {
@@ -19,38 +19,43 @@ public class Clyde extends Ghost {
       }
       if (gameMap.getVal(xPos,yPos) == 4) {
         alive = true;
+        eaten = true;
       }
-    } else if(timeToSpawn > 0 & !eaten) {
-      maxmovecounter = 20;
-      movecounter = 20;
+    } else if(timeToSpawn > 0) {
+      maxmovecounter = normmove;
+      movecounter = normmove;
       houseMove();
     } else if (spawned == false) {
-      maxmovecounter = 15;
-      movecounter = 15;
+      maxmovecounter = normmove;
+      movecounter = normmove;
       houseLeave(14,11);
       if (yPos <= 11) {
         spawned = true;
       }
+    } else if (Player.getSpecial() && !eaten) {
+      maxmovecounter = slowmove;
+      movecounter = slowmove;
+      wander(); 
     } else {
       switch (mode) {
       case "Chase": 
         { 
           double distance = Math.sqrt(((Player.getXPos() - xPos) * (Player.getXPos() - xPos)) + ((Player.getYPos() - yPos) * (Player.getYPos() - yPos)));
           if (distance <= 8) {
-            maxmovecounter = 15;
-            movecounter = 15;
+            maxmovecounter = normmove;
+            movecounter = normmove;
             moveTo(0,26);
           } else {
-            maxmovecounter = 15;
-            movecounter = 15;
+            maxmovecounter = normmove;
+            movecounter = normmove;
             moveTo(Player.getXPos(),Player.getYPos());
           }
           break;
         }
       case "Scatter": 
         {
-          maxmovecounter = 15;
-          movecounter = 15;
+          maxmovecounter = normmove;
+          movecounter = normmove;
           moveTo(0,26);
           break;
         }
@@ -62,7 +67,7 @@ public class Clyde extends Ghost {
     if(timeToSpawn > 0){
       timeToSpawn--; 
     }
-    if (Player.getSpecial() & !eaten) {
+    if (Player.getSpecial() && !eaten) {
       fill(0, 0, 255);
     } else {
       fill(255, 150, 0);

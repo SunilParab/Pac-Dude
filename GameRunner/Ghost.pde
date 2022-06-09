@@ -13,6 +13,9 @@ public abstract class Ghost implements Entities {
   public boolean alive = true;
   public int maxmovecounter;
   public boolean eaten;
+  public int normmove = 12;
+  final public int deadmove = 2;
+  final public int slowmove = 15;
 
   public int getXPos() {
     return xPos;
@@ -205,7 +208,6 @@ public abstract class Ghost implements Entities {
 
   public void respawn() {
     alive = false;
-    eaten = true;
   }
 
   public void wander() {

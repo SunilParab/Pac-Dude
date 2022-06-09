@@ -10,9 +10,10 @@ public class Blinky extends Ghost {
   }
 
   public void move() {
+    System.out.println(xPos+" "+yPos);
     if(!alive) {
-      maxmovecounter = 2;
-      movecounter = 2;
+      maxmovecounter = deadmove;
+      movecounter = deadmove;
       if (xPos < 14) {
         houseLeave(13,11);
       } else {
@@ -20,24 +21,25 @@ public class Blinky extends Ghost {
       }
       if (gameMap.getVal(xPos,yPos) == 4) {
         alive = true;
+        eaten = true;
       }
     } else if (Player.getSpecial() && !eaten) {
-      maxmovecounter = 20;
-      movecounter = 20;
+      maxmovecounter = slowmove;
+      movecounter = slowmove;
       wander();
     } else {
       switch (mode) {
       case "Chase": 
         {
-          maxmovecounter = 15;
-          movecounter = 15;
+          maxmovecounter = normmove;
+          movecounter = normmove;
           moveTo(Player.getXPos(), Player.getYPos());
           break;
         }
       case "Scatter": 
         {
-          maxmovecounter = 15;
-          movecounter = 15;
+          maxmovecounter = normmove;
+          movecounter = normmove;
           moveTo(24, 0);
           break;
         }
@@ -50,7 +52,7 @@ public class Blinky extends Ghost {
     if(timeToSpawn > 0){
       timeToSpawn--; 
     }
-    if (Player.getSpecial() & !eaten) {
+    if (Player.getSpecial() && !eaten) {
       fill(0, 0, 255);
     } else {
       fill(255, 0, 0);
