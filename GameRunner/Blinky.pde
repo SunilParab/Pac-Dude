@@ -10,7 +10,6 @@ public class Blinky extends Ghost {
   }
 
   public void move() {
-    System.out.println(xPos+" "+yPos);
     if(!alive) {
       maxmovecounter = deadmove;
       movecounter = deadmove;

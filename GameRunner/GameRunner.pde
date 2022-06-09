@@ -46,11 +46,23 @@ void draw() {
       // if the player has special then the ghost will die 
       // however this ability only last for a mode timer of 510, or 8.5 seconds 
       if (Player.getSpecial()) {
-        if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+        if (Ghosts[i].alive && !Ghosts[i].eaten && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
           Ghosts[i].respawn();
+          int ghostseaten = 0;
+          for (int j = 0; j < Ghosts.length; j++) {
+            if (Ghosts[j].eaten || !Ghosts[j].alive) {
+              ghostseaten++;
+            }
+            System.out.println("hi");
+            System.out.println(score);
+            score += Math.pow(2,ghostseaten) * 100;
+            System.out.println(score);
+          }
+        } else if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+          respawn();
         }
       } else {
-        if (abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+        if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
           respawn();
         }
       }
