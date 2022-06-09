@@ -54,10 +54,6 @@ void draw() {
               ghostseaten++;
             }
           }
-          System.out.println("hi");
-          System.out.println(score);
-          score += Math.pow(2,ghostseaten) * 100;
-          System.out.println(score);
         } else if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
           respawn();
         }

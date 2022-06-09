@@ -26,6 +26,10 @@ public class Blinky extends Ghost {
       maxmovecounter = slowmove;
       movecounter = slowmove;
       wander();
+    } else if (gameMap.getPellets() - Player.getPelletsEaten() <= 20) {
+      maxmovecounter = normmove;
+      movecounter = normmove;
+      moveTo(Player.getXPos(), Player.getYPos());
     } else {
       switch (mode) {
       case "Chase": 
