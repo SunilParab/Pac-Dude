@@ -97,6 +97,7 @@ public class PacDude implements Entities {
   } 
 
   public void eatPellet() { 
+    score += 10;
     pelletsEaten++;
   } 
 
