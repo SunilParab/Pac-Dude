@@ -85,19 +85,19 @@ void keyPressed() {
 
 void PrintMap() {
   background(0);
-  for (int i =0; i < 27; i ++) { 
-    for (int j= 0; j < 28; j++) { 
+  for (int i =0; i < 28; i ++) { 
+    for (int j= 0; j < 27; j++) { 
       if (gameMap.getVal(i, j) == 1) { 
         fill(0, 0, 255);
-        rect(j * 26, i * 26, 26, 26);
+        rect(i * 26, j * 26, 26, 26);
       }
       if (gameMap.getVal(i, j) == 2) { 
         fill(255); 
-        circle(j * 26 + 13, i * 26 + 13, 5 );
+        circle(i * 26 + 13, j * 26 + 13, 5 );
       }
       if (gameMap.getVal(i, j) == 3) { 
         fill(255); 
-        circle(j * 26 + 13, i * 26 + 13, 12 );
+        circle(i * 26 + 13, j * 26 + 13, 12 );
       }
     }
   }

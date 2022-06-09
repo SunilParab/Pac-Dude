@@ -120,7 +120,7 @@ public abstract class Ghost implements Entities {
     } 
     else if (left <= right && left <= up && left <= down && !nextToBlock("Left")) {
       xPos --;
-      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+      if (gameMap.getVal(getXPos(), getYPos()) == 5) {
         setXPos(26);
       }
       direction = "Left";
@@ -131,7 +131,7 @@ public abstract class Ghost implements Entities {
     } 
     else if (right <= left && right <= down && right <= up && !nextToBlock("Right")) { 
       xPos++;
-      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+      if (gameMap.getVal(getXPos(), getYPos()) == 5) {
         setXPos(1);
       }
       direction = "Right";
@@ -188,7 +188,7 @@ public abstract class Ghost implements Entities {
     } 
     else if (left <= right && left <= up && left <= down && !(gameMap.map[yPos][xPos-1] == 1)) {
       xPos --;
-      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+      if (gameMap.getVal(getXPos(), getYPos()) == 5) {
         setXPos(26);
       }
       direction = "Left";
@@ -199,7 +199,7 @@ public abstract class Ghost implements Entities {
     } 
     else if (right <= left && right <= down && right <= up && !(gameMap.map[yPos][xPos+1] == 1)) { 
       xPos++;
-      if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+      if (gameMap.getVal(getXPos(), getYPos()) == 5) {
         setXPos(1);
       }
       direction = "Right";
@@ -240,7 +240,7 @@ public abstract class Ghost implements Entities {
       case "Left": 
         {
           xPos--;
-          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+          if (gameMap.getVal(getXPos(), getYPos()) == 5) {
             setXPos(26);
           } 
           break;
@@ -248,7 +248,7 @@ public abstract class Ghost implements Entities {
       case "Right": 
         {
           xPos++;
-          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+          if (gameMap.getVal(getXPos(), getYPos()) == 5) {
             setXPos(0);
           } 
           break;

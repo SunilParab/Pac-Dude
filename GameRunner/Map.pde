@@ -108,7 +108,7 @@ public class Map {
 
   //allows user to get a value from the map 
   public int getVal(int xpos, int ypos) { 
-    return map[xpos][ypos];
+    return map[ypos][xpos];
   } 
 
   //allows user to get the number of pellets inside of the map 

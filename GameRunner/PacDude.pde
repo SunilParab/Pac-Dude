@@ -123,12 +123,12 @@ public class PacDude implements Entities {
   }
 
   public void move() {    
-    if (gameMap.getVal(getYPos(), getXPos()) == 2) {
+    if (gameMap.getVal(getXPos(), getYPos()) == 2) {
       gameMap.setVal(getXPos(), getYPos(), 0); 
       eatPellet();
     } 
-    if (gameMap.getVal(Player.getYPos(), Player.getXPos()) == 3) {
-      gameMap.setVal(Player.getXPos(), Player.getYPos(), 0); 
+    if (gameMap.getVal(getXPos(), getYPos()) == 3) {
+      gameMap.setVal(getXPos(), getYPos(), 0); 
       Player.setSpecial(true);
       modetimer = 510;
       Player.eatPellet();
@@ -149,7 +149,7 @@ public class PacDude implements Entities {
       case "Left": 
         {
           xPos--;
-          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+          if (gameMap.getVal(getXPos(), getYPos()) == 5) {
             setXPos(26);
           } 
           break;
@@ -157,7 +157,7 @@ public class PacDude implements Entities {
       case "Right": 
         {
           xPos++;
-          if (gameMap.getVal(getYPos(), getXPos()) == 5) {
+          if (gameMap.getVal(getXPos(), getYPos()) == 5) {
             setXPos(1);
           } 
           break;
