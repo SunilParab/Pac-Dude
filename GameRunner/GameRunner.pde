@@ -67,11 +67,6 @@ void draw() {
   } else {
     PrintEnd();
   }
-<<<<<<< HEAD
-  
-  score = Player.getPelletsEaten() * 10;
-=======
->>>>>>> 23b54fbfc650e00c706b0021160a9278038db5ce
 }
 
 

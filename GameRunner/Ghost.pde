@@ -13,7 +13,7 @@ public abstract class Ghost implements Entities {
   public boolean alive = true;
   public int maxmovecounter;
   public boolean eaten;
-  public int normmove = 12;
+  public int normmove = 10;
   final public int deadmove = 2;
   final public int slowmove = 15;
 
