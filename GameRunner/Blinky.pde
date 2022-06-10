@@ -39,6 +39,7 @@ public class Blinky extends Ghost {
     PImage right = loadImage("redGhostRight.png");
     PImage down = loadImage("redGhostDown.png");
     PImage left = loadImage("redGhostLeft.png");
+    PImage center = loadImage("redGhostCenter.png");
 
     
     modetimer--;
@@ -50,7 +51,7 @@ public class Blinky extends Ghost {
       else if(getDirection() == "Right") {image(right,5+ getXPos()*26-26*movecounter/10, getYPos()*26); setTrueXPos(getXPos()*26-26.0*movecounter/10); setTrueYPos(getYPos()*26);}
       movecounter--;
     } else {
-      image(up,5+ getXPos()*26, getYPos()*26);
+      image(center,5+ getXPos()*26, getYPos()*26);
       move();
     }
   }
