@@ -58,7 +58,7 @@ public class Inky extends Ghost {
     }   
   }
   
-  public void drawSelf() {
+   public void drawSelf() {
     PImage up = loadImage("redGhostUp.png");
     PImage right = loadImage("redGhostRight.png");
     PImage down = loadImage("redGhostDown.png");
@@ -73,10 +73,15 @@ public class Inky extends Ghost {
       else if(getDirection() == "Left") {image(left, 5+ getXPos()*26+26*movecounter/10, getYPos()*26); setTrueXPos(getXPos()*26+26.0*movecounter/10); setTrueYPos(getYPos()*26);}
       else if(getDirection() == "Right") {image(right,5+ getXPos()*26-26*movecounter/10, getYPos()*26); setTrueXPos(getXPos()*26-26.0*movecounter/10); setTrueYPos(getYPos()*26);}
       movecounter--;
-    } else {
-      image(up,5+ getXPos()*26, getYPos()*26);
-      move();
-    }
+    } 
+        else if(movecounter <= 0){
+
+      if(getDirection() == "Up") {image(up, 5 +getXPos()*26, getYPos()*26); }
+      else if(getDirection() == "Down") {image(down, 5+ getXPos()*26, getYPos()*26); }
+      else if(getDirection() == "Left") {image(left, 5+ getXPos()*26, getYPos()*26); }
+      else if(getDirection() == "Right") {image(right,5+ getXPos()*26, getYPos()*26); }   
+      move(); 
   }
+}
   
 }
