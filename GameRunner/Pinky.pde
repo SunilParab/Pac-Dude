@@ -1,8 +1,8 @@
 public class Pinky extends Ghost {
-      PImage up = loadImage("redGhostUp.png");
-    PImage right = loadImage("redGhostRight.png");
-    PImage down = loadImage("redGhostDown.png");
-    PImage left = loadImage("redGhostLeft.png");
+      PImage up = loadImage("pinkUp.png");
+    PImage right = loadImage("pinkRight.png");
+    PImage down = loadImage("pinkDown.png");
+    PImage left = loadImage("pinkLeft.png");
 
   public Pinky(int x, int y) {
     xPos = x; 

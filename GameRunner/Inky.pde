@@ -1,8 +1,8 @@
 public class Inky extends Ghost {
-      PImage up = loadImage("redGhostUp.png");
-    PImage right = loadImage("redGhostRight.png");
-    PImage down = loadImage("redGhostDown.png");
-    PImage left = loadImage("redGhostLeft.png");
+      PImage up = loadImage("blueUp.png");
+    PImage right = loadImage("blueRight.png");
+    PImage down = loadImage("blueDown.png");
+    PImage left = loadImage("blueLeft.png");
 
   public Inky(int x, int y) {
     xPos = x; 

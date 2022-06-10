@@ -1,8 +1,8 @@
 public class Clyde extends Ghost {
-      PImage up = loadImage("redGhostUp.png");
-    PImage right = loadImage("redGhostRight.png");
-    PImage down = loadImage("redGhostDown.png");
-    PImage left = loadImage("redGhostLeft.png");
+      PImage up = loadImage("yellowUp.png");
+    PImage right = loadImage("yellowRight.png");
+    PImage down = loadImage("yellowDown.png");
+    PImage left = loadImage("yellowLeft.png");
 
 
   public Clyde(int x, int y ) {
