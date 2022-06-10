@@ -35,20 +35,22 @@ public class Blinky extends Ghost {
 
 
    public void drawSelf() {
-    PImage img = loadImage("blinkright.png");
-        PImage img2 = loadImage("blinkdown.png");
+    PImage up = loadImage("redGhostUp.png");
+    PImage right = loadImage("redGhostRight.png");
+    PImage down = loadImage("redGhostDown.png");
+    PImage left = loadImage("redGhostLeft.png");
 
     
     modetimer--;
     fill(0, 255, 255);
     if(movecounter > 0){
-      if(getDirection() == "Up") {image(img, 5 +getXPos()*26, getYPos()*26+26*movecounter/10); setTrueXPos(getXPos()*26); setTrueYPos(getYPos()*26+26.0*movecounter/10);}
-      else if(getDirection() == "Down") {image(img2, 5+ getXPos()*26, getYPos()*26-26*movecounter/10); setTrueXPos(getXPos()*26); setTrueYPos(getYPos()*26-26.0*movecounter/10);}
-      else if(getDirection() == "Left") {image(img, 5+ getXPos()*26+26*movecounter/10, getYPos()*26); setTrueXPos(getXPos()*26+26.0*movecounter/10); setTrueYPos(getYPos()*26);}
-      else if(getDirection() == "Right") {image(img,5+ getXPos()*26-26*movecounter/10, getYPos()*26); setTrueXPos(getXPos()*26-26.0*movecounter/10); setTrueYPos(getYPos()*26);}
+      if(getDirection() == "Up") {image(up, 5 +getXPos()*26, getYPos()*26+26*movecounter/10); setTrueXPos(getXPos()*26); setTrueYPos(getYPos()*26+26.0*movecounter/10);}
+      else if(getDirection() == "Down") {image(down, 5+ getXPos()*26, getYPos()*26-26*movecounter/10); setTrueXPos(getXPos()*26); setTrueYPos(getYPos()*26-26.0*movecounter/10);}
+      else if(getDirection() == "Left") {image(left, 5+ getXPos()*26+26*movecounter/10, getYPos()*26); setTrueXPos(getXPos()*26+26.0*movecounter/10); setTrueYPos(getYPos()*26);}
+      else if(getDirection() == "Right") {image(right,5+ getXPos()*26-26*movecounter/10, getYPos()*26); setTrueXPos(getXPos()*26-26.0*movecounter/10); setTrueYPos(getYPos()*26);}
       movecounter--;
     } else {
-      image(img,5+ getXPos()*26, getYPos()*26);
+      image(up,5+ getXPos()*26, getYPos()*26);
       move();
     }
   }

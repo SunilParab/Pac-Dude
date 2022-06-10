@@ -1,4 +1,5 @@
 import java.util.*;
+
 Map gameMap;
 PacDude Player;
 int score = 0; 
