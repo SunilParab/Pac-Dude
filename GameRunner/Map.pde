@@ -107,7 +107,7 @@ public class Map {
 
   //allows user to get a value from the map 
   public int getVal(int xpos, int ypos) { 
-    return map[xpos][ypos];
+    return map[ypos][xpos];
   } 
 
   //allows user to get the number of pellets inside of the map 
@@ -127,6 +127,8 @@ public class Map {
       for (int j =0; j < map[i].length; j++) {
         if (map[i][j] == 0) { 
           map[i][j] = 2;
+          counter ++;
+        } else if (map[i][j] == 3) { 
           counter ++;
         }
       }
