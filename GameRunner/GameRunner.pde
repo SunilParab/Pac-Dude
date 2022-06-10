@@ -103,10 +103,14 @@ void PrintMap() {
         fill(255); 
         circle(i * 26 + 13, j * 26 + 13, 5 );
       }
+      
       if (gameMap.getVal(i, j) == 3) { 
-        fill(255); 
+        if(modetimer % 45 ==0){
+        fill(255);
         circle(i * 26 + 13, j * 26 + 13, 12 );
+        }
       }
+      
     }
   }
   textSize(20);
