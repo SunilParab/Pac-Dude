@@ -5,6 +5,7 @@ int score = 0;
 Ghost[] Ghosts; 
 int Lives;
 boolean started;
+boolean ended;
 int modetimer;
 String mode;
 
@@ -14,6 +15,7 @@ void setup() {
   Player = new PacDude(1, 1);
   size(729, 729);
   started = false;
+  ended = false;
   PrintStart();
 
   Ghosts = new Ghost[4];
@@ -28,7 +30,7 @@ void setup() {
 void draw() {
   if (!started) {
     PrintStart();
-  } else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
+  } else if (!ended) {
     modetimer--;
     if (modetimer <= 0) {
       if (mode.equals("Scatter")) {
@@ -64,6 +66,7 @@ void draw() {
         }
       }
     }
+    ended = Player.getPelletsEaten() == gameMap.getPellets() || Lives > 0;
   } else {
     PrintEnd();
   }

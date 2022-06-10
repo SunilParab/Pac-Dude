@@ -27,8 +27,8 @@ public class Blinky extends Ghost {
       movecounter = slowmove;
       wander();
     } else if (gameMap.getPellets() - Player.getPelletsEaten() <= 20) {
-      maxmovecounter = normmove;
-      movecounter = normmove;
+      maxmovecounter = 10;
+      movecounter = 10;
       moveTo(Player.getXPos(), Player.getYPos());
     } else {
       switch (mode) {
@@ -52,9 +52,6 @@ public class Blinky extends Ghost {
 
 
   public void drawSelf() {
-    if(timeToSpawn > 0){
-      timeToSpawn--; 
-    }
     if (Player.getSpecial() && !eaten) {
       fill(0, 0, 255);
     } else {
