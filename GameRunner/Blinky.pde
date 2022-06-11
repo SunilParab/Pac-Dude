@@ -1,4 +1,9 @@
 public class Blinky extends Ghost {
+  PImage up = loadImage("redGhostUp.png");
+  PImage right = loadImage("redGhostRight.png");
+  PImage down = loadImage("redGhostDown.png");
+  PImage left = loadImage("redGhostLeft.png");
+  PImage dead = loadImage("scareddd.png"); 
 
   public Blinky(int x, int y) {
     xPos = x;
@@ -10,15 +15,15 @@ public class Blinky extends Ghost {
   }
 
   public void move() {
-    if(!alive) {
+    if (!alive) {
       maxmovecounter = deadmove;
       movecounter = deadmove;
       if (xPos < 14) {
-        houseLeave(13,11);
+        houseLeave(13, 11);
       } else {
-        houseLeave(14,11);
+        houseLeave(14, 11);
       }
-      if (gameMap.getVal(xPos,yPos) == 4) {
+      if (gameMap.getVal(xPos, yPos) == 4) {
         alive = true;
         eaten = true;
       }
@@ -51,36 +56,90 @@ public class Blinky extends Ghost {
   }
 
 
-  public void drawSelf() {
-    if(timeToSpawn > 0){
-      timeToSpawn--; 
-    }
-    if (Player.getSpecial() && !eaten) {
-      fill(0, 0, 255);
-    } else {
-      fill(255, 0, 0);
-    }
+  public void drawSelf() {    
+    modetimer--;
+    fill(0, 255, 255);
     if (movecounter > 0) {
-      if (getDirection() == "Up") {
-        circle(getXPos()*26+13, getYPos()*26+13+26*movecounter/maxmovecounter, 15); 
-        setTrueXPos(getXPos()*26+13); 
-        setTrueYPos(getYPos()*26+13+26.0*movecounter/maxmovecounter);
-      } else if (getDirection() == "Down") {
-        circle(getXPos()*26+13, getYPos()*26+13-26*movecounter/maxmovecounter, 15); 
-        setTrueXPos(getXPos()*26+13); 
-        setTrueYPos(getYPos()*26+13-26.0*movecounter/maxmovecounter);
-      } else if (getDirection() == "Left") {
-        circle(getXPos()*26+13+26*movecounter/maxmovecounter, getYPos()*26+13, 15);  
-        setTrueXPos(getXPos()*26+13+26.0*movecounter/maxmovecounter); 
-        setTrueYPos(getYPos()*26+13);
-      } else if (getDirection() == "Right") {
-        circle(getXPos()*26+13-26*movecounter/maxmovecounter, getYPos()*26+13, 15);  
-        setTrueXPos(getXPos()*26+13-26.0*movecounter/maxmovecounter); 
-        setTrueYPos(getYPos()*26+13);
+      
+      // normal movement 
+      if (!Player.getSpecial()) {
+        if (getDirection() == "Up") {
+          image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Down") {
+          image(down, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Left") {
+          image(left, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        } else if (getDirection() == "Right") {
+          image(right, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        }
+        movecounter--;
       }
-      movecounter--;
-    } else {
-      circle(getXPos()*26+13, getYPos()*26+13, 15);
+      
+      // check other ghosts; blinky is the only different one 
+      if (Player.getSpecial()) {
+        if (getDirection() == "Up") {
+          image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Down") {
+          image(dead, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Left") {
+          image(dead, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        } else if (getDirection() == "Right") {
+          image(dead, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        }
+        movecounter--;
+      }
+    } else if (movecounter <= 0) {
+      if (!Player.getSpecial()) {
+
+        if (getDirection() == "Up") {
+          image(up, 3 +getXPos()*26, getYPos()*26 +3 );
+        } else if (getDirection() == "Down") {
+          image(down, 3+ getXPos()*26, getYPos()*26 +3);
+        } else if (getDirection() == "Left") {
+          image(left, 3+ getXPos()*26, getYPos()*26 +3 );
+        } else if (getDirection() == "Right") {
+          image(right, 3+ getXPos()*26, getYPos()*26 +3);
+        }
+      }
+
+      if (Player.getSpecial()) {
+        if (getDirection() == "Up") {
+          image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Down") {
+          image(dead, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Left") {
+          image(dead, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        } else if (getDirection() == "Right") {
+          image(dead, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        }
+        movecounter--;
+      }
+
+
       move();
     }
   }
