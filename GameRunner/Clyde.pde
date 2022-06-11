@@ -148,6 +148,28 @@ public class Clyde extends Ghost {
         movecounter--;
       }
       
+      // condition 1d
+      if (!alive) {
+        if (getDirection() == "Up") {
+          image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Down") {
+          image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Left") {
+          image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        } else if (getDirection() == "Right") {
+          image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        }
+        movecounter--;
+      }
+      
     } else if (movecounter <= 0) {
       
       //condition 2a
@@ -206,8 +228,28 @@ public class Clyde extends Ghost {
         }
         movecounter--;
       }
-
-
+      
+      // condition 2d
+      if (!alive) {
+        if (getDirection() == "Up") {
+          image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Down") {
+          image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Left") {
+          image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        } else if (getDirection() == "Right") {
+          image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        }
+        movecounter--;
+      }
 
       move();
     }

@@ -4,6 +4,8 @@ public class Inky extends Ghost {
   PImage down = loadImage("blueDown.png");
   PImage left = loadImage("blueLeft.png");
   PImage dead = loadImage("scareddd.png"); 
+  PImage eyes = loadImage("eyess.png"); 
+
 
 
   public Inky(int x, int y) {
@@ -97,8 +99,10 @@ public class Inky extends Ghost {
     } else {
       fill(255, 169, 180);
     }
-    
+
     if (movecounter > 0) {
+
+      // condition 1a 
       if (!Player.getSpecial()) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -119,6 +123,8 @@ public class Inky extends Ghost {
         }
         movecounter--;
       }
+
+      // condition 1b 
       if (Player.getSpecial()  && lefthouse) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -139,6 +145,8 @@ public class Inky extends Ghost {
         }
         movecounter--;
       }
+
+      // condition 1c 
       if (Player.getSpecial()  && !lefthouse) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -159,9 +167,32 @@ public class Inky extends Ghost {
         }
         movecounter--;
       }
-    } else if (movecounter <= 0) {
-      if (!Player.getSpecial()) {
 
+      // condition 1d
+      if (!alive) {
+        if (getDirection() == "Up") {
+          image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Down") {
+          image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Left") {
+          image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        } else if (getDirection() == "Right") {
+          image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        }
+        movecounter--;
+      }
+    } else if (movecounter <= 0) {
+
+      //condition 2a
+      if (!Player.getSpecial()) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26 +3 );
         } else if (getDirection() == "Down") {
@@ -173,6 +204,7 @@ public class Inky extends Ghost {
         }
       }
 
+      // condition 2b
       if (Player.getSpecial()) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -194,6 +226,7 @@ public class Inky extends Ghost {
         movecounter--;
       }
 
+      //condition 2c
       if (Player.getSpecial()  && !lefthouse) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -215,7 +248,27 @@ public class Inky extends Ghost {
         movecounter--;
       }
 
-
+      // condition 2d
+      if (!alive) {
+        if (getDirection() == "Up") {
+          image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Down") {
+          image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Left") {
+          image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        } else if (getDirection() == "Right") {
+          image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        }
+        movecounter--;
+      }
 
       move();
     }
