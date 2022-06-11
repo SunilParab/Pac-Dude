@@ -1,4 +1,5 @@
-import processing.sound.*;
+import processing.sound.*; //<>//
+
 import java.util.*;
 
 
@@ -10,7 +11,7 @@ int Lives;
 boolean started;
 int modetimer;
 String mode;
-SoundFile pellet;
+SoundFile file; 
 
 void setup() {
   Lives = 3;
@@ -27,9 +28,10 @@ void setup() {
   Ghosts[3] = new Pinky(11, 13);
   modetimer = 600;
   mode = "Scatter";
-  pellet = new SoundFile(this, "eatpellet.mp3");
+  file = new SoundFile(this, "pacmanbeginning.wav"); // starter music 
   
-  
+  file.play(); 
+   
 }
 
 void draw() {
@@ -73,6 +75,9 @@ void draw() {
   } else {
     PrintEnd();
   }
+  
+  
+  
 }
 
 
@@ -99,6 +104,7 @@ void keyPressed() {
 
 void PrintMap() {
   background(0);
+
   for (int i =0; i < 28; i ++) { 
     for (int j= 0; j < 27; j++) { 
       if (gameMap.getVal(i, j) == 1) { 

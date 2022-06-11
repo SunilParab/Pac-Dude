@@ -1,3 +1,5 @@
+import processing.sound.*; //<>//
+
 public class PacDude implements Entities {
   private int xPos;
   private int yPos;
@@ -12,6 +14,7 @@ public class PacDude implements Entities {
   private float mouthstate = 1.0;
   private int modetimer = 0; 
   private int maxmovecounter = 10;
+
 
   public PacDude(int x, int y) {
     xPos = x;
@@ -124,11 +127,12 @@ public class PacDude implements Entities {
   }
 
   public void move() {    
+
     if (gameMap.getVal(getXPos(), getYPos()) == 2) {
 
       gameMap.setVal(getXPos(), getYPos(), 0); 
       eatPellet();
-    } 
+          } 
     if (gameMap.getVal(getXPos(), getYPos()) == 3) {
       gameMap.setVal(getXPos(), getYPos(), 0); 
       Player.setSpecial(true);
