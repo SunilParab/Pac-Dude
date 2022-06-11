@@ -1,5 +1,4 @@
 import processing.sound.*; //<>//
-
 import java.util.*;
 
 
@@ -31,8 +30,7 @@ void setup() {
   mode = "Scatter";
   file = new SoundFile(this, "pacmanbeginning.wav"); // starter music 
   pellet = new SoundFile(this, "Chompy.wav");
-  file.play(); 
-   
+  file.play();
 }
 
 void draw() {
@@ -76,9 +74,6 @@ void draw() {
   } else {
     PrintEnd();
   }
-  
-  
-  
 }
 
 
@@ -127,7 +122,7 @@ void PrintMap() {
   }
 
   textSize(20);
-  fill(255,255,0);
+  fill(255, 255, 0);
 
   text("Score: " + score, 80, 725);
   text("Lives: " + Lives, 400, 725);
