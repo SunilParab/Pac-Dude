@@ -1,4 +1,6 @@
+import processing.sound.*;
 import java.util.*;
+
 
 Map gameMap;
 PacDude Player;
@@ -8,6 +10,7 @@ int Lives;
 boolean started;
 int modetimer;
 String mode;
+SoundFile pellet;
 
 void setup() {
   Lives = 3;
@@ -24,6 +27,9 @@ void setup() {
   Ghosts[3] = new Pinky(11, 13);
   modetimer = 600;
   mode = "Scatter";
+  pellet = new SoundFile(this, "eatpellet.mp3");
+  
+  
 }
 
 void draw() {
@@ -114,7 +120,7 @@ void PrintMap() {
   }
 
   textSize(20);
-  fill(255);
+  fill(255,255,0);
 
   text("Score: " + score, 80, 725);
   text("Lives: " + Lives, 400, 725);

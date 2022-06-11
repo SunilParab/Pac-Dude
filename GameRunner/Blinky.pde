@@ -60,6 +60,8 @@ public class Blinky extends Ghost {
     modetimer--;
     fill(0, 255, 255);
     if (movecounter > 0) {
+      
+      // normal movement 
       if (!Player.getSpecial()) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -80,6 +82,8 @@ public class Blinky extends Ghost {
         }
         movecounter--;
       }
+      
+      // check other ghosts; blinky is the only different one 
       if (Player.getSpecial()) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 

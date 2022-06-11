@@ -80,6 +80,8 @@ public class Clyde extends Ghost {
       fill(255, 169, 180);
     }
     if (movecounter > 0) {
+      
+      // if pacman doesnt have special 
       if (!Player.getSpecial()) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -100,6 +102,9 @@ public class Clyde extends Ghost {
         }
         movecounter--;
       }
+      
+      // if pacman has special and the ghost have left house 
+      // left house is set true in the leaving house mehthod 
       if (Player.getSpecial()  && lefthouse) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -120,6 +125,7 @@ public class Clyde extends Ghost {
         }
         movecounter--;
       }
+      // if pacman has the special and the ghost have not left the spawn 
       if (Player.getSpecial()  && !lefthouse) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
