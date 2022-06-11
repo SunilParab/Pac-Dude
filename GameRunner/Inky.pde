@@ -97,6 +97,7 @@ public class Inky extends Ghost {
     } else {
       fill(255, 169, 180);
     }
+    
     if (movecounter > 0) {
       if (!Player.getSpecial()) {
         if (getDirection() == "Up") {

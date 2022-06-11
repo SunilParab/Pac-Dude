@@ -4,9 +4,8 @@ public class Clyde extends Ghost {
   PImage down = loadImage("yellowDown.png");
   PImage left = loadImage("yellowLeft.png");
   PImage dead = loadImage("scareddd.png"); 
-
-
-
+  PImage eyes = loadImage("eyess.png"); 
+  
   public Clyde(int x, int y ) {
     xPos = x; 
     yPos = y; 
@@ -70,6 +69,7 @@ public class Clyde extends Ghost {
     }
   }
 
+
   public void drawSelf() {    
     if (timeToSpawn > 0) {
       timeToSpawn--;
@@ -79,9 +79,10 @@ public class Clyde extends Ghost {
     } else {
       fill(255, 169, 180);
     }
+    
     if (movecounter > 0) {
-      
-      // if pacman doesnt have special 
+
+      // condition 1a 
       if (!Player.getSpecial()) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -102,9 +103,8 @@ public class Clyde extends Ghost {
         }
         movecounter--;
       }
-      
-      // if pacman has special and the ghost have left house 
-      // left house is set true in the leaving house mehthod 
+
+      // condition 1b 
       if (Player.getSpecial()  && lefthouse) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -125,7 +125,8 @@ public class Clyde extends Ghost {
         }
         movecounter--;
       }
-      // if pacman has the special and the ghost have not left the spawn 
+      
+      // condition 1c 
       if (Player.getSpecial()  && !lefthouse) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -146,9 +147,11 @@ public class Clyde extends Ghost {
         }
         movecounter--;
       }
+      
     } else if (movecounter <= 0) {
+      
+      //condition 2a
       if (!Player.getSpecial()) {
-
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26 +3 );
         } else if (getDirection() == "Down") {
@@ -159,7 +162,8 @@ public class Clyde extends Ghost {
           image(right, 3+ getXPos()*26, getYPos()*26 +3);
         }
       }
-
+       
+      // condition 2b
       if (Player.getSpecial()) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -180,7 +184,8 @@ public class Clyde extends Ghost {
         }
         movecounter--;
       }
-
+       
+      //condition 2c
       if (Player.getSpecial()  && !lefthouse) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
