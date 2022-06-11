@@ -12,6 +12,7 @@ boolean started;
 int modetimer;
 String mode;
 SoundFile file; 
+SoundFile pellet; 
 
 void setup() {
   Lives = 3;
@@ -29,7 +30,7 @@ void setup() {
   modetimer = 600;
   mode = "Scatter";
   file = new SoundFile(this, "pacmanbeginning.wav"); // starter music 
-  
+  pellet = new SoundFile(this, "Chompy.wav");
   file.play(); 
    
 }
