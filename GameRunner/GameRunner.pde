@@ -5,7 +5,8 @@ int score = 0;
 Ghost[] Ghosts; 
 int Lives;
 boolean started;
-boolean ended;
+boolean won;
+boolean lost;
 int modetimer;
 String mode;
 
@@ -15,7 +16,8 @@ void setup() {
   Player = new PacDude(1, 1);
   size(729, 729);
   started = false;
-  ended = false;
+  won = false;
+  lost = false;
   PrintStart();
 
   Ghosts = new Ghost[4];
@@ -28,9 +30,21 @@ void setup() {
 }
 
 void draw() {
+  if (won) {
+    gameMap = new Map();
+    Player = new PacDude(1, 1);
+    won = false;
+    Ghosts = new Ghost[4];
+    Ghosts[0] = new Blinky(13, 11);
+    Ghosts[1] = new Clyde(15, 13);
+    Ghosts[2] = new Inky(13, 13);
+    Ghosts[3] = new Pinky(11, 13);
+    modetimer = 600;
+    mode = "Scatter";
+  }
   if (!started) {
     PrintStart();
-  } else if (!ended) {
+  } else if (!lost) {
     modetimer--;
     if (modetimer <= 0) {
       if (mode.equals("Scatter")) {
@@ -66,7 +80,8 @@ void draw() {
         }
       }
     }
-    ended = Player.getPelletsEaten() == gameMap.getPellets() || Lives > 0;
+    won = Player.getPelletsEaten() == gameMap.getPellets();
+    lost = Lives <= 0;
   } else {
     PrintEnd();
   }
@@ -77,6 +92,23 @@ void keyPressed() {
   if (!started) {
     if (key == ENTER) {
       started = true;
+    }
+  } else if (lost) {
+    if (key == ENTER) {
+      Lives = 3;
+      gameMap = new Map();
+      Player = new PacDude(1, 1);
+      size(729, 729);
+      started = true;
+      won = false;
+      lost = false;
+      Ghosts = new Ghost[4];
+      Ghosts[0] = new Blinky(13, 11);
+      Ghosts[1] = new Clyde(15, 13);
+      Ghosts[2] = new Inky(13, 13);
+      Ghosts[3] = new Pinky(11, 13);
+      modetimer = 600;
+      mode = "Scatter";
     }
   } else {
     if (key == CODED) {
