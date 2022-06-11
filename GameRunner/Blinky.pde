@@ -90,7 +90,7 @@ public class Blinky extends Ghost {
       }
 
       // condition 1b: has special = turn blue 
-      if (Player.getSpecial()) {
+      if (Player.getSpecial() && alive) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 

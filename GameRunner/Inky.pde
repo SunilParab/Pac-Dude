@@ -170,19 +170,19 @@ public class Inky extends Ghost {
 
       // condition 1d
       if (!alive) {
-        if (getDirection() == "Up") {
+        if (getDirection() == "eyes") {
           image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
           setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Down") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
           setTrueXPos(getXPos()*26); 
           setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Left") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
           setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
           setTrueYPos(getYPos()*26);
-        } else if (getDirection() == "Right") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
           setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
           setTrueYPos(getYPos()*26);
@@ -227,7 +227,7 @@ public class Inky extends Ghost {
       }
 
       //condition 2c
-      if (Player.getSpecial()  && !lefthouse) {
+      if (alive && Player.getSpecial()  && !lefthouse) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -250,19 +250,19 @@ public class Inky extends Ghost {
 
       // condition 2d
       if (!alive) {
-        if (getDirection() == "Up") {
+        if (getDirection() == "eyes") {
           image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
           setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Down") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
           setTrueXPos(getXPos()*26); 
           setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Left") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
           setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
           setTrueYPos(getYPos()*26);
-        } else if (getDirection() == "Right") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
           setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
           setTrueYPos(getYPos()*26);

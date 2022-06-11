@@ -10,6 +10,8 @@ int Lives;
 boolean started;
 int modetimer;
 String mode;
+
+int soundtimer = 600; 
 SoundFile file; 
 SoundFile pellet; 
 
@@ -38,6 +40,7 @@ void draw() {
     PrintStart();
   } else if (Player.getPelletsEaten() != gameMap.getPellets() && Lives > 0) {
     modetimer--;
+
     if (modetimer <= 0) {
       if (mode.equals("Scatter")) {
         mode = "Chase";

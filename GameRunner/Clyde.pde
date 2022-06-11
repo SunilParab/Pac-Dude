@@ -83,7 +83,7 @@ public class Clyde extends Ghost {
     if (movecounter > 0) {
 
       // condition 1a 
-      if (!Player.getSpecial()) {
+      if (!Player.getSpecial() && alive) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -105,7 +105,7 @@ public class Clyde extends Ghost {
       }
 
       // condition 1b 
-      if (Player.getSpecial()  && lefthouse) {
+      if (Player.getSpecial()  && lefthouse && alive) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -127,7 +127,7 @@ public class Clyde extends Ghost {
       }
       
       // condition 1c 
-      if (Player.getSpecial()  && !lefthouse) {
+      if (Player.getSpecial()  && !lefthouse && alive) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -150,19 +150,19 @@ public class Clyde extends Ghost {
       
       // condition 1d
       if (!alive) {
-        if (getDirection() == "Up") {
+        if (getDirection() == "eyes") {
           image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
           setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Down") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
           setTrueXPos(getXPos()*26); 
           setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Left") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
           setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
           setTrueYPos(getYPos()*26);
-        } else if (getDirection() == "Right") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
           setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
           setTrueYPos(getYPos()*26);
@@ -173,7 +173,7 @@ public class Clyde extends Ghost {
     } else if (movecounter <= 0) {
       
       //condition 2a
-      if (!Player.getSpecial()) {
+      if (!Player.getSpecial() && alive ) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26 +3 );
         } else if (getDirection() == "Down") {
@@ -186,7 +186,7 @@ public class Clyde extends Ghost {
       }
        
       // condition 2b
-      if (Player.getSpecial()) {
+      if (Player.getSpecial() && alive ) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -208,7 +208,7 @@ public class Clyde extends Ghost {
       }
        
       //condition 2c
-      if (Player.getSpecial()  && !lefthouse) {
+      if (Player.getSpecial()  && !lefthouse && alive) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -231,19 +231,19 @@ public class Clyde extends Ghost {
       
       // condition 2d
       if (!alive) {
-        if (getDirection() == "Up") {
+        if (getDirection() == "eyes") {
           image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
           setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Down") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
           setTrueXPos(getXPos()*26); 
           setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Left") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
           setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
           setTrueYPos(getYPos()*26);
-        } else if (getDirection() == "Right") {
+        } else if (getDirection() == "eyes") {
           image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
           setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
           setTrueYPos(getYPos()*26);
