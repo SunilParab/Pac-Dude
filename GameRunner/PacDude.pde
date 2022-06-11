@@ -1,3 +1,5 @@
+import processing.sound.*; //<>//
+
 public class PacDude implements Entities {
   private int xPos;
   private int yPos;
@@ -11,7 +13,9 @@ public class PacDude implements Entities {
   private int movecounter;
   private float mouthstate = 1.0;
   private int modetimer = 0; 
-  private int maxmovecounter = 10;
+  private int maxmovecounter = 9;
+  int counter = 0 ; 
+
 
   public PacDude(int x, int y) {
     xPos = x;
@@ -124,10 +128,19 @@ public class PacDude implements Entities {
   }
 
   public void move() {    
+
     if (gameMap.getVal(getXPos(), getYPos()) == 2) {
 
       gameMap.setVal(getXPos(), getYPos(), 0); 
       eatPellet();
+      counter ++; 
+      
+      
+      // audio testing for eating pellets 
+      if(frameCount % 6 == 0){
+      pellet.play(); 
+      }
+      
     } 
     if (gameMap.getVal(getXPos(), getYPos()) == 3) {
       gameMap.setVal(getXPos(), getYPos(), 0); 

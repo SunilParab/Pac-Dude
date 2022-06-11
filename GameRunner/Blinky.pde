@@ -1,10 +1,13 @@
 public class Blinky extends Ghost {
+  // instance variables 
   PImage up = loadImage("redGhostUp.png");
   PImage right = loadImage("redGhostRight.png");
   PImage down = loadImage("redGhostDown.png");
   PImage left = loadImage("redGhostLeft.png");
   PImage dead = loadImage("scareddd.png"); 
+  PImage eyes = loadImage("eyess.png"); 
 
+  // constructor 
   public Blinky(int x, int y) {
     xPos = x;
     yPos = y;
@@ -13,7 +16,8 @@ public class Blinky extends Ghost {
     timeToSpawn = 0;
     spawned = true;
   }
-
+  
+  //method 
   public void move() {
     if (!alive) {
       maxmovecounter = deadmove;
@@ -55,13 +59,15 @@ public class Blinky extends Ghost {
     }
   }
 
-
-  public void drawSelf() {    
+  // blinky never enters the house, so his conditions are different 
+  public void drawSelf() { 
+    
     modetimer--;
     fill(0, 255, 255);
+    // condition 1 
     if (movecounter > 0) {
-      
-      // normal movement 
+
+      // condition 1a: no special stay normal 
       if (!Player.getSpecial()) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -82,9 +88,9 @@ public class Blinky extends Ghost {
         }
         movecounter--;
       }
-      
-      // check other ghosts; blinky is the only different one 
-      if (Player.getSpecial()) {
+
+      // condition 1b: has special = turn blue 
+      if (Player.getSpecial() && alive) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -104,9 +110,35 @@ public class Blinky extends Ghost {
         }
         movecounter--;
       }
+      
+      //condition 1c: if not alive turn into eyes 
+      if (!alive) {
+        if (getDirection() == "Up") {
+          image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Down") {
+          image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Left") {
+          image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        } else if (getDirection() == "Right") {
+          image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        }
+        movecounter--;
+      }
+      
+      
+      // condition 2 
     } else if (movecounter <= 0) {
+      
+      //condition2a
       if (!Player.getSpecial()) {
-
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26 +3 );
         } else if (getDirection() == "Down") {
@@ -117,8 +149,9 @@ public class Blinky extends Ghost {
           image(right, 3+ getXPos()*26, getYPos()*26 +3);
         }
       }
-
-      if (Player.getSpecial()) {
+        
+      // condition 2b
+      if (Player.getSpecial() && alive) {
         if (getDirection() == "Up") {
           image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -139,6 +172,27 @@ public class Blinky extends Ghost {
         movecounter--;
       }
 
+      // condition 2c 
+      if (!alive) {
+        if (getDirection() == "Up") {
+          image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Down") {
+          image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+          setTrueXPos(getXPos()*26); 
+          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+        } else if (getDirection() == "Left") {
+          image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        } else if (getDirection() == "Right") {
+          image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(getYPos()*26);
+        }
+        movecounter--;
+      }
 
       move();
     }
