@@ -273,4 +273,5 @@ public class Inky extends Ghost {
       move();
     }
   }
+  
 }

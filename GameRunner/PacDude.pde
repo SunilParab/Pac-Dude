@@ -13,7 +13,7 @@ public class PacDude implements Entities {
   private int movecounter;
   private float mouthstate = 1.0;
   private int modetimer = 0; 
-  private int maxmovecounter = 10;
+  private int maxmovecounter = 9;
   int counter = 0 ; 
 
 
@@ -133,14 +133,15 @@ public class PacDude implements Entities {
 
       gameMap.setVal(getXPos(), getYPos(), 0); 
       eatPellet();
-            counter ++; 
-
-      
-      pellet.loop();
-      pellet.stop();
+      counter ++; 
       
       
-          } 
+      // audio testing for eating pellets 
+      if(frameCount % 6 == 0){
+      pellet.play(); 
+      }
+      
+    } 
     if (gameMap.getVal(getXPos(), getYPos()) == 3) {
       gameMap.setVal(getXPos(), getYPos(), 0); 
       Player.setSpecial(true);
