@@ -1,4 +1,7 @@
+import processing.sound.*; //<>//
 import java.util.*;
+
+
 Map gameMap;
 PacDude Player;
 int score = 0; 
@@ -9,6 +12,10 @@ boolean won;
 boolean lost;
 int modetimer;
 String mode;
+
+int soundtimer = 600; 
+SoundFile file; 
+SoundFile pellet; 
 
 void setup() {
   Lives = 3;
@@ -27,6 +34,9 @@ void setup() {
   Ghosts[3] = new Pinky(11, 13);
   modetimer = 600;
   mode = "Scatter";
+  file = new SoundFile(this, "pacmanbeginning.wav"); // starter music 
+  pellet = new SoundFile(this, "Chompy.wav");
+  file.play();
 }
 
 void draw() {
@@ -46,6 +56,7 @@ void draw() {
     PrintStart();
   } else if (!lost) {
     modetimer--;
+
     if (modetimer <= 0) {
       if (mode.equals("Scatter")) {
         mode = "Chase";
@@ -128,6 +139,7 @@ void keyPressed() {
 
 void PrintMap() {
   background(0);
+
   for (int i =0; i < 28; i ++) { 
     for (int j= 0; j < 27; j++) { 
       if (gameMap.getVal(i, j) == 1) { 
@@ -138,14 +150,18 @@ void PrintMap() {
         fill(255); 
         circle(i * 26 + 13, j * 26 + 13, 5 );
       }
+
       if (gameMap.getVal(i, j) == 3) { 
-        fill(255); 
-        circle(i * 26 + 13, j * 26 + 13, 12 );
+        if ((!(modetimer % 10 ==0)) ) {
+          fill(255, 255, 0);
+          circle(i * 26 + 13, j * 26 + 13, 14);
+        }
       }
     }
   }
+
   textSize(20);
-  fill(255);
+  fill(255, 255, 0);
 
   text("Score: " + score, 80, 725);
   text("Lives: " + Lives, 400, 725);
