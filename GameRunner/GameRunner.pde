@@ -13,12 +13,13 @@ int modetimer;
 String mode;
 int startDelay;
 int soundtimer = 600; 
-SoundFile file; 
+SoundFile backgroundsound; 
 SoundFile pellet; 
 SoundFile eye; 
 SoundFile death; 
 SoundFile rain;
 int count;
+int level;
 
 PImage wall;
 PImage fire;
@@ -57,6 +58,7 @@ void setup() {
   PrintStart();
   startDelay = 180;
   count = 0;
+  level = 0;
 
   Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(13, 11);
@@ -65,17 +67,18 @@ void setup() {
   Ghosts[3] = new Pinky(11, 13);
   modetimer = 600;
   mode = "Scatter";
-  file = new SoundFile(this, "vov.wav"); // starter music 
+  backgroundsound = new SoundFile(this, "vov.wav"); // starter music 
   pellet = new SoundFile(this, "nopp.wav");
   eye = new SoundFile(this, "neva.wav");
   death = new SoundFile(this, "op.wav");
   wall = loadImage("walll.jpg");
   rain = new SoundFile(this, "rain.wav");
-  file.play();
+  backgroundsound.play();
 }
 
 void draw() {
   if (won) {
+    level++;
     gameMap = new Map();
     Player = new PacDude(13, 16);
     won = false;
@@ -168,8 +171,9 @@ void keyPressed() {
       mode = "Scatter";
       startDelay = 180;
       rain.stop();
-      file.play();
+      backgroundsound.play();
       count = 0;
+      level = 0;
     }
   } else {
     if (key == CODED) {
@@ -211,8 +215,9 @@ void PrintMap() {
   textSize(20);
   fill(255, 255, 0);
 
-  text("Score: " + score, 80, 725);
-  text("Lives: " + Lives, 400, 725);
+  text("Score: " + score, 170, 725);
+  text("Level: " + level, 330, 725);
+  text("Lives: " + Lives, 490, 725);
 }
 
 void PrintStart() {
@@ -242,7 +247,7 @@ void PrintStart() {
 
 void PrintEnd() {
 
-  file.stop(); 
+  backgroundsound.stop(); 
   pellet.stop(); 
   eye.stop();
   death.stop();
@@ -272,7 +277,7 @@ void respawn() {
   if (Lives != 0) {
     if (Player.getSpecial()) {
       pellet.stop();
-      file.play();
+      backgroundsound.play();
     }
     Player = new PacDude(13, 16, Player.getPelletsEaten());
     Ghosts = new Ghost[4];

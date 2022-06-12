@@ -1,4 +1,4 @@
-import processing.sound.*; //<>// //<>//
+import processing.sound.*; //<>// //<>// //<>//
 
 public class PacDude implements Entities {
   private int xPos;
@@ -90,12 +90,12 @@ public class PacDude implements Entities {
   public void setSpecial(boolean hasspec) {
     
      if(specialAbility == true && hasspec == false){ 
-       file.play(); 
+       backgroundsound.play(); 
        pellet.stop(); 
      }
     
     if(specialAbility == false && hasspec == true){ 
-      file.pause(); 
+      backgroundsound.pause(); 
       pellet.play(); 
     }
     
