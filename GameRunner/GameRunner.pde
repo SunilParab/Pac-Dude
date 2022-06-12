@@ -20,7 +20,7 @@ SoundFile pellet;
 void setup() {
   Lives = 3;
   gameMap = new Map();
-  Player = new PacDude(1, 1);
+  Player = new PacDude(13, 16);
   size(729, 729);
   started = false;
   won = false;
@@ -192,7 +192,7 @@ void PrintEnd() {
 void respawn() {
   Lives--;
   if (Lives != 0) {
-    Player = new PacDude(1, 1, Player.getPelletsEaten());
+    Player = new PacDude(13, 16, Player.getPelletsEaten());
     Ghosts[0] = new Blinky(13, 11);
     Ghosts[1] = new Clyde(15, 13);
     Ghosts[2] = new Inky(13, 13);
