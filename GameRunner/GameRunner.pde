@@ -1,4 +1,4 @@
-import processing.sound.*; //<>//
+import processing.sound.*; //<>// //<>//
 import java.util.*;
 
 
@@ -30,8 +30,8 @@ void setup() {
   Ghosts[3] = new Pinky(11, 13);
   modetimer = 600;
   mode = "Scatter";
-  file = new SoundFile(this, "pacmanbeginning.wav"); // starter music 
-  pellet = new SoundFile(this, "Chompy.wav");
+  file = new SoundFile(this, "vov.wav"); // starter music 
+  pellet = new SoundFile(this, "nopp.wav");
   file.play();
 }
 
