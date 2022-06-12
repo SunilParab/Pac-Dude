@@ -12,18 +12,28 @@ boolean lost;
 int modetimer;
 String mode;
 int startDelay;
-
 int soundtimer = 600; 
 SoundFile file; 
 SoundFile pellet; 
 SoundFile eye; 
 SoundFile death; 
+SoundFile rain;
+int count;
 
-//these lines break smt
-//PImage red = loadImage("redGhostUp.png");
-//PImage orange = loadImage("yellowUp.png");
-//PImage blue = loadImage("blueUp.png");
-//PImage pink = loadImage("pinkUp.png");
+PImage wall;
+PImage fire;
+PImage leftred; 
+PImage leftyellow;
+PImage rightblue;
+PImage rightpink;
+PImage victorymap;
+PImage yup;
+
+PImage red1;
+
+PImage orange;
+PImage blue;
+PImage pink;
 
 void setup() {
   Lives = 3;
@@ -31,6 +41,17 @@ void setup() {
   Player = new PacDude(13, 16);
   size(729, 729);
   started = false;
+  fire = loadImage("firevillage.gif");
+  leftred = loadImage("redGhostLeft.png");
+  leftyellow = loadImage("yellowLeft.png");
+  rightblue = loadImage("blueRight.png");
+  rightpink = loadImage("pinkRight.png");
+  victorymap = loadImage("victorymap.jpg");
+  red1 = loadImage("redGhostUp.png");
+  yup = loadImage("yup.jpg");
+  orange = loadImage("yellowUp.png");
+  pink = loadImage("pinkUp.png");
+  blue = loadImage("blueUp.png");
   won = false;
   lost = false;
   PrintStart();
@@ -47,9 +68,8 @@ void setup() {
   pellet = new SoundFile(this, "nopp.wav");
   eye = new SoundFile(this, "neva.wav");
   death = new SoundFile(this, "op.wav");
-
-  
-
+  wall = loadImage("walll.jpg");
+  rain = new SoundFile(this, "rain.wav");
   file.play();
 }
 
@@ -73,8 +93,13 @@ void draw() {
     if (startDelay > 0) {
       startDelay--;
       PrintMap();
-      //image(red, 3 + 13*26, 11*26+26 + 3);
-      //do this for the other three ghosts
+      
+      image(red1, 3 + Ghosts[0].getXPos()*26, Ghosts[0].getYPos()*26+26 + 3);
+      image(orange, 3 + Ghosts[1].getXPos()*26, Ghosts[1].getYPos()*26+26 + 3);
+      image(blue, 3 + Ghosts[2].getXPos()*26, Ghosts[2].getYPos()*26+26 + 3);
+      image(pink, 3 + Ghosts[3].getXPos()*26, Ghosts[3].getYPos()*26+26 + 3);
+
+      
       arc(13*26+13, 16*26+13, 22, 22, radians(225), radians(495));
     } else {
       modetimer--;
@@ -114,9 +139,12 @@ void draw() {
     }
   } else {
     PrintEnd();
+    if (count == 0) {
+      rain.play(); 
+      count++;
+    }
   }
 }
-
 
 void keyPressed() {
   if (!started) {
@@ -157,15 +185,13 @@ void keyPressed() {
   }
 }
 
-
 void PrintMap() {
   background(0);
-
   for (int i =0; i < 28; i ++) { 
     for (int j= 0; j < 27; j++) { 
       if (gameMap.getVal(i, j) == 1) { 
-        fill(0, 0, 255);
-        rect(i * 26, j * 26, 26, 26);
+        fill(0, 255, 100);
+        image(wall, i* 26, j *26 );
       }
       if (gameMap.getVal(i, j) == 2) { 
         fill(255); 
@@ -189,23 +215,23 @@ void PrintMap() {
 }
 
 void PrintStart() {
-  background(0);
+  background(fire);
   textSize(80);
   fill(0, 128, 255);
-  text("PacDude", 195, 200);
-  
-    fill(255);
+  text("Pac-Dude", 195, 200);
 
-    textSize(15);
+  fill(255);
 
-    text("Everyone from your village has been killed by evil ghosts.", 155, 475);
-    text("However you can go back in time and stop it from happening.", 140, 500);
-    text("To get this power, you must first collect all the pellets!", 159, 525);
+  textSize(15);
 
-  
-  
-  
-  
+  text("Everyone from your village has been killed by evil ghosts.", 155, 475);
+  text("However you can go back in time and stop it from happening.", 140, 500);
+  text("To get this power, you must first collect all the pellets!", 159, 525);
+
+  image(leftyellow, 425, 350); 
+  image(leftred, 475, 350); 
+  image(rightblue, 295, 350); 
+  image(rightpink, 245, 350); 
   textSize(30);
   fill(255);
   text("Press Enter to Play", 230, 700);
@@ -214,17 +240,26 @@ void PrintStart() {
 }
 
 void PrintEnd() {
-  background(0);
-  textSize(80);
-  fill(0, 128, 255);
-  text("Game Over", 150, 200);
-  textSize(30);
-  fill(255);
-  text("Now Get Out", 275, 500);
-  
+
   file.stop(); 
   pellet.stop(); 
-  eye.stop(); 
+  eye.stop();
+  death.stop();
+
+  if (gameMap.getPellets() - Player.getPelletsEaten() == 0) { 
+    background(victorymap);
+
+    textSize(50);
+    fill(255, 0, 150);
+    text("Congratulations Pac-Dude!", 50, 350);
+    fill(255, 0, 0);
+    textSize(40);
+    text("You Saved Everyone!", 175, 400);
+  } 
+
+  if (gameMap.getPellets() - Player.getPelletsEaten() != 0) {
+    background(yup);
+  }
 }
 
 void respawn() {
@@ -238,6 +273,7 @@ void respawn() {
     Ghosts[3] = new Pinky(11, 13);
     modetimer = 600;
     mode = "Scatter";
+    pellet.stop();
     startDelay = 180;
   }
 }

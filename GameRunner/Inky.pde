@@ -5,6 +5,7 @@ public class Inky extends Ghost {
   PImage left = loadImage("blueLeft.png");
   PImage dead = loadImage("scareddd.png"); 
   PImage eyes = loadImage("eyess.png"); 
+  PImage white = loadImage("whiteghost.png");
 
 
 
@@ -90,7 +91,7 @@ public class Inky extends Ghost {
     }
   }
 
-  public void drawSelf() {
+   public void drawSelf() {
     if (timeToSpawn > 0) {
       timeToSpawn--;
     }
@@ -121,8 +122,24 @@ public class Inky extends Ghost {
 
       // condition 1b: has special = turn blue 
       else if (Player.getSpecial() && alive) {
-        if(Player.modetimer <= 240 && (Player.modetimer / 15) % 2 == 1) {
-          //put the white sprite here
+        if (Player.modetimer <= 240 && (Player.modetimer / 15) % 2 == 1) {
+          if (getDirection() == "Up") {
+            image(white, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+            setTrueXPos(13+getXPos()*26); 
+            setTrueYPos(13+getYPos()*26+26.0*movecounter/maxmovecounter);
+          } else if (getDirection() == "Down") {
+            image(white, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+            setTrueXPos(13+getXPos()*26); 
+            setTrueYPos(13+getYPos()*26-26.0*movecounter/maxmovecounter);
+          } else if (getDirection() == "Left") {
+            image(white, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+            setTrueXPos(13+getXPos()*26+26.0*movecounter/maxmovecounter); 
+            setTrueYPos(13+getYPos()*26);
+          } else if (getDirection() == "Right") {
+            image(white, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+            setTrueXPos(13+getXPos()*26-26.0*movecounter/maxmovecounter); 
+            setTrueYPos(13+getYPos()*26);
+          }
         } else {
           if (getDirection() == "Up") {
             image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -141,10 +158,11 @@ public class Inky extends Ghost {
             setTrueXPos(13+getXPos()*26-26.0*movecounter/maxmovecounter); 
             setTrueYPos(13+getYPos()*26);
           }
-        movecounter--;
         }
+         movecounter--;
+
       }
-      
+
       //condition 1c: if not alive turn into eyes 
       else if (!alive) {
         if (getDirection() == "Up") {
@@ -166,11 +184,11 @@ public class Inky extends Ghost {
         }
         movecounter--;
       }
-      
-      
-      // condition 2 
+
+
+      // condition 2
     } else if (movecounter <= 0) {
-      
+
       //condition2a
       if ((!Player.getSpecial() && alive) || (Player.getSpecial() && eaten)) {
         if (getDirection() == "Up") {
@@ -185,20 +203,28 @@ public class Inky extends Ghost {
         setTrueXPos(13+getXPos()*26); 
         setTrueYPos(13+getYPos()*26);
       }
-        
+
       // condition 2b
       else if (Player.getSpecial() && alive) {
-        if(Player.modetimer <= 240 && (Player.modetimer / 15) % 2 == 1) {
-          //put the white sprite here
+        if (Player.modetimer <= 240 && (Player.modetimer / 15) % 2 == 1) {
+          if (getDirection() == "Up") {
+            image(white, 3+getXPos()*26, getYPos()*26+3);
+          } else if (getDirection() == "Down") {
+            image(white, 3+getXPos()*26, getYPos()*26+3);
+          } else if (getDirection() == "Left") {
+            image(white, 3+  getXPos()*26, getYPos()*26+3);
+          } else if (getDirection() == "Right") {
+            image(white, 3 + getXPos()*26, getYPos()*26+3);
+          }
         } else {
           if (getDirection() == "Up") {
-            image(dead, 3+getXPos()*26, getYPos()*26+3); 
+            image(dead, 3+getXPos()*26, getYPos()*26+3);
           } else if (getDirection() == "Down") {
-            image(dead, 3+getXPos()*26, getYPos()*26+3); 
+            image(dead, 3+getXPos()*26, getYPos()*26+3);
           } else if (getDirection() == "Left") {
-            image(dead, 3+  getXPos()*26, getYPos()*26+3); 
+            image(dead, 3+  getXPos()*26, getYPos()*26+3);
           } else if (getDirection() == "Right") {
-            image(dead, 3 + getXPos()*26, getYPos()*26+3); 
+            image(dead, 3 + getXPos()*26, getYPos()*26+3);
           }
         }
         setTrueXPos(13+getXPos()*26); 
@@ -208,13 +234,13 @@ public class Inky extends Ghost {
       // condition 2c 
       else if (!alive) {
         if (getDirection() == "Up") {
-          image(eyes, 3+getXPos()*26, getYPos()*26+3); 
+          image(eyes, 3+getXPos()*26, getYPos()*26+3);
         } else if (getDirection() == "Down") {
-          image(eyes, 3+getXPos()*26, getYPos()*26+3); 
+          image(eyes, 3+getXPos()*26, getYPos()*26+3);
         } else if (getDirection() == "Left") {
-          image(eyes, 3+getXPos()*26, getYPos()*26+3); 
+          image(eyes, 3+getXPos()*26, getYPos()*26+3);
         } else if (getDirection() == "Right") {
-          image(eyes, 3+getXPos()*26, getYPos()*26+3); 
+          image(eyes, 3+getXPos()*26, getYPos()*26+3);
         }
         setTrueXPos(13+getXPos()*26); 
         setTrueYPos(13+getYPos()*26);
