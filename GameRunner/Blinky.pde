@@ -66,7 +66,7 @@ public class Blinky extends Ghost {
     if (movecounter > 0) {
 
       // condition 1a: no special stay normal 
-      if (!Player.getSpecial()) {
+      if (!Player.getSpecial() || eaten) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -88,29 +88,33 @@ public class Blinky extends Ghost {
       }
 
       // condition 1b: has special = turn blue 
-      if (Player.getSpecial() && alive) {
-        if (getDirection() == "Up") {
-          image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Down") {
-          image(dead, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Left") {
-          image(dead, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
-        } else if (getDirection() == "Right") {
-          image(dead, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
-        }
+      else if (Player.getSpecial() && alive) {
+        if(Player.modetimer <= 240 && (Player.modetimer / 15) % 2 == 1) {
+          //put the white sprite here
+        } else {
+          if (getDirection() == "Up") {
+            image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+            setTrueXPos(getXPos()*26); 
+            setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+          } else if (getDirection() == "Down") {
+            image(dead, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+            setTrueXPos(getXPos()*26); 
+            setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+          } else if (getDirection() == "Left") {
+            image(dead, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+            setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
+            setTrueYPos(getYPos()*26);
+          } else if (getDirection() == "Right") {
+            image(dead, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+            setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
+            setTrueYPos(getYPos()*26);
+          }
         movecounter--;
+        }
       }
       
       //condition 1c: if not alive turn into eyes 
-      if (!alive) {
+      else if (!alive) {
         if (getDirection() == "Up") {
           image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -136,7 +140,7 @@ public class Blinky extends Ghost {
     } else if (movecounter <= 0) {
       
       //condition2a
-      if (!Player.getSpecial()) {
+      if (!Player.getSpecial() || eaten) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26 +3 );
         } else if (getDirection() == "Down") {
@@ -149,10 +153,9 @@ public class Blinky extends Ghost {
       }
         
       // condition 2b
-      if (Player.getSpecial() && alive) {
-        if(Player.modetimer <= 240 && (Player.modetimer / 60) % 2 == 1) {
+      else if (Player.getSpecial() && alive) {
+        if(Player.modetimer <= 240 && (Player.modetimer / 15) % 2 == 1) {
           //put the white sprite here
-          System.out.println(modetimer);
         } else {
           if (getDirection() == "Up") {
             image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
@@ -176,7 +179,7 @@ public class Blinky extends Ghost {
       }
 
       // condition 2c 
-      if (!alive) {
+      else if (!alive) {
         if (getDirection() == "Up") {
           image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
