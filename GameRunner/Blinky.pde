@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 public class Blinky extends Ghost {
   // instance variables 
   PImage up = loadImage("redGhostUp.png");
@@ -30,6 +32,7 @@ public class Blinky extends Ghost {
       if (gameMap.getVal(xPos, yPos) == 4) {
         alive = true;
         eaten = true;
+        eye.stop();
       }
     } else if (Player.getSpecial() && !eaten) {
       maxmovecounter = slowmove;
