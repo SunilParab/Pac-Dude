@@ -87,180 +87,130 @@ public class Pinky extends Ghost {
     if (timeToSpawn > 0) {
       timeToSpawn--;
     }
-    if (Player.getSpecial() && !eaten) {
-      fill(0, 0, 255);
-    } else {
-      fill(255, 169, 180);
-    }
-
+    // condition 1 
     if (movecounter > 0) {
 
-      // condition 1a 
-      if (!Player.getSpecial() && alive) {
+      // condition 1a: no special stay normal 
+      if ((!Player.getSpecial() && alive) || (Player.getSpecial() && eaten)) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+          setTrueXPos(13+getXPos()*26); 
+          setTrueYPos(13+getYPos()*26+26.0*movecounter/maxmovecounter);
         } else if (getDirection() == "Down") {
           image(down, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+          setTrueXPos(13+getXPos()*26); 
+          setTrueYPos(13+getYPos()*26-26.0*movecounter/maxmovecounter);
         } else if (getDirection() == "Left") {
           image(left, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
+          setTrueXPos(13+getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(13+getYPos()*26);
         } else if (getDirection() == "Right") {
           image(right, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
+          setTrueXPos(13+getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(13+getYPos()*26);
         }
         movecounter--;
       }
 
-      // condition 1b 
-      if (Player.getSpecial()  && lefthouse && alive ) {
-        if (getDirection() == "Up") {
-          image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Down") {
-          image(dead, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Left") {
-          image(dead, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
-        } else if (getDirection() == "Right") {
-          image(dead, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
-        }
+      // condition 1b: has special = turn blue 
+      else if (Player.getSpecial() && alive) {
+        if(Player.modetimer <= 240 && (Player.modetimer / 15) % 2 == 1) {
+          //put the white sprite here
+        } else {
+          if (getDirection() == "Up") {
+            image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
+            setTrueXPos(13+getXPos()*26); 
+            setTrueYPos(13+getYPos()*26+26.0*movecounter/maxmovecounter);
+          } else if (getDirection() == "Down") {
+            image(dead, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
+            setTrueXPos(13+getXPos()*26); 
+            setTrueYPos(13+getYPos()*26-26.0*movecounter/maxmovecounter);
+          } else if (getDirection() == "Left") {
+            image(dead, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
+            setTrueXPos(13+getXPos()*26+26.0*movecounter/maxmovecounter); 
+            setTrueYPos(13+getYPos()*26);
+          } else if (getDirection() == "Right") {
+            image(dead, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
+            setTrueXPos(13+getXPos()*26-26.0*movecounter/maxmovecounter); 
+            setTrueYPos(13+getYPos()*26);
+          }
         movecounter--;
-      }
-
-      // condition 1c 
-      if (alive && Player.getSpecial()  && !lefthouse && alive) {
-        if (getDirection() == "Up") {
-          image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Down") {
-          image(down, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Left") {
-          image(left, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
-        } else if (getDirection() == "Right") {
-          image(right, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
         }
-        movecounter--;
       }
-
-      // condition 1d
-      if (!alive) {
+      
+      //condition 1c: if not alive turn into eyes 
+      else if (!alive) {
         if (getDirection() == "Up") {
           image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+          setTrueXPos(13+getXPos()*26); 
+          setTrueYPos(13+getYPos()*26+26.0*movecounter/maxmovecounter);
         } else if (getDirection() == "Down") {
           image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+          setTrueXPos(13+getXPos()*26); 
+          setTrueYPos(13+getYPos()*26-26.0*movecounter/maxmovecounter);
         } else if (getDirection() == "Left") {
           image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
+          setTrueXPos(13+getXPos()*26+26.0*movecounter/maxmovecounter); 
+          setTrueYPos(13+getYPos()*26);
         } else if (getDirection() == "Right") {
           image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
+          setTrueXPos(13+getXPos()*26-26.0*movecounter/maxmovecounter); 
+          setTrueYPos(13+getYPos()*26);
         }
         movecounter--;
       }
+      
+      
+      // condition 2 
     } else if (movecounter <= 0) {
-
-      //condition 2a
-      if (!Player.getSpecial() && alive ) {
+      
+      //condition2a
+      if ((!Player.getSpecial() && alive) || (Player.getSpecial() && eaten)) {
         if (getDirection() == "Up") {
-          image(up, 3 +getXPos()*26, getYPos()*26 +3 );
+          image(up, 3+getXPos()*26, getYPos()*26+3);
         } else if (getDirection() == "Down") {
-          image(down, 3+ getXPos()*26, getYPos()*26 +3);
+          image(down, 3+getXPos()*26, getYPos()*26+3);
         } else if (getDirection() == "Left") {
-          image(left, 3+ getXPos()*26, getYPos()*26 +3 );
+          image(left, 3+getXPos()*26, getYPos()*26+3);
         } else if (getDirection() == "Right") {
-          image(right, 3+ getXPos()*26, getYPos()*26 +3);
+          image(right, 3+getXPos()*26, getYPos()*26+3);
         }
+        setTrueXPos(13+getXPos()*26); 
+        setTrueYPos(13+getYPos()*26);
       }
-
+        
       // condition 2b
-      if (Player.getSpecial() && alive) {
-        if (getDirection() == "Up") {
-          image(dead, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Down") {
-          image(dead, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "Left") {
-          image(dead, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
-        } else if (getDirection() == "Right") {
-          image(dead, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
+      else if (Player.getSpecial() && alive) {
+        if(Player.modetimer <= 240 && (Player.modetimer / 15) % 2 == 1) {
+          //put the white sprite here
+        } else {
+          if (getDirection() == "Up") {
+            image(dead, 3+getXPos()*26, getYPos()*26+3); 
+          } else if (getDirection() == "Down") {
+            image(dead, 3+getXPos()*26, getYPos()*26+3); 
+          } else if (getDirection() == "Left") {
+            image(dead, 3+  getXPos()*26, getYPos()*26+3); 
+          } else if (getDirection() == "Right") {
+            image(dead, 3 + getXPos()*26, getYPos()*26+3); 
+          }
         }
-        movecounter--;
+        setTrueXPos(13+getXPos()*26); 
+        setTrueYPos(13+getYPos()*26);
       }
 
-      //condition 2c
-      if (alive && Player.getSpecial()  && !lefthouse) {
+      // condition 2c 
+      else if (!alive) {
         if (getDirection() == "Up") {
-          image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
+          image(eyes, 3+getXPos()*26, getYPos()*26+3); 
         } else if (getDirection() == "Down") {
-          image(down, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
+          image(eyes, 3+getXPos()*26, getYPos()*26+3); 
         } else if (getDirection() == "Left") {
-          image(left, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
+          image(eyes, 3+getXPos()*26, getYPos()*26+3); 
         } else if (getDirection() == "Right") {
-          image(right, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
+          image(eyes, 3+getXPos()*26, getYPos()*26+3); 
         }
-        movecounter--;
-      }
-
-      // condition 2d
-      if (!alive) {
-        if (getDirection() == "eyes") {
-          image(eyes, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26+26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "eyes") {
-          image(eyes, 3+ getXPos()*26, getYPos()*26-26*movecounter/maxmovecounter +3 ); 
-          setTrueXPos(getXPos()*26); 
-          setTrueYPos(getYPos()*26-26.0*movecounter/maxmovecounter);
-        } else if (getDirection() == "eyes") {
-          image(eyes, 3+  getXPos()*26+26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26+26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
-        } else if (getDirection() == "eyes") {
-          image(eyes, 3 + getXPos()*26-26*movecounter/maxmovecounter, getYPos()*26 +3); 
-          setTrueXPos(getXPos()*26-26.0*movecounter/maxmovecounter); 
-          setTrueYPos(getYPos()*26);
-        }
-        movecounter--;
+        setTrueXPos(13+getXPos()*26); 
+        setTrueYPos(13+getYPos()*26);
       }
 
       move();

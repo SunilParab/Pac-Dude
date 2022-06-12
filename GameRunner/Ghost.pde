@@ -16,7 +16,6 @@ public abstract class Ghost implements Entities {
   public int normmove = 10;
   final public int deadmove = 2;
   final public int slowmove = 15;
-  boolean lefthouse = false;
 
   public int getXPos() {
     return xPos;
@@ -151,7 +150,6 @@ public abstract class Ghost implements Entities {
     double left; 
     double up; 
     double down; 
-    lefthouse = true; 
 
 
     // right dist
