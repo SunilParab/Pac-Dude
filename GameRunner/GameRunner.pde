@@ -14,6 +14,7 @@ String mode;
 int soundtimer = 600; 
 SoundFile file; 
 SoundFile pellet; 
+SoundFile eyes; 
 
 void setup() {
   Lives = 3;
@@ -32,6 +33,8 @@ void setup() {
   mode = "Scatter";
   file = new SoundFile(this, "vov.wav"); // starter music 
   pellet = new SoundFile(this, "nopp.wav");
+  eyes = new SoundFile(this, "lir.wav");
+
   file.play();
 }
 
