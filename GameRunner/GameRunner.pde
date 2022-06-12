@@ -17,6 +17,12 @@ int soundtimer = 600;
 SoundFile file; 
 SoundFile pellet; 
 
+//these lines break smt
+//PImage red = loadImage("redGhostUp.png");
+//PImage orange = loadImage("yellowUp.png");
+//PImage blue = loadImage("blueUp.png");
+//PImage pink = loadImage("pinkUp.png");
+
 void setup() {
   Lives = 3;
   gameMap = new Map();
@@ -43,7 +49,7 @@ void setup() {
 void draw() {
   if (won) {
     gameMap = new Map();
-    Player = new PacDude(1, 1);
+    Player = new PacDude(13, 16);
     won = false;
     Ghosts = new Ghost[4];
     Ghosts[0] = new Blinky(13, 11);
@@ -60,6 +66,8 @@ void draw() {
     if (startDelay > 0) {
       startDelay--;
       PrintMap();
+      //image(red, 3 + 13*26, 11*26+26 + 3);
+      //do this for the other three ghosts
       arc(13*26+13, 16*26+13, 22, 22, radians(225), radians(495));
     } else {
       modetimer--;

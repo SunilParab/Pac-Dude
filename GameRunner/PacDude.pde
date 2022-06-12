@@ -12,7 +12,7 @@ public class PacDude implements Entities {
   private String queueddir;
   private int movecounter;
   private float mouthstate = 1.0;
-  private int modetimer = 0; 
+  public int modetimer = 0; 
   private int maxmovecounter = 9;
   int counter = 0 ; 
 
