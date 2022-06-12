@@ -121,7 +121,7 @@ void keyPressed() {
 }
 
 void PrintMap() {
-  background(fire);
+  background(0);
   for (int i =0; i < 28; i ++) { 
     for (int j= 0; j < 27; j++) { 
       if (gameMap.getVal(i, j) == 1) { 
@@ -198,5 +198,6 @@ void respawn() {
     Ghosts[3] = new Pinky(11, 13);
     modetimer = 600;
     mode = "Scatter";
+    pellet.stop(); 
   }
 }
