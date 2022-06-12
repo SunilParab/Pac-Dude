@@ -146,9 +146,22 @@ void PrintStart() {
   textSize(80);
   fill(0, 128, 255);
   text("PacDude", 195, 200);
+  
+    fill(255);
+
+    textSize(15);
+
+    text("Everyone from your village has been killed by evil ghosts.", 155, 475);
+    text("However you can go back in time and stop it from happening.", 140, 500);
+    text("To get this power, you must first collect all the pellets!", 159, 525);
+
+  
+  
+  
+  
   textSize(30);
   fill(255);
-  text("Press Enter to Play", 230, 500);
+  text("Press Enter to Play", 230, 700);
   fill(255, 255, 0);
   arc(370, 350, 50, 50, radians(30), radians(330));
 }
