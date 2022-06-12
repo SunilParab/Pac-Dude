@@ -33,7 +33,7 @@ void setup() {
   mode = "Scatter";
   file = new SoundFile(this, "vov.wav"); // starter music 
   pellet = new SoundFile(this, "nopp.wav");
-  eyes = new SoundFile(this, "lir.wav");
+  eyes = new SoundFile(this, "neva.wav");
 
   file.play();
 }
