@@ -20,6 +20,9 @@ SoundFile death;
 SoundFile rain;
 int count;
 int level;
+int normmove;
+int deadmove;
+int slowmove;
 
 PImage wall;
 PImage fire;
@@ -58,7 +61,11 @@ void setup() {
   PrintStart();
   startDelay = 180;
   count = 0;
-  level = 0;
+  level = 1;
+  normmove = 10;
+  deadmove = 2;
+  slowmove = 15;
+  normmove = 10 - level / 5;
 
   Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(13, 11);
@@ -90,6 +97,7 @@ void draw() {
     modetimer = 600;
     mode = "Scatter";
     startDelay = 180;
+    normmove = 10 - level / 2;
   }
   if (!started) {
     PrintStart();
@@ -173,7 +181,7 @@ void keyPressed() {
       rain.stop();
       backgroundsound.play();
       count = 0;
-      level = 0;
+      level = 1;
     }
   } else {
     if (key == CODED) {

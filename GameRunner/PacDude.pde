@@ -155,7 +155,10 @@ public class PacDude implements Entities {
     if (gameMap.getVal(getXPos(), getYPos()) == 3) {
       gameMap.setVal(getXPos(), getYPos(), 0); 
       Player.setSpecial(true);
-      modetimer = 510;
+      modetimer = 510 - 30 * level;
+      if (modetimer < 0) {
+        modetimer = 0;
+      }
       Player.eatPellet();
     } 
     if (!nextToBlock(direction)) {
