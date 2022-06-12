@@ -285,6 +285,7 @@ void PrintEnd() {
   textSize(30);
   fill(255);
   text("I shall give you another chance", 140, 500);
+  
   text("Press Enter to Play Again", 185, 575);
   
   //text("Press Enter to Play Normal Mode", 125, 575);
