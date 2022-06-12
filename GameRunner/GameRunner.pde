@@ -1,4 +1,4 @@
-import processing.sound.*; //<>//
+import processing.sound.*; //<>// //<>//
 import java.util.*;
 
 Map gameMap;
@@ -56,6 +56,7 @@ void setup() {
   lost = false;
   PrintStart();
   startDelay = 180;
+  count = 0;
 
   Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(13, 11);
@@ -139,10 +140,6 @@ void draw() {
     }
   } else {
     PrintEnd();
-    if (count == 0) {
-      rain.play(); 
-      count++;
-    }
   }
 }
 
@@ -169,6 +166,9 @@ void keyPressed() {
       modetimer = 600;
       mode = "Scatter";
       startDelay = 180;
+      rain.stop();
+      file.play();
+      count = 0;
     }
   } else {
     if (key == CODED) {
@@ -245,6 +245,10 @@ void PrintEnd() {
   pellet.stop(); 
   eye.stop();
   death.stop();
+  if (count == 0) {
+    rain.play(); 
+    count++;
+  }
 
   if (gameMap.getPellets() - Player.getPelletsEaten() == 0) { 
     background(victorymap);
@@ -265,6 +269,10 @@ void PrintEnd() {
 void respawn() {
   Lives--;
   if (Lives != 0) {
+    if (Player.getSpecial()) {
+      pellet.stop();
+      file.play();
+    }
     Player = new PacDude(13, 16, Player.getPelletsEaten());
     Ghosts = new Ghost[4];
     Ghosts[0] = new Blinky(13, 11);
@@ -273,7 +281,6 @@ void respawn() {
     Ghosts[3] = new Pinky(11, 13);
     modetimer = 600;
     mode = "Scatter";
-    pellet.stop();
     startDelay = 180;
   }
 }
