@@ -246,11 +246,11 @@ void PrintStart() {
 
   fill(255);
 
-  textSize(15);
+  textSize(20);
 
-  text("Everyone from your village has been killed by evil ghosts.", 155, 475);
-  text("However you can go back in time and stop it from happening.", 140, 500);
-  text("To get this power, you must first collect all the pellets!", 159, 525);
+  text("Everyone from your village has been killed by evil ghosts.", 84, 475);
+  text("However you can go back in time and stop it from happening.", 63, 500);
+  text("To get this power, you must first collect all the pellets!", 95, 525);
 
   image(leftyellow, 425, 350); 
   image(leftred, 475, 350); 
@@ -258,7 +258,12 @@ void PrintStart() {
   image(rightpink, 245, 350); 
   textSize(30);
   fill(255);
+  
   text("Press Enter to Play", 230, 700);
+  
+  //text("Press Enter to Play Normal Mode", 125, 625);
+  //text("Press Space to Play Random Mode", 115, 700);
+  
   fill(255, 255, 0);
   arc(370, 350, 50, 50, radians(30), radians(330));
 }
