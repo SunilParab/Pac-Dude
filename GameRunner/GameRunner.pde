@@ -10,12 +10,17 @@ int Lives;
 boolean started;
 int modetimer;
 String mode;
-
 int soundtimer = 600; 
 SoundFile file; 
 SoundFile pellet; 
 SoundFile eye; 
 SoundFile death; 
+PImage wall;
+PImage fire;
+PImage leftred; 
+PImage leftyellow;
+PImage rightblue;
+PImage rightpink;
 
 void setup() {
   Lives = 3;
@@ -23,6 +28,12 @@ void setup() {
   Player = new PacDude(1, 1);
   size(729, 729);
   started = false;
+  fire = loadImage("firevillage.gif");
+  leftred = loadImage("redGhostLeft.png");
+  leftyellow = loadImage("yellowLeft.png");
+  rightblue = loadImage("blueRight.png");
+  rightpink = loadImage("pinkRight.png");
+
   PrintStart();
 
   Ghosts = new Ghost[4];
@@ -36,8 +47,8 @@ void setup() {
   pellet = new SoundFile(this, "nopp.wav");
   eye = new SoundFile(this, "neva.wav");
   death = new SoundFile(this, "op.wav");
+  wall = loadImage("walll.jpg");
 
-  
 
   file.play();
 }
@@ -74,13 +85,12 @@ void draw() {
           }
         } else if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
           respawn();
-          death.play(); 
-          
+          death.play();
         }
       } else {
         if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
           respawn();
-          death.play(); 
+          death.play();
         }
       }
     }
@@ -110,15 +120,13 @@ void keyPressed() {
   }
 }
 
-
 void PrintMap() {
-  background(0);
-
+  background(fire);
   for (int i =0; i < 28; i ++) { 
     for (int j= 0; j < 27; j++) { 
       if (gameMap.getVal(i, j) == 1) { 
-        fill(0, 0, 255);
-        rect(i * 26, j * 26, 26, 26);
+        fill(0, 255, 100);
+        image(wall, i* 26, j *26 );
       }
       if (gameMap.getVal(i, j) == 2) { 
         fill(255); 
@@ -142,23 +150,23 @@ void PrintMap() {
 }
 
 void PrintStart() {
-  background(0);
+  background(fire);
   textSize(80);
   fill(0, 128, 255);
   text("PacDude", 195, 200);
-  
-    fill(255);
 
-    textSize(15);
+  fill(255);
 
-    text("Everyone from your village has been killed by evil ghosts.", 155, 475);
-    text("However you can go back in time and stop it from happening.", 140, 500);
-    text("To get this power, you must first collect all the pellets!", 159, 525);
+  textSize(15);
 
-  
-  
-  
-  
+  text("Everyone from your village has been killed by evil ghosts.", 155, 475);
+  text("However you can go back in time and stop it from happening.", 140, 500);
+  text("To get this power, you must first collect all the pellets!", 159, 525);
+
+  image(leftyellow, 425, 350); 
+  image(leftred, 475, 350); 
+  image(rightblue, 295, 350); 
+  image(rightpink, 245, 350); 
   textSize(30);
   fill(255);
   text("Press Enter to Play", 230, 700);
@@ -174,10 +182,10 @@ void PrintEnd() {
   textSize(30);
   fill(255);
   text("Now Get Out", 275, 500);
-  
+
   file.stop(); 
   pellet.stop(); 
-  eye.stop(); 
+  eye.stop();
 }
 
 void respawn() {
