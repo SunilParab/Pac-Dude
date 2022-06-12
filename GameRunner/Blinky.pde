@@ -157,7 +157,6 @@ public class Blinky extends Ghost {
 
       // condition 2
     } else if (movecounter <= 0) {
-
       //condition2a
       if ((!Player.getSpecial() && alive) || (Player.getSpecial() && eaten)) {
         if (getDirection() == "Up") {
