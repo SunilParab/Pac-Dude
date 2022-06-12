@@ -15,12 +15,18 @@ SoundFile file;
 SoundFile pellet; 
 SoundFile eye; 
 SoundFile death; 
+SoundFile rain;
+int count;
+
 PImage wall;
 PImage fire;
 PImage leftred; 
 PImage leftyellow;
 PImage rightblue;
 PImage rightpink;
+PImage victorymap;
+PImage yup;
+
 
 void setup() {
   Lives = 3;
@@ -33,6 +39,8 @@ void setup() {
   leftyellow = loadImage("yellowLeft.png");
   rightblue = loadImage("blueRight.png");
   rightpink = loadImage("pinkRight.png");
+  victorymap = loadImage("victorymap.jpg");
+  yup = loadImage("yup.jpg");
 
   PrintStart();
 
@@ -48,6 +56,7 @@ void setup() {
   eye = new SoundFile(this, "neva.wav");
   death = new SoundFile(this, "op.wav");
   wall = loadImage("walll.jpg");
+  rain = new SoundFile(this, "rain.wav");
 
 
   file.play();
@@ -96,7 +105,13 @@ void draw() {
     }
   } else {
     PrintEnd();
+    if(count == 0){
+    rain.play(); 
+    count++;
+    }
+    
   }
+  
 }
 
 
@@ -153,7 +168,7 @@ void PrintStart() {
   background(fire);
   textSize(80);
   fill(0, 128, 255);
-  text("PacDude", 195, 200);
+  text("Pac-Dude", 195, 200);
 
   fill(255);
 
@@ -175,13 +190,21 @@ void PrintStart() {
 }
 
 void PrintEnd() {
-  background(0);
-  textSize(80);
-  fill(0, 128, 255);
-  text("Game Over", 150, 200);
-  textSize(30);
-  fill(255);
-  text("Now Get Out", 275, 500);
+
+  if (gameMap.getPellets() - Player.getPelletsEaten() == 0) { 
+    background(victorymap);
+
+    textSize(50);
+    fill(255, 0, 150);
+    text("Congratulations Pac-Dude!", 50, 350);
+    fill(255, 0, 0);
+    textSize(40);
+    text("You Saved Everyone!", 175, 400);
+  } 
+
+  if (gameMap.getPellets() - Player.getPelletsEaten() != 0) {
+      background(yup);
+  }
 
   file.stop(); 
   pellet.stop(); 
@@ -198,6 +221,6 @@ void respawn() {
     Ghosts[3] = new Pinky(11, 13);
     modetimer = 600;
     mode = "Scatter";
-    pellet.stop(); 
+    pellet.stop();
   }
 }
