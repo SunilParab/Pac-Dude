@@ -60,13 +60,11 @@ public class Blinky extends Ghost {
   }
 
   public void drawSelf() {    
-    modetimer--;
-    fill(0, 255, 255);
     // condition 1 
     if (movecounter > 0) {
 
       // condition 1a: no special stay normal 
-      if (!Player.getSpecial() || eaten) {
+      if ((!Player.getSpecial() && alive) || (Player.getSpecial() && eaten)) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26+26*movecounter/maxmovecounter + 3); 
           setTrueXPos(getXPos()*26); 
@@ -140,7 +138,7 @@ public class Blinky extends Ghost {
     } else if (movecounter <= 0) {
       
       //condition2a
-      if (!Player.getSpecial() || eaten) {
+      if ((!Player.getSpecial() && alive) || (Player.getSpecial() && eaten)) {
         if (getDirection() == "Up") {
           image(up, 3 +getXPos()*26, getYPos()*26 +3 );
         } else if (getDirection() == "Down") {
