@@ -1,7 +1,6 @@
 import processing.sound.*; //<>//
 import java.util.*;
 
-
 Map gameMap;
 PacDude Player;
 int score = 0; 
@@ -12,6 +11,7 @@ boolean won;
 boolean lost;
 int modetimer;
 String mode;
+int startDelay;
 
 int soundtimer = 600; 
 SoundFile file; 
@@ -26,6 +26,7 @@ void setup() {
   won = false;
   lost = false;
   PrintStart();
+  startDelay = 180;
 
   Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(13, 11);
@@ -51,48 +52,54 @@ void draw() {
     Ghosts[3] = new Pinky(11, 13);
     modetimer = 600;
     mode = "Scatter";
+    startDelay = 180;
   }
   if (!started) {
     PrintStart();
   } else if (!lost) {
-    modetimer--;
-
-    if (modetimer <= 0) {
-      if (mode.equals("Scatter")) {
-        mode = "Chase";
-      } else {
-        mode = "Scatter";
+    if (startDelay > 0) {
+      startDelay--;
+      PrintMap();
+      arc(13*26+13, 16*26+13, 22, 22, radians(225), radians(495));
+    } else {
+      modetimer--;
+      if (modetimer <= 0) {
+        if (mode.equals("Scatter")) {
+          mode = "Chase";
+        } else {
+          mode = "Scatter";
+        }
+        modetimer = 600;
       }
-      modetimer = 600;
-    }
-    PrintMap();
-    fill(255, 255, 0);
-    Player.drawSelf();
-    for (int i = 0; i < Ghosts.length; i ++) {
-      Ghosts[i].drawSelf();
-      // if the player has special then the ghost will die 
-      // however this ability only last for a mode timer of 510, or 8.5 seconds 
-      if (Player.getSpecial()) {
-        if (Ghosts[i].alive && !Ghosts[i].eaten && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
-          Ghosts[i].respawn();
-          int ghostseaten = 0;
-          for (int j = 0; j < Ghosts.length; j++) {
-            if (Ghosts[j].eaten || !Ghosts[j].alive) {
-              ghostseaten++;
+      PrintMap();
+      fill(255, 255, 0);
+      Player.drawSelf();
+      for (int i = 0; i < Ghosts.length; i ++) {
+        Ghosts[i].drawSelf();
+        // if the player has special then the ghost will die 
+        // however this ability only last for a mode timer of 510, or 8.5 seconds 
+        if (Player.getSpecial()) {
+          if (Ghosts[i].alive && !Ghosts[i].eaten && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+            Ghosts[i].respawn();
+            int ghostseaten = 0;
+            for (int j = 0; j < Ghosts.length; j++) {
+              if (Ghosts[j].eaten || !Ghosts[j].alive) {
+                ghostseaten++;
+              }
             }
+            score += Math.pow(2,ghostseaten) * 100;
+          } else if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+            respawn();
           }
-          score += Math.pow(2,ghostseaten) * 100;
-        } else if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
-          respawn();
-        }
-      } else {
-        if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
-          respawn();
+        } else {
+          if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
+            respawn();
+          }
         }
       }
+      won = Player.getPelletsEaten() == gameMap.getPellets();
+      lost = Lives <= 0;
     }
-    won = Player.getPelletsEaten() == gameMap.getPellets();
-    lost = Lives <= 0;
   } else {
     PrintEnd();
   }
@@ -199,5 +206,6 @@ void respawn() {
     Ghosts[3] = new Pinky(11, 13);
     modetimer = 600;
     mode = "Scatter";
+    startDelay = 180;
   }
 }
