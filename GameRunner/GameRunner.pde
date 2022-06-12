@@ -273,6 +273,7 @@ void respawn() {
     Ghosts[3] = new Pinky(11, 13);
     modetimer = 600;
     mode = "Scatter";
+    pellet.stop();
     startDelay = 180;
   }
 }
