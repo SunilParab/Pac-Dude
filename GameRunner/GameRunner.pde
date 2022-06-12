@@ -15,6 +15,7 @@ int soundtimer = 600;
 SoundFile file; 
 SoundFile pellet; 
 SoundFile eye; 
+SoundFile death; 
 
 void setup() {
   Lives = 3;
@@ -34,6 +35,9 @@ void setup() {
   file = new SoundFile(this, "vov.wav"); // starter music 
   pellet = new SoundFile(this, "nopp.wav");
   eye = new SoundFile(this, "neva.wav");
+  death = new SoundFile(this, "op.wav");
+
+  
 
   file.play();
 }
@@ -70,10 +74,13 @@ void draw() {
           }
         } else if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
           respawn();
+          death.play(); 
+          
         }
       } else {
         if (Ghosts[i].alive && abs(Ghosts[i].getTrueXPos() - Player.getTrueXPos()) <= Player.radius + Ghosts[i].radius && abs(Ghosts[i].getTrueYPos() - Player.getTrueYPos()) <= Player.radius + Ghosts[i].radius) {
           respawn();
+          death.play(); 
         }
       }
     }
