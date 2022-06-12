@@ -1,4 +1,4 @@
-import processing.sound.*; //<>//
+import processing.sound.*; //<>// //<>//
 import java.util.*;
 
 Map gameMap;
@@ -13,12 +13,16 @@ int modetimer;
 String mode;
 int startDelay;
 int soundtimer = 600; 
-SoundFile file; 
+SoundFile backgroundsound; 
 SoundFile pellet; 
 SoundFile eye; 
 SoundFile death; 
 SoundFile rain;
 int count;
+int level;
+int normmove;
+int deadmove;
+int slowmove;
 
 PImage wall;
 PImage fire;
@@ -56,6 +60,12 @@ void setup() {
   lost = false;
   PrintStart();
   startDelay = 180;
+  count = 0;
+  level = 1;
+  normmove = 10;
+  deadmove = 2;
+  slowmove = 15;
+  normmove = 10 - level / 5;
 
   Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(13, 11);
@@ -64,17 +74,18 @@ void setup() {
   Ghosts[3] = new Pinky(11, 13);
   modetimer = 600;
   mode = "Scatter";
-  file = new SoundFile(this, "vov.wav"); // starter music 
+  backgroundsound = new SoundFile(this, "vov.wav"); // starter music 
   pellet = new SoundFile(this, "nopp.wav");
   eye = new SoundFile(this, "neva.wav");
   death = new SoundFile(this, "op.wav");
   wall = loadImage("walll.jpg");
   rain = new SoundFile(this, "rain.wav");
-  file.play();
+  backgroundsound.play();
 }
 
 void draw() {
   if (won) {
+    level++;
     gameMap = new Map();
     Player = new PacDude(13, 16);
     won = false;
@@ -86,21 +97,23 @@ void draw() {
     modetimer = 600;
     mode = "Scatter";
     startDelay = 180;
+    normmove = 10 - level / 2;
   }
   if (!started) {
     PrintStart();
   } else if (!lost) {
     if (startDelay > 0) {
       startDelay--;
-      PrintMap();
-      
-      image(red1, 3 + Ghosts[0].getXPos()*26, Ghosts[0].getYPos()*26+26 + 3);
-      image(orange, 3 + Ghosts[1].getXPos()*26, Ghosts[1].getYPos()*26+26 + 3);
-      image(blue, 3 + Ghosts[2].getXPos()*26, Ghosts[2].getYPos()*26+26 + 3);
-      image(pink, 3 + Ghosts[3].getXPos()*26, Ghosts[3].getYPos()*26+26 + 3);
-
-      
+      PrintMap(); 
+      image(red1, 3 + Ghosts[0].getXPos()*26, Ghosts[0].getYPos()*26 + 3);
+      image(orange, 3 + Ghosts[1].getXPos()*26, Ghosts[1].getYPos()*26 + 3);
+      image(blue, 3 + Ghosts[2].getXPos()*26, Ghosts[2].getYPos()*26 + 3);
+      image(pink, 3 + Ghosts[3].getXPos()*26, Ghosts[3].getYPos()*26 + 3);
+      fill(255, 255, 0); 
       arc(13*26+13, 16*26+13, 22, 22, radians(225), radians(495));
+      text("Ready!", 335, 410);
+      textSize(40);
+      text(startDelay/60+1, 350, 490);
     } else {
       modetimer--;
       if (modetimer <= 0) {
@@ -139,10 +152,6 @@ void draw() {
     }
   } else {
     PrintEnd();
-    if (count == 0) {
-      rain.play(); 
-      count++;
-    }
   }
 }
 
@@ -169,6 +178,10 @@ void keyPressed() {
       modetimer = 600;
       mode = "Scatter";
       startDelay = 180;
+      rain.stop();
+      backgroundsound.play();
+      count = 0;
+      level = 1;
     }
   } else {
     if (key == CODED) {
@@ -199,7 +212,7 @@ void PrintMap() {
       }
 
       if (gameMap.getVal(i, j) == 3) { 
-        if ((!(modetimer % 10 ==0)) ) {
+        if ((((modetimer / 10) % 2 == 0)) ) {
           fill(255, 255, 0);
           circle(i * 26 + 13, j * 26 + 13, 14);
         }
@@ -210,8 +223,9 @@ void PrintMap() {
   textSize(20);
   fill(255, 255, 0);
 
-  text("Score: " + score, 80, 725);
-  text("Lives: " + Lives, 400, 725);
+  text("Score: " + score, 170, 725);
+  text("Level: " + level, 330, 725);
+  text("Lives: " + Lives, 490, 725);
 }
 
 void PrintStart() {
@@ -241,10 +255,14 @@ void PrintStart() {
 
 void PrintEnd() {
 
-  file.stop(); 
+  backgroundsound.stop(); 
   pellet.stop(); 
   eye.stop();
   death.stop();
+  if (count == 0) {
+    rain.play(); 
+    count++;
+  }
 
   if (gameMap.getPellets() - Player.getPelletsEaten() == 0) { 
     background(victorymap);
@@ -265,6 +283,10 @@ void PrintEnd() {
 void respawn() {
   Lives--;
   if (Lives != 0) {
+    if (Player.getSpecial()) {
+      pellet.stop();
+      backgroundsound.play();
+    }
     Player = new PacDude(13, 16, Player.getPelletsEaten());
     Ghosts = new Ghost[4];
     Ghosts[0] = new Blinky(13, 11);
@@ -273,7 +295,6 @@ void respawn() {
     Ghosts[3] = new Pinky(11, 13);
     modetimer = 600;
     mode = "Scatter";
-    pellet.stop();
     startDelay = 180;
   }
 }
