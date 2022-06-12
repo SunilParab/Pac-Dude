@@ -1,4 +1,4 @@
-import processing.sound.*; //<>//
+import processing.sound.*; //<>// //<>//
 
 public class PacDude implements Entities {
   private int xPos;
@@ -88,12 +88,27 @@ public class PacDude implements Entities {
   }
 
   public void setSpecial(boolean hasspec) {
-    specialAbility = hasspec;
+    
+     if(specialAbility == true && hasspec == false){ 
+       file.play(); 
+       pellet.stop(); 
+     }
+    
+    if(specialAbility == false && hasspec == true){ 
+      file.pause(); 
+      pellet.play(); 
+    }
+    
+    
+  
     if (specialAbility == true) {
       for (int i = 0; i < Ghosts.length; i++) {
         Ghosts[i].eaten = false;
       }
     }
+    
+        specialAbility = hasspec;
+
   }
 
   public int getPelletsEaten() { 
@@ -134,12 +149,7 @@ public class PacDude implements Entities {
       gameMap.setVal(getXPos(), getYPos(), 0); 
       eatPellet();
       counter ++; 
-      
-      
-      // audio testing for eating pellets 
-      if(frameCount % 6 == 0){
-      pellet.play(); 
-      }
+     
       
     } 
     if (gameMap.getVal(getXPos(), getYPos()) == 3) {

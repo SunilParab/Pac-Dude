@@ -203,6 +203,7 @@ public abstract class Ghost implements Entities {
 
   public void respawn() {
     alive = false;
+    eye.play(); 
   }
 
   public void wander() {

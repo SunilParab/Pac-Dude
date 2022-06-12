@@ -16,6 +16,8 @@ int startDelay;
 int soundtimer = 600; 
 SoundFile file; 
 SoundFile pellet; 
+SoundFile eye; 
+SoundFile death; 
 
 //these lines break smt
 //PImage red = loadImage("redGhostUp.png");
@@ -41,8 +43,13 @@ void setup() {
   Ghosts[3] = new Pinky(11, 13);
   modetimer = 600;
   mode = "Scatter";
-  file = new SoundFile(this, "pacmanbeginning.wav"); // starter music 
-  pellet = new SoundFile(this, "Chompy.wav");
+  file = new SoundFile(this, "vov.wav"); // starter music 
+  pellet = new SoundFile(this, "nopp.wav");
+  eye = new SoundFile(this, "neva.wav");
+  death = new SoundFile(this, "op.wav");
+
+  
+
   file.play();
 }
 
@@ -98,6 +105,7 @@ void draw() {
             score += Math.pow(2,ghostseaten) * 100;
           } else {
             respawn();
+            death.play();
           }
         }
       }
@@ -185,9 +193,22 @@ void PrintStart() {
   textSize(80);
   fill(0, 128, 255);
   text("PacDude", 195, 200);
+  
+    fill(255);
+
+    textSize(15);
+
+    text("Everyone from your village has been killed by evil ghosts.", 155, 475);
+    text("However you can go back in time and stop it from happening.", 140, 500);
+    text("To get this power, you must first collect all the pellets!", 159, 525);
+
+  
+  
+  
+  
   textSize(30);
   fill(255);
-  text("Press Enter to Play", 230, 500);
+  text("Press Enter to Play", 230, 700);
   fill(255, 255, 0);
   arc(370, 350, 50, 50, radians(30), radians(330));
 }
@@ -200,6 +221,10 @@ void PrintEnd() {
   textSize(30);
   fill(255);
   text("Now Get Out", 275, 500);
+  
+  file.stop(); 
+  pellet.stop(); 
+  eye.stop(); 
 }
 
 void respawn() {
