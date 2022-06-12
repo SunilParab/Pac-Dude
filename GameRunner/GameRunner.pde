@@ -14,7 +14,7 @@ String mode;
 int soundtimer = 600; 
 SoundFile file; 
 SoundFile pellet; 
-SoundFile eyes; 
+SoundFile eye; 
 
 void setup() {
   Lives = 3;
@@ -33,7 +33,7 @@ void setup() {
   mode = "Scatter";
   file = new SoundFile(this, "vov.wav"); // starter music 
   pellet = new SoundFile(this, "nopp.wav");
-  eyes = new SoundFile(this, "neva.wav");
+  eye = new SoundFile(this, "neva.wav");
 
   file.play();
 }
@@ -154,6 +154,10 @@ void PrintEnd() {
   textSize(30);
   fill(255);
   text("Now Get Out", 275, 500);
+  
+  file.stop(); 
+  pellet.stop(); 
+  eye.stop(); 
 }
 
 void respawn() {

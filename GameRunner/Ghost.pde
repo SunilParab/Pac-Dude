@@ -205,7 +205,7 @@ public abstract class Ghost implements Entities {
 
   public void respawn() {
     alive = false;
-    eyes.play(); 
+    eye.play(); 
   }
 
   public void wander() {
