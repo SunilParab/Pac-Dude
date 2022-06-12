@@ -1,4 +1,4 @@
-import processing.sound.*; //<>// //<>//
+import processing.sound.*; //<>// //<>// //<>//
 import java.util.*;
 
 Map gameMap;
@@ -23,6 +23,7 @@ int level;
 int normmove;
 int deadmove;
 int slowmove;
+boolean toKill;
 
 PImage wall;
 PImage fire;
@@ -40,7 +41,7 @@ PImage blue;
 PImage pink;
 
 void setup() {
-  Lives = 3;
+  Lives = 0;
   gameMap = new Map();
   Player = new PacDude(13, 16);
   size(729, 729);
@@ -66,6 +67,7 @@ void setup() {
   deadmove = 2;
   slowmove = 15;
   normmove = 10 - level / 5;
+  toKill = false;
 
   Ghosts = new Ghost[4];
   Ghosts[0] = new Blinky(13, 11);
@@ -87,6 +89,10 @@ void draw() {
   if (won) {
     level++;
     gameMap = new Map();
+    if (Player.getSpecial()) {
+      pellet.stop();
+      backgroundsound.play();
+    }
     Player = new PacDude(13, 16);
     won = false;
     Ghosts = new Ghost[4];
@@ -142,10 +148,13 @@ void draw() {
             }
             score += Math.pow(2,ghostseaten) * 100;
           } else {
-            respawn();
-            death.play();
+            toKill = true;
           }
         }
+      }
+      if (toKill) {
+        respawn();
+        death.play();
       }
       won = Player.getPelletsEaten() == gameMap.getPellets();
       lost = Lives <= 0;
@@ -182,6 +191,7 @@ void keyPressed() {
       backgroundsound.play();
       count = 0;
       level = 1;
+      toKill = false;
     }
   } else {
     if (key == CODED) {
@@ -236,11 +246,11 @@ void PrintStart() {
 
   fill(255);
 
-  textSize(15);
+  textSize(20);
 
-  text("Everyone from your village has been killed by evil ghosts.", 155, 475);
-  text("However you can go back in time and stop it from happening.", 140, 500);
-  text("To get this power, you must first collect all the pellets!", 159, 525);
+  text("Everyone from your village has been killed by evil ghosts.", 84, 475);
+  text("However you can go back in time and stop it from happening.", 63, 500);
+  text("To get this power, you must first collect all the pellets!", 95, 525);
 
   image(leftyellow, 425, 350); 
   image(leftred, 475, 350); 
@@ -248,7 +258,12 @@ void PrintStart() {
   image(rightpink, 245, 350); 
   textSize(30);
   fill(255);
+  
   text("Press Enter to Play", 230, 700);
+  
+  //text("Press Enter to Play Normal Mode", 125, 625);
+  //text("Press Space to Play Random Mode", 115, 700);
+  
   fill(255, 255, 0);
   arc(370, 350, 50, 50, radians(30), radians(330));
 }
@@ -264,20 +279,17 @@ void PrintEnd() {
     count++;
   }
 
-  if (gameMap.getPellets() - Player.getPelletsEaten() == 0) { 
-    background(victorymap);
-
-    textSize(50);
-    fill(255, 0, 150);
-    text("Congratulations Pac-Dude!", 50, 350);
-    fill(255, 0, 0);
-    textSize(40);
-    text("You Saved Everyone!", 175, 400);
-  } 
-
   if (gameMap.getPellets() - Player.getPelletsEaten() != 0) {
     background(yup);
   }
+  textSize(30);
+  fill(255);
+  text("I shall give you another chance", 140, 500);
+  
+  text("Press Enter to Play Again", 185, 575);
+  
+  //text("Press Enter to Play Normal Mode", 125, 575);
+  //text("Press Space to Play Random Mode", 115, 650);
 }
 
 void respawn() {
@@ -296,5 +308,6 @@ void respawn() {
     modetimer = 600;
     mode = "Scatter";
     startDelay = 180;
+    toKill = false;
   }
 }
