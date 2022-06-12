@@ -1,6 +1,6 @@
 import processing.sound.*;
 
-public class Blinky extends Ghost {
+public class Blinky extends Ghost{
   // instance variables 
   PImage up = loadImage("redGhostUp.png");
   PImage right = loadImage("redGhostRight.png");

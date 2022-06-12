@@ -27,7 +27,6 @@ PImage rightpink;
 PImage victorymap;
 PImage yup;
 
-
 void setup() {
   Lives = 3;
   gameMap = new Map();
@@ -105,13 +104,11 @@ void draw() {
     }
   } else {
     PrintEnd();
-    if(count == 0){
-    rain.play(); 
-    count++;
+    if (count == 0) {
+      rain.play(); 
+      count++;
     }
-    
   }
-  
 }
 
 
@@ -191,6 +188,11 @@ void PrintStart() {
 
 void PrintEnd() {
 
+  file.stop(); 
+  pellet.stop(); 
+  eye.stop();
+  death.stop();
+
   if (gameMap.getPellets() - Player.getPelletsEaten() == 0) { 
     background(victorymap);
 
@@ -203,12 +205,8 @@ void PrintEnd() {
   } 
 
   if (gameMap.getPellets() - Player.getPelletsEaten() != 0) {
-      background(yup);
+    background(yup);
   }
-
-  file.stop(); 
-  pellet.stop(); 
-  eye.stop();
 }
 
 void respawn() {
