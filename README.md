@@ -75,25 +75,68 @@ Wednesday - 6/1/2022
 
 Sunil Parab: The ghosts can now kill PacDude based on when their visible model touches PacDude's visible model. Also added a 3 life system before the player loses.
 
-Eric Sohel: could not get much work done because I am sick. 
+Eric Sohel: could not get much work done because I am sick.
 
 
 Thursday - 6/2/2022
 
-Sunil Parab: Fixed erros cause by respawn, such as the pellet count being reset and added a 3 life system.
+Sunil Parab: Fixed errors cause by respawn, such as the pellet count being reset and added a 3 life system.
 
-Eric Sohel:
+Eric Sohel: worked on displaying the score and trying to implement the characters lives and displaying them visually.
 
 
 Friday - 6/3/2022
 
 Sunil Parab: Started working on the advanced chasing methods for the ghosts and improved PacDude's animations.
 
-Eric Sohel:
+Eric Sohel: started working on the new randomized maps and created a basic generator for this new map.
 
 
 Saturday - 6/4/2022
 
 Sunil Parab: Finished the behavior for the ghosts, other than them respawning, and rewrote how their move method works.
 
-Eric Sohel:
+Eric Sohel: continued working on trying to implement a randomized map in pac dude. However, the randomized maps I made so far were not very good.
+
+sunday - 6/5/2022
+
+Sunil Parab:
+
+Eric Sohel: Finished working on the first prototype for the map generator which still does not create nice looking maps.
+
+Monday - 6/6/2022
+
+Sunil Parab:
+
+Eric Sohel: worked on the pellet mechanics and removed the characters invincibility after eating a power pellet. Also started working on being able to eat the ghosts.
+
+Tuesday - 6/7/2022
+
+Sunil Parab:
+
+Eric Sohel: Started working on animating the ghosts and managed to replace all the ghosts with actual images of the red ghost instead of just circles.
+
+Wednesday - 6/8/2022
+
+Sunil Parab:
+
+Eric Sohel: Continued to work on animating the ghost properly and now the ghosts are properly sized and move with out lag.
+
+
+thursday - 6/9/2022
+
+Sunil Parab:
+
+Eric Sohel: Managed to make the eyes of the ghosts move and they are not lagging any more. Started working on the scared mode for the ghosts.
+
+
+Friday - 6/10/2022
+
+Sunil Parab:
+
+Eric Sohel: finished animating the scared mode for the ghosts and properly centered the ghosts. Started working on the dead mode for the ghosts where they turn into eyes.
+
+Saturday - 6/11/2022
+
+Sunil:
+Eric: Finished fully animating all of the different modes of the ghosts including dead, alive, scared, inside, and outside of the house. Also added in game audio for ambiance, scared mode, death mode, and killing a ghost. Also added a story that the character is based off and music to match the story.
