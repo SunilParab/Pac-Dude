@@ -93,15 +93,16 @@ void draw() {
   } else if (!lost) {
     if (startDelay > 0) {
       startDelay--;
-      PrintMap();
-      
-      image(red1, 3 + Ghosts[0].getXPos()*26, Ghosts[0].getYPos()*26+26 + 3);
-      image(orange, 3 + Ghosts[1].getXPos()*26, Ghosts[1].getYPos()*26+26 + 3);
-      image(blue, 3 + Ghosts[2].getXPos()*26, Ghosts[2].getYPos()*26+26 + 3);
-      image(pink, 3 + Ghosts[3].getXPos()*26, Ghosts[3].getYPos()*26+26 + 3);
-
-      
+      PrintMap(); 
+      image(red1, 3 + Ghosts[0].getXPos()*26, Ghosts[0].getYPos()*26 + 3);
+      image(orange, 3 + Ghosts[1].getXPos()*26, Ghosts[1].getYPos()*26 + 3);
+      image(blue, 3 + Ghosts[2].getXPos()*26, Ghosts[2].getYPos()*26 + 3);
+      image(pink, 3 + Ghosts[3].getXPos()*26, Ghosts[3].getYPos()*26 + 3);
+      fill(255, 255, 0); 
       arc(13*26+13, 16*26+13, 22, 22, radians(225), radians(495));
+      text("Ready!", 335, 410);
+      textSize(40);
+      text(startDelay/60+1, 350, 490);
     } else {
       modetimer--;
       if (modetimer <= 0) {
@@ -199,7 +200,7 @@ void PrintMap() {
       }
 
       if (gameMap.getVal(i, j) == 3) { 
-        if ((!(modetimer % 10 ==0)) ) {
+        if ((((modetimer / 10) % 2 == 0)) ) {
           fill(255, 255, 0);
           circle(i * 26 + 13, j * 26 + 13, 14);
         }
