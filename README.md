@@ -96,54 +96,60 @@ Saturday - 6/4/2022
 
 Sunil Parab: Finished the behavior for the ghosts, other than them respawning, and rewrote how their move method works.
 
-Eric Sohel: continued working on trying to implement a randomized map in pac dude. However, the randomized maps I made so far were not very good.
+Eric Sohel: continued working on trying to implement a randomized map in PacDude. However, the randomized maps I made so far were not very good.
 
-sunday - 6/5/2022
 
-Sunil Parab:
+Sunday - 6/5/2022
+
+Sunil Parab: Fixed how the power pellet works and made the ghosts behave properly while in the ghost house.
 
 Eric Sohel: Finished working on the first prototype for the map generator which still does not create nice looking maps.
 
+
 Monday - 6/6/2022
 
-Sunil Parab:
+Sunil Parab: Ghosts can now leave the ghost house and turn blue while you have the power pellet, also the mode calculations now apply to all ghosts.
 
 Eric Sohel: worked on the pellet mechanics and removed the characters invincibility after eating a power pellet. Also started working on being able to eat the ghosts.
 
+
 Tuesday - 6/7/2022
 
-Sunil Parab:
+Sunil Parab: Ghosts can now be eaten and their speeds have been changed. Also started fixing bug with Wander().
 
 Eric Sohel: Started working on animating the ghosts and managed to replace all the ghosts with actual images of the red ghost instead of just circles.
 
+
 Wednesday - 6/8/2022
 
-Sunil Parab:
+Sunil Parab: Started making ghosts work with the maxmovecounter variable, also they can not kill after being eaten.
 
 Eric Sohel: Continued to work on animating the ghost properly and now the ghosts are properly sized and move with out lag.
 
 
-thursday - 6/9/2022
+Thursday - 6/9/2022
 
-Sunil Parab:
+Sunil Parab: Ghosts being eaten now fully works and they can kill again after being eaten. Fixed Map.getVal(), fixed score, and Blinky now gets mad when there are few pellets left.
 
 Eric Sohel: Managed to make the eyes of the ghosts move and they are not lagging any more. Started working on the scared mode for the ghosts.
 
 
 Friday - 6/10/2022
 
-Sunil Parab:
+Sunil Parab: Added differentiator for when you win or lose the level, and you can now restart after losing.
 
 Eric Sohel: finished animating the scared mode for the ghosts and properly centered the ghosts. Started working on the dead mode for the ghosts where they turn into eyes.
 
+
 Saturday - 6/11/2022
 
-Sunil:
+Sunil Parab: You can now continue through levels and your score will stay as you progress. Also ghosts can now flash white while you have the power pellet
 
-Eric: Finished fully animating all of the different modes of the ghosts including dead, alive, scared, inside, and outside of the house. Also added in game audio for ambiance, scared mode, death mode, and killing a ghost. Also added a story that the character is based off and music to match the story.
+Eric Sohel: Finished fully animating all of the different modes of the ghosts including dead, alive, scared, inside, and outside of the house. Also added in game audio for ambiance, scared mode, death mode, and killing a ghost. Also added a story that the character is based off and music to match the story.
 
 
 Sunday - 6/12/2022
 
-sunil:
-Eric: Finished working on the randomized maps and finalized worked on audio. Also worked on finalizing the game.
+Sunil Parab: Ghosts can now flash white while you have the power pellet, their collision now works properly, fixed some speed stuff, levels now get harder as you progress, fixed bugs with audio and added messages telling the play how to restart and pick the mode.
+
+Eric Sohel: Finished working on the randomized maps and finalized worked on audio. Also worked on finalizing the game.

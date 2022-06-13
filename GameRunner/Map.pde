@@ -1,6 +1,4 @@
 import java.util.*;
-import java.util.Arrays;
-import java.util.Random;
 
 
 public class Map {
@@ -97,7 +95,7 @@ public class Map {
     pelletCount = generatePellets();
   }
 
- public Map(int temp) {
+  public Map(int temp) {
     map = preset;
     generatePowerPellet(1, 7); 
     generatePowerPellet(26, 7); 
@@ -277,15 +275,14 @@ public class Map {
             }
           }
         }
-    
       }
     }
 
     return nums;
   }
-  
-  
-    public  int[][] randomized2(int[][] nums) {
+
+
+  public  int[][] randomized2(int[][] nums) {
     for (int i =2; i < nums.length - 1; i++) {
       for (int j =2; j <nums[0].length -5; j++) {
 
@@ -359,18 +356,17 @@ public class Map {
 
 
         if (random == 5) {
-          if(nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0){ 
-            if(nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0){ 
-               if(nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0){ 
-                  if(nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0){ 
-                      nums[i][j] = 1; nums[i+1][j] = 1; 
-                  }
-            
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0) { 
+            if (nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0) { 
+              if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0) { 
+                if (nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0) { 
+                  nums[i][j] = 1; 
+                  nums[i+1][j] = 1;
+                }
+              }
+            }
           }
         }
-      }
-    }
-    
       }
     }
 

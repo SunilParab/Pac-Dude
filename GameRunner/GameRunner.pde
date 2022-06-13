@@ -222,20 +222,19 @@ void keyPressed() {
       level = 1;
       toKill = false;
     }
-  
-} else {
-  if (key == CODED) {
-    if (keyCode == UP) {
-      Player.setQueuedDirection("Up");
-    } else if (keyCode == DOWN) {
-      Player.setQueuedDirection("Down");
-    } else if (keyCode == LEFT) {
-      Player.setQueuedDirection("Left");
-    } else if (keyCode == RIGHT) {
-      Player.setQueuedDirection("Right");
+  } else {
+    if (key == CODED) {
+      if (keyCode == UP) {
+        Player.setQueuedDirection("Up");
+      } else if (keyCode == DOWN) {
+        Player.setQueuedDirection("Down");
+      } else if (keyCode == LEFT) {
+        Player.setQueuedDirection("Left");
+      } else if (keyCode == RIGHT) {
+        Player.setQueuedDirection("Right");
+      }
     }
   }
-}
 }
 
 void PrintMap() {
@@ -286,13 +285,11 @@ void PrintStart() {
   image(leftred, 475, 350); 
   image(rightblue, 295, 350); 
   image(rightpink, 245, 350); 
-  textSize(30);
+  textSize(25);
   fill(255);
 
-  //text("Press Enter to Play", 230, 700);
-
-  text("Press Enter to Play Normal Mode", 125, 625);
-  text("Press Space to Play Random Mode", 115, 700);
+  text("Press Enter to Play Normal Mode", 170, 650);
+  text("Press Space to Play Random Mode", 160, 700);
 
   fill(255, 255, 0);
   arc(370, 350, 50, 50, radians(30), radians(330));
@@ -312,14 +309,14 @@ void PrintEnd() {
   if (gameMap.getPellets() - Player.getPelletsEaten() != 0) {
     background(yup);
   }
-  textSize(30);
+  textSize(25);
   fill(255);
-  text("I shall give you another chance", 140, 500);
+  text("But I shall give you another chance", 150, 500);
 
   // text("Press Enter to Play Again", 185, 575);
 
-  text("Press Enter to Play Normal Mode", 125, 575);
-  text("Press Space to Play Random Mode", 115, 650);
+  text("Press Enter to Play Normal Mode", 165, 650);
+  text("Press Space to Play Random Mode", 156, 700);
 }
 
 void respawn() {

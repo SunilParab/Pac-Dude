@@ -91,7 +91,7 @@ public class Inky extends Ghost {
     }
   }
 
-   public void drawSelf() {
+  public void drawSelf() {
     if (timeToSpawn > 0) {
       timeToSpawn--;
     }
@@ -159,8 +159,7 @@ public class Inky extends Ghost {
             setTrueYPos(13+getYPos()*26);
           }
         }
-         movecounter--;
-
+        movecounter--;
       }
 
       //condition 1c: if not alive turn into eyes 
