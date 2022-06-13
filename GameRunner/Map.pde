@@ -87,7 +87,7 @@ public class Map {
   public Map() {
 
     int[][] temp = combine(randomized(preset2));
-    int[][] temp2 = randomized2(temp); 
+    int[][] temp2 = randomized(temp);
     map = randomized2(temp2); 
 
     generatePowerPellet(1, 7); 
@@ -97,6 +97,14 @@ public class Map {
     pelletCount = generatePellets();
   }
 
+ public Map(int temp) {
+    map = preset;
+    generatePowerPellet(1, 7); 
+    generatePowerPellet(26, 7); 
+    generatePowerPellet(1, 19); 
+    generatePowerPellet(26, 19);
+    pelletCount = generatePellets();
+  }
   public Map(int hi, int wi) {
     map = new int[hi][wi];
   }

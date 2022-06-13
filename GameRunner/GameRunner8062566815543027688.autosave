@@ -1,9 +1,0 @@
-void setup() {
-  Map a = new Map(); 
-  
-  System.out.println(a.toString()); 
-}
-
-void draw() {
-  
-}
