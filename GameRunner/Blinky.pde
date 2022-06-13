@@ -128,8 +128,7 @@ public class Blinky extends Ghost {
             setTrueYPos(13+getYPos()*26);
           }
         }
-         movecounter--;
-
+        movecounter--;
       }
 
       //condition 1c: if not alive turn into eyes 

@@ -1,5 +1,5 @@
-import processing.sound.*; //<>// //<>// //<>// //<>//
- //<>//
+import processing.sound.*; //<>// //<>// //<>// //<>// //<>//
+
 public class PacDude implements Entities {
   private int xPos;
   private int yPos;
@@ -88,27 +88,26 @@ public class PacDude implements Entities {
   }
 
   public void setSpecial(boolean hasspec) {
-    
-     if(specialAbility == true && hasspec == false){ 
-       backgroundsound.play(); 
-       pellet.stop(); 
-     }
-    
-    if(specialAbility == false && hasspec == true){ 
-      backgroundsound.pause(); 
-      pellet.play(); 
+
+    if (specialAbility == true && hasspec == false) { 
+      backgroundsound.play(); 
+      pellet.stop();
     }
-    
-    
-  
+
+    if (specialAbility == false && hasspec == true) { 
+      backgroundsound.pause(); 
+      pellet.play();
+    }
+
+
+
     if (specialAbility == true) {
       for (int i = 0; i < Ghosts.length; i++) {
         Ghosts[i].eaten = false;
       }
     }
-    
-        specialAbility = hasspec;
 
+    specialAbility = hasspec;
   }
 
   public int getPelletsEaten() { 
@@ -148,9 +147,7 @@ public class PacDude implements Entities {
 
       gameMap.setVal(getXPos(), getYPos(), 0); 
       eatPellet();
-      counter ++; 
-     
-      
+      counter ++;
     } 
     if (gameMap.getVal(getXPos(), getYPos()) == 3) {
       gameMap.setVal(getXPos(), getYPos(), 0); 
