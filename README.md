@@ -150,6 +150,6 @@ Eric Sohel: Finished fully animating all of the different modes of the ghosts in
 
 Sunday - 6/12/2022
 
-Sunil Parab: Ghosts can now flash white while you have the power pellet, their collision now works properly, fixed some speed stuff, levels now get harder as you progress, fixed bugs with audio and added messages telling the play how to restart and pick the mode.
+Sunil Parab: Ghosts can now flash white while you have the power pellet, their collision now works properly, fixed some speed stuff, levels now get harder as you progress, fixed bugs with audio and added messages telling the player how to restart and pick the mode.
 
 Eric Sohel: Finished working on the randomized maps and finalized worked on audio. Also worked on finalizing the game.
