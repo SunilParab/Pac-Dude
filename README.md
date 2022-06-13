@@ -139,4 +139,11 @@ Eric Sohel: finished animating the scared mode for the ghosts and properly cente
 Saturday - 6/11/2022
 
 Sunil:
+
 Eric: Finished fully animating all of the different modes of the ghosts including dead, alive, scared, inside, and outside of the house. Also added in game audio for ambiance, scared mode, death mode, and killing a ghost. Also added a story that the character is based off and music to match the story.
+
+
+Sunday - 6/12/2022
+
+sunil:
+Eric: Finished working on the randomized maps and finalized worked on audio. Also worked on finalizing the game.
