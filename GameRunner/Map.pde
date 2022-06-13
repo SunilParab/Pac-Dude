@@ -187,5 +187,185 @@ public class Map {
     int[][] reversed = new int[27][14];
     reversed = reverse(nums);
 
+    for (int i =0; i < nums.length; i++) {
+      for (int j =0; j < nums[i].length; j++) {
+        temp[i][j] = nums[i][j];
+        temp[i][j+14] = reversed[i][j];
+      }
+    }
 
+    return temp;
+  }
+
+
+  public  int[][] randomized(int[][] nums) {
+    for (int i =2; i < nums.length - 1; i++) {
+      for (int j =2; j <nums[0].length -5; j++) {
+
+        int random = (int) (Math.random() * 4 + 1);
+
+        // shape2
+        if (random ==1) {
+
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0) {
+            if (nums[i][j-2] == 0 && nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0 ) {
+              if (nums[i+1][j-2] == 0 && nums[i+1][j-1] == 0  && nums[i+1][j] == 0 && nums[i][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-2] == 0 && nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0 && nums[i+2][j+2] == 0) {
+                  nums[i][j] = 1; 
+                  nums[i+1][j] = 1; 
+                  nums[i+1][j-1] = 1; 
+                  nums[i+1][j+1] = 1;
+                }
+              }
+            }
+          }
+        }
+
+        if (random == 2) {
+          //  shape1
+          if (nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0  && nums[i][j+3] == 0 &&  nums[i][j+4] == 0) {
+            if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0  && nums[i+1][j+3] == 0 &&  nums[i+1][j+4] == 0) {
+              if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0 && nums[i-1][j+2] == 0  && nums[i-1][j+3] == 0 &&  nums[i-1][j+4] == 0) {
+                nums[i][j] =1; 
+                nums[i][j+1] =1; 
+                nums[i][j+2] = 1; 
+                nums[i][j+3] =1;
+              }
+            }
+          }
+        }
+
+        if (random ==3) {
+          // shape3
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0 && nums[i-1][j+2] == 0) {
+            if (nums[i][j-1] == 0 && nums[i][j] == 0 &&  nums[i][j+1] == 0 && nums[i][j+2] == 0) {
+              if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0 && nums[i+2][j+2] == 0) {
+                  nums[i][j] =1; 
+                  nums[i+1][j] =1; 
+                  nums[i][j+1] =1; 
+                  nums[i+1][j+1] =1;
+                }
+              }
+            }
+          }
+        }
+
+
+        if (random == 4) {
+          //shape4
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 &&  nums[i-1][j+1] == 0) {
+            if (nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0) {
+              if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0  && nums[i+2][j+2] == 0) {
+                  if (nums[i+3][j-1] == 0 && nums[i+3][j] == 0 && nums[i+3][j+1] == 0) {
+                    nums[i][j] =1; 
+                    nums[i+1][j] =1;  
+                    nums[i+2][j] =1; 
+                    nums[i+1][j+1] =1;
+                  }
+                }
+              }
+            }
+          }
+        }
+    
+      }
+    }
+
+    return nums;
+  }
+  
+  
+    public  int[][] randomized2(int[][] nums) {
+    for (int i =2; i < nums.length - 1; i++) {
+      for (int j =2; j <nums[0].length -5; j++) {
+
+        int random = (int) (Math.random() * 5 + 1);
+
+        // shape2
+        if (random ==1) {
+
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0) {
+            if (nums[i][j-2] == 0 && nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0 ) {
+              if (nums[i+1][j-2] == 0 && nums[i+1][j-1] == 0  && nums[i+1][j] == 0 && nums[i][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-2] == 0 && nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0 && nums[i+2][j+2] == 0) {
+                  nums[i][j] = 1; 
+                  nums[i+1][j] = 1; 
+                  nums[i+1][j-1] = 1; 
+                  nums[i+1][j+1] = 1;
+                }
+              }
+            }
+          }
+        }
+
+        if (random ==2) {
+          //  shape1
+          if (nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0  && nums[i][j+3] == 0 &&  nums[i][j+4] == 0) {
+            if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0  && nums[i+1][j+3] == 0 &&  nums[i+1][j+4] == 0) {
+              if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0 && nums[i-1][j+2] == 0  && nums[i-1][j+3] == 0 &&  nums[i-1][j+4] == 0) {
+                nums[i][j] =1; 
+                nums[i][j+1] =1; 
+                nums[i][j+2] = 1; 
+                nums[i][j+3] =1;
+              }
+            }
+          }
+        }
+
+        if (random ==3) {
+          // shape3
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0 && nums[i-1][j+2] == 0) {
+            if (nums[i][j-1] == 0 && nums[i][j] == 0 &&  nums[i][j+1] == 0 && nums[i][j+2] == 0) {
+              if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0 && nums[i+2][j+2] == 0) {
+                  nums[i][j] =1; 
+                  nums[i+1][j] =1; 
+                  nums[i][j+1] =1; 
+                  nums[i+1][j+1] =1;
+                }
+              }
+            }
+          }
+        }
+
+
+        if (random == 4) {
+          //shape4
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 &&  nums[i-1][j+1] == 0) {
+            if (nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0) {
+              if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0  && nums[i+2][j+2] == 0) {
+                  if (nums[i+3][j-1] == 0 && nums[i+3][j] == 0 && nums[i+3][j+1] == 0) {
+                    nums[i][j] =1; 
+                    nums[i+1][j] =1;  
+                    nums[i+2][j] =1; 
+                    nums[i+1][j+1] =1;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+
+        if (random == 5) {
+          if(nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0){ 
+            if(nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0){ 
+               if(nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0){ 
+                  if(nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0){ 
+                      nums[i][j] = 1; nums[i+1][j] = 1; 
+                  }
+            
+          }
+        }
+      }
+    }
+    
+      }
+    }
+
+    return nums;
+  }
 } 
