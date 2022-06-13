@@ -24,25 +24,21 @@ int normmove;
 int deadmove;
 int slowmove;
 boolean toKill;
-
 PImage wall;
 PImage fire;
 PImage leftred; 
 PImage leftyellow;
 PImage rightblue;
 PImage rightpink;
-PImage victorymap;
 PImage yup;
-
 PImage red1;
-
 PImage orange;
 PImage blue;
 PImage pink;
+boolean randomgame; 
 
 void setup() {
-  Lives = 0;
-  gameMap = new Map();
+  Lives = 3;
   Player = new PacDude(13, 16);
   size(729, 729);
   started = false;
@@ -51,7 +47,6 @@ void setup() {
   leftyellow = loadImage("yellowLeft.png");
   rightblue = loadImage("blueRight.png");
   rightpink = loadImage("pinkRight.png");
-  victorymap = loadImage("victorymap.jpg");
   red1 = loadImage("redGhostUp.png");
   yup = loadImage("yup.jpg");
   orange = loadImage("yellowUp.png");
@@ -88,7 +83,11 @@ void setup() {
 void draw() {
   if (won) {
     level++;
-    gameMap = new Map();
+    if (randomgame) {
+      gameMap = new Map();
+    } else {
+      gameMap = new Map(1);
+    }
     if (Player.getSpecial()) {
       pellet.stop();
       backgroundsound.play();
@@ -137,7 +136,7 @@ void draw() {
         Ghosts[i].drawSelf();
         // if the player has special then the ghost will die 
         // however this ability only last for a mode timer of 510, or 8.5 seconds
-        if (Ghosts[i].alive && dist(Player.getTrueXPos(),Player.getTrueYPos(),Ghosts[i].getTrueXPos(),Ghosts[i].getTrueYPos()) <= 20) {
+        if (Ghosts[i].alive && dist(Player.getTrueXPos(), Player.getTrueYPos(), Ghosts[i].getTrueXPos(), Ghosts[i].getTrueYPos()) <= 20) {
           if (Player.getSpecial() && !Ghosts[i].eaten) {
             Ghosts[i].respawn();
             int ghostseaten = 0;
@@ -146,7 +145,7 @@ void draw() {
                 ghostseaten++;
               }
             }
-            score += Math.pow(2,ghostseaten) * 100;
+            score += Math.pow(2, ghostseaten) * 100;
           } else {
             toKill = true;
           }
@@ -167,12 +166,42 @@ void draw() {
 void keyPressed() {
   if (!started) {
     if (key == ENTER) {
+      randomgame = false; 
       started = true;
+      gameMap = new Map(1);
+    } else if (key == ' ') {
+      randomgame = true; 
+      started = true;
+      gameMap = new Map();
     }
   } else if (lost) {
     if (key == ENTER) {
       Lives = 3;
+      gameMap = new Map(1);
+      randomgame = false; 
+      Player = new PacDude(13, 16);
+      score = 0;
+      size(729, 729);
+      started = true;
+      won = false;
+      lost = false;
+      Ghosts = new Ghost[4];
+      Ghosts[0] = new Blinky(13, 11);
+      Ghosts[1] = new Clyde(15, 13);
+      Ghosts[2] = new Inky(13, 13);
+      Ghosts[3] = new Pinky(11, 13);
+      modetimer = 600;
+      mode = "Scatter";
+      startDelay = 180;
+      rain.stop();
+      backgroundsound.play();
+      count = 0;
+      level = 1;
+      toKill = false;
+    } else if (key == ' ') {
+      Lives = 3;
       gameMap = new Map();
+      randomgame = true; 
       Player = new PacDude(13, 16);
       score = 0;
       size(729, 729);
@@ -193,19 +222,20 @@ void keyPressed() {
       level = 1;
       toKill = false;
     }
-  } else {
-    if (key == CODED) {
-      if (keyCode == UP) {
-        Player.setQueuedDirection("Up");
-      } else if (keyCode == DOWN) {
-        Player.setQueuedDirection("Down");
-      } else if (keyCode == LEFT) {
-        Player.setQueuedDirection("Left");
-      } else if (keyCode == RIGHT) {
-        Player.setQueuedDirection("Right");
-      }
+  
+} else {
+  if (key == CODED) {
+    if (keyCode == UP) {
+      Player.setQueuedDirection("Up");
+    } else if (keyCode == DOWN) {
+      Player.setQueuedDirection("Down");
+    } else if (keyCode == LEFT) {
+      Player.setQueuedDirection("Left");
+    } else if (keyCode == RIGHT) {
+      Player.setQueuedDirection("Right");
     }
   }
+}
 }
 
 void PrintMap() {
@@ -258,12 +288,12 @@ void PrintStart() {
   image(rightpink, 245, 350); 
   textSize(30);
   fill(255);
-  
-  text("Press Enter to Play", 230, 700);
-  
-  //text("Press Enter to Play Normal Mode", 125, 625);
-  //text("Press Space to Play Random Mode", 115, 700);
-  
+
+  //text("Press Enter to Play", 230, 700);
+
+  text("Press Enter to Play Normal Mode", 125, 625);
+  text("Press Space to Play Random Mode", 115, 700);
+
   fill(255, 255, 0);
   arc(370, 350, 50, 50, radians(30), radians(330));
 }
@@ -285,11 +315,11 @@ void PrintEnd() {
   textSize(30);
   fill(255);
   text("I shall give you another chance", 140, 500);
-  
-  text("Press Enter to Play Again", 185, 575);
-  
-  //text("Press Enter to Play Normal Mode", 125, 575);
-  //text("Press Space to Play Random Mode", 115, 650);
+
+  // text("Press Enter to Play Again", 185, 575);
+
+  text("Press Enter to Play Normal Mode", 125, 575);
+  text("Press Space to Play Random Mode", 115, 650);
 }
 
 void respawn() {

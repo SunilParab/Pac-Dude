@@ -51,44 +51,45 @@ public class Map {
 
   };
 
-  int[][] preset2 =
+  int[][]preset2 = new int[][]
 
     {
-    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 4, 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 4, 4, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 4, 4, 4, 1, 0, 0, 0, 0, 0, 1, 1, 1, 4}, 
+    {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 4, 4, 4}, 
+    {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 4, 4}, 
+    {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 4, 4, 4}, 
+    {1, 4, 4, 4, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1}, 
+    {1, 4, 4, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
 
   };
 
-
   public Map() {
-    map = preset;
+
+    int[][] temp = combine(randomized(preset2));
+    int[][] temp2 = randomized(temp);
+    map = randomized2(temp2); 
+
     generatePowerPellet(1, 7); 
     generatePowerPellet(26, 7); 
     generatePowerPellet(1, 19); 
@@ -96,6 +97,14 @@ public class Map {
     pelletCount = generatePellets();
   }
 
+ public Map(int temp) {
+    map = preset;
+    generatePowerPellet(1, 7); 
+    generatePowerPellet(26, 7); 
+    generatePowerPellet(1, 19); 
+    generatePowerPellet(26, 19);
+    pelletCount = generatePellets();
+  }
   public Map(int hi, int wi) {
     map = new int[hi][wi];
   }
@@ -169,97 +178,202 @@ public class Map {
     return temp;
   }
 
-  // random map making code starts here 
 
-  // fills the map with walls 
-  public void filler(int[][] tester) {
-    for (int i = 0; i < tester.length; i++) {
-      for (int j = 0; j < tester[0].length; j++) {
-        tester[i][j] = 1;
+  public  int[][] reverse(int[][] nums) {
+    int[][] temp = new int[nums.length][nums[0].length];
+    for (int i = 0; i < nums.length; i++) {
+      for (int j = 0; j <nums[0].length; j++) {
+        temp[i][j] = nums[i][nums[0].length - j - 1];
       }
     }
+    return temp;
   }
 
-  public  void randomizer(String[] possibilities, int[][] map, int y, int x) {
-    for (int i = 0; i < 4; i++) {
-      if (possibilities[i] == "s") { 
-        replacer(map, y - 1, x);
-      } 
-      if (possibilities[i] == "w") {
-        replacer(map, y, x + 1);
-      } 
-      if (possibilities[i] == "n") { 
-        replacer(map, y + 1, x);
-      } 
-      if (possibilities[i] == "e") { 
-        replacer(map, y, x - 1);
+
+  public  int[][] combine(int[][] nums) {
+    int[][] temp = new int[27][28];
+    int[][] reversed = new int[27][14];
+    reversed = reverse(nums);
+
+    for (int i =0; i < nums.length; i++) {
+      for (int j =0; j < nums[i].length; j++) {
+        temp[i][j] = nums[i][j];
+        temp[i][j+14] = reversed[i][j];
       }
     }
+
+    return temp;
   }
 
-  public  boolean replacable(int[][] map, int y, int x) {
-    int counter = 0;
 
-    if (map[y][x + 1] == 0) { 
-      counter += 1;
-    } 
-    if (map[y + 1][x] == 0) {
-      counter += 1;
-    } 
-    if (map[y - 1][x] == 0) {
-      counter += 1;
-    } 
-    if (map[y][x - 1] == 0) { 
-      counter += 1;
-    } 
+  public  int[][] randomized(int[][] nums) {
+    for (int i =2; i < nums.length - 1; i++) {
+      for (int j =2; j <nums[0].length -5; j++) {
 
-    return (counter < 2 );
-  }
+        int random = (int) (Math.random() * 4 + 1);
 
-  public  boolean boundschecking(int[][] map, int y, int x) {
-    if (map[y][x] == 0) return false;
-    if (y == 0 || x == 0) return false; 
-    if (x == map[0].length - 1 || y == map.length - 1) return false; 
-    return replacable(map, y, x);
-  }
+        // shape2
+        if (random ==1) {
 
-  public  void replacer(int[][] map, int y, int x) {
-    if (boundschecking(map, y, x)) {
-      String[] randomized = {"n", "e", "s", "w"};
-      Random rand = new Random();
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0) {
+            if (nums[i][j-2] == 0 && nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0 ) {
+              if (nums[i+1][j-2] == 0 && nums[i+1][j-1] == 0  && nums[i+1][j] == 0 && nums[i][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-2] == 0 && nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0 && nums[i+2][j+2] == 0) {
+                  nums[i][j] = 1; 
+                  nums[i+1][j] = 1; 
+                  nums[i+1][j-1] = 1; 
+                  nums[i+1][j+1] = 1;
+                }
+              }
+            }
+          }
+        }
 
-      // redundant code that randomizes the order of the array randomized
-      for (int i = 0; i < randomized.length; i++) {
-        int rover = rand.nextInt(randomized.length);
-        String temp = randomized[rover];
-        randomized[rover] = randomized[i];
-        randomized[i] = temp;
+        if (random == 2) {
+          //  shape1
+          if (nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0  && nums[i][j+3] == 0 &&  nums[i][j+4] == 0) {
+            if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0  && nums[i+1][j+3] == 0 &&  nums[i+1][j+4] == 0) {
+              if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0 && nums[i-1][j+2] == 0  && nums[i-1][j+3] == 0 &&  nums[i-1][j+4] == 0) {
+                nums[i][j] =1; 
+                nums[i][j+1] =1; 
+                nums[i][j+2] = 1; 
+                nums[i][j+3] =1;
+              }
+            }
+          }
+        }
+
+        if (random ==3) {
+          // shape3
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0 && nums[i-1][j+2] == 0) {
+            if (nums[i][j-1] == 0 && nums[i][j] == 0 &&  nums[i][j+1] == 0 && nums[i][j+2] == 0) {
+              if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0 && nums[i+2][j+2] == 0) {
+                  nums[i][j] =1; 
+                  nums[i+1][j] =1; 
+                  nums[i][j+1] =1; 
+                  nums[i+1][j+1] =1;
+                }
+              }
+            }
+          }
+        }
+
+
+        if (random == 4) {
+          //shape4
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 &&  nums[i-1][j+1] == 0) {
+            if (nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0) {
+              if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0  && nums[i+2][j+2] == 0) {
+                  if (nums[i+3][j-1] == 0 && nums[i+3][j] == 0 && nums[i+3][j+1] == 0) {
+                    nums[i][j] =1; 
+                    nums[i+1][j] =1;  
+                    nums[i+2][j] =1; 
+                    nums[i+1][j+1] =1;
+                  }
+                }
+              }
+            }
+          }
+        }
+    
       }
-
-      map[y][x] = 0;
-      randomizer(randomized, map, y, x);
     }
+
+    return nums;
   }
+  
+  
+    public  int[][] randomized2(int[][] nums) {
+    for (int i =2; i < nums.length - 1; i++) {
+      for (int j =2; j <nums[0].length -5; j++) {
 
-  public void generateGhostHouse(int[][] map) { 
+        int random = (int) (Math.random() * 5 + 1);
 
-    for (int i =0; i < 10; i ++) {
-      map[10][10 + i] = 0;
-    } 
-    for (int i =0; i < 10; i ++) {
-      map[10][10 + i] = 0;
-    } 
-    for (int i =0; i < 10; i ++) {
-      map[10][10 + i] = 0;
-    } 
-    for (int i =0; i < 10; i ++) {
-      map[10][10 + i] = 0;
+        // shape2
+        if (random ==1) {
+
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0) {
+            if (nums[i][j-2] == 0 && nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0 ) {
+              if (nums[i+1][j-2] == 0 && nums[i+1][j-1] == 0  && nums[i+1][j] == 0 && nums[i][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-2] == 0 && nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0 && nums[i+2][j+2] == 0) {
+                  nums[i][j] = 1; 
+                  nums[i+1][j] = 1; 
+                  nums[i+1][j-1] = 1; 
+                  nums[i+1][j+1] = 1;
+                }
+              }
+            }
+          }
+        }
+
+        if (random ==2) {
+          //  shape1
+          if (nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0  && nums[i][j+3] == 0 &&  nums[i][j+4] == 0) {
+            if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0  && nums[i+1][j+3] == 0 &&  nums[i+1][j+4] == 0) {
+              if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0 && nums[i-1][j+2] == 0  && nums[i-1][j+3] == 0 &&  nums[i-1][j+4] == 0) {
+                nums[i][j] =1; 
+                nums[i][j+1] =1; 
+                nums[i][j+2] = 1; 
+                nums[i][j+3] =1;
+              }
+            }
+          }
+        }
+
+        if (random ==3) {
+          // shape3
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0 && nums[i-1][j+2] == 0) {
+            if (nums[i][j-1] == 0 && nums[i][j] == 0 &&  nums[i][j+1] == 0 && nums[i][j+2] == 0) {
+              if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0 && nums[i+2][j+2] == 0) {
+                  nums[i][j] =1; 
+                  nums[i+1][j] =1; 
+                  nums[i][j+1] =1; 
+                  nums[i+1][j+1] =1;
+                }
+              }
+            }
+          }
+        }
+
+
+        if (random == 4) {
+          //shape4
+          if (nums[i-1][j-1] == 0 && nums[i-1][j] == 0 &&  nums[i-1][j+1] == 0) {
+            if (nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0 && nums[i][j+2] == 0) {
+              if (nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0 && nums[i+1][j+2] == 0) {
+                if (nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0  && nums[i+2][j+2] == 0) {
+                  if (nums[i+3][j-1] == 0 && nums[i+3][j] == 0 && nums[i+3][j+1] == 0) {
+                    nums[i][j] =1; 
+                    nums[i+1][j] =1;  
+                    nums[i+2][j] =1; 
+                    nums[i+1][j+1] =1;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+
+        if (random == 5) {
+          if(nums[i-1][j-1] == 0 && nums[i-1][j] == 0 && nums[i-1][j+1] == 0){ 
+            if(nums[i][j-1] == 0 && nums[i][j] == 0 && nums[i][j+1] == 0){ 
+               if(nums[i+1][j-1] == 0 && nums[i+1][j] == 0 && nums[i+1][j+1] == 0){ 
+                  if(nums[i+2][j-1] == 0 && nums[i+2][j] == 0 && nums[i+2][j+1] == 0){ 
+                      nums[i][j] = 1; nums[i+1][j] = 1; 
+                  }
+            
+          }
+        }
+      }
     }
-  } 
+    
+      }
+    }
 
-  public void generate(int[][] map, int Y, int X) {
-    filler(map);
-    replacer(map, Y, X);
-    generateGhostHouse(map);
+    return nums;
   }
-}
+} 
