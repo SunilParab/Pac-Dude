@@ -286,12 +286,12 @@ void PrintStart() {
   image(leftred, 475, 350); 
   image(rightblue, 295, 350); 
   image(rightpink, 245, 350); 
-  textSize(30);
+  textSize(25);
   fill(255);
 
   //text("Press Enter to Play", 230, 700);
 
-  text("Press Enter to Play Normal Mode", 125, 625);
+  text("Press Enter to Play Normal Mode", 160, 650);
   text("Press Space to Play Random Mode", 115, 700);
 
   fill(255, 255, 0);
@@ -312,14 +312,14 @@ void PrintEnd() {
   if (gameMap.getPellets() - Player.getPelletsEaten() != 0) {
     background(yup);
   }
-  textSize(30);
+  textSize(25);
   fill(255);
   text("I shall give you another chance", 140, 500);
 
   // text("Press Enter to Play Again", 185, 575);
 
-  text("Press Enter to Play Normal Mode", 125, 575);
-  text("Press Space to Play Random Mode", 115, 650);
+  text("Press Enter to Play Normal Mode", 125, 650);
+  text("Press Space to Play Random Mode", 115, 700);
 }
 
 void respawn() {
