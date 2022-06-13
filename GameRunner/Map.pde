@@ -182,4 +182,10 @@ public class Map {
   }
 
 
+  public  int[][] combine(int[][] nums) {
+    int[][] temp = new int[27][28];
+    int[][] reversed = new int[27][14];
+    reversed = reverse(nums);
+
+
 } 
